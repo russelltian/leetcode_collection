@@ -1,15 +1,26 @@
 //
 //  main.cpp
-//  leetcode
+//  practicesession
 //
-//  Created by HongYi Tian on 2018/5/29.
-//  Copyright © 2018年 HongYi Tian. All rights reserved.
+//  Created by HongYi Tian on 2017/5/13.
+//  Copyright © 2017年 HongYi Tian. All rights reserved.
 //
 
 #include <iostream>
+#include <cassert>
+#include <fstream>
+#include <cstdlib>
+#include <vector>
+#include <cmath>
+#include"Algorithm.hpp"
+
+using namespace std;
+
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+    clock_t timeStart = clock();
+    clock_t timeEnd = clock();
+    printf("run time: %04.2f (sec)\n",(double)(timeEnd - timeStart) / CLOCKS_PER_SEC);//print run time
     return 0;
 }
+
