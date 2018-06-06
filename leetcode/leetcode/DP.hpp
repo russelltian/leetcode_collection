@@ -10,5 +10,9 @@
 #define DP_hpp
 
 #include <stdio.h>
-
+#include <vector>
+#include <cmath>
+#include <iostream>
+using namespace std;
+int numTrees(int n); //96, unique binary search, dp, tree, hard, very interesting 
 #endif /* DP_hpp */
