@@ -10,5 +10,8 @@
 #define Tree_hpp
 
 #include <stdio.h>
-
+#include <vector>
+#include <cmath>
+#include <iostream>
+using namespace std;
 #endif /* Tree_hpp */
