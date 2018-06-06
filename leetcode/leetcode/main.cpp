@@ -13,7 +13,8 @@
 #include <vector>
 #include <cmath>
 #include"Algorithm.hpp"
-
+#include"Backtracking.hpp"
+#include"Stack.hpp"
 using namespace std;
 
 

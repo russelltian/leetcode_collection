@@ -10,5 +10,18 @@
 #define Stack_hpp
 
 #include <stdio.h>
+#include <vector>
+#include <stack>
+#include <cmath>
+#include <iostream>
+
+using namespace std;
+struct TreeNode {
+        int val;
+        TreeNode *left;
+        TreeNode *right;
+        TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+vector<int> inorderTraversal(TreeNode* root); //94, binary tree inorder traversal, mid, hard to me 
 
 #endif /* Stack_hpp */
