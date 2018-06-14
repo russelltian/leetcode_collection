@@ -338,6 +338,30 @@ void find_subsets(vector<vector<int>>& solution,vector<int>& nums,vector<int>& s
     }
 }
 
+/*Linked list */
+/*141, linked list cycle
+ Idea: two ptr, one goes one step, one goes two steps
+ if there is a cycle, they will hit anyways
+ */
+bool hasCycle(ListNode *head) {
+    if(!head)return false;
+    ListNode *iter1 = head;
+    ListNode *iter2 = head;
+    while(iter2->next != NULL){
+        iter2 = iter2->next->next;
+        iter1 = iter1->next;
+        if(iter2 == NULL)return false;
+        if(iter2 == iter1){
+            return true;
+        }
+    }
+    return false;
+}
+
+
+
+
+
 
 /*
 int countPrimes(unsigned long n) {

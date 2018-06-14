@@ -53,7 +53,13 @@ void sortColors(vector<int>& nums);//75, sort color, mid-sort, hard to me
 int minPathSum(vector<vector<int>>& grid);//64,mimimum path sum, mid-dp
 int climbStairs(int n); //70, climbing stairs, easy-dp
 
-
+//Linked list
+struct ListNode {
+         int val;
+         ListNode *next;
+         ListNode(int x) : val(x), next(NULL) {}
+     };
+bool hasCycle(ListNode *head);//141 Linked List Cycle, easy
 
 
 /*int countPrimes(unsigned long n);

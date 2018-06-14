@@ -23,3 +23,52 @@ int numTrees(int n) {
     }
     return answer[n];
     }
+/*
+ #121,Best Time to Buy and Sell Stock
+ max[n] = max(max[n-1]-price[n-1]+price[n],-price[n-1]+price[n] )
+ */
+int maxProfit(vector<int>& prices) {
+    if(prices.empty())return 0;
+    int n = int(prices.size());
+    vector<int> best_profit(n,0);
+    best_profit[0] = -prices[0];
+    int ans = 0;
+    for(int i = 1; i < n; i++){
+        best_profit[i]=max(best_profit[i-1]-prices[i-1]+prices[i],-prices[i-1]+prices[i]);
+        if(best_profit[i] > ans){
+            ans = best_profit[i];
+        }
+    }
+    return ans;
+    }
+
+/*139
+ currently, I first check if the word can be break directly,
+ then check subword, need to be improved, this answer is not optimal
+ */
+bool wordBreak(string s, vector<string>& wordDict) {
+    vector<bool>z(int(s.length()),false);
+    int index = 0;
+    for(int i = 0; i < s.length();i++){
+        for(int k = 0; k < wordDict.size();k++){
+            if(s.substr(0,i+1) == wordDict[k]){
+                z[i]= true;
+                break;
+            }
+        }
+        if(z[i] == true)continue;
+        for(int j = i-1; j >= 0;j--){
+            if(z[j] == true){
+                //cout << s.substr(0,j+1) <<" "<<s.substr(j+1,i-j)<<endl;
+                for(int k = 0; k < wordDict.size();k++){
+                    if(s.substr(j+1,i-j) == wordDict[k]){
+                        z[i] = true;
+                        break;
+                    }
+                }
+                if(z[i]==true)break;
+            }
+        }
+    }
+    return z[s.length()-1];
+    }
