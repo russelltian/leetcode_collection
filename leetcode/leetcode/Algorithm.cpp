@@ -158,6 +158,7 @@ void find_permutations(vector<int>& nums,vector<bool>& used,vector<vector<int>>&
 }
 
 /*
+ #48
  rotate image CW 90 degree, 4 element rotation from outer layer to inner layer, use offset to
  represent offset on the same layer
  */
@@ -180,6 +181,16 @@ void rotate(vector<vector<int>>& matrix) {
     }
 }
 
+//169. Majority Element [1,1,2] return 1
+// didn't think about run time, need to be faster, very easy
+int majorityElement(vector<int>& nums) {
+    sort(nums.begin(),nums.end());
+    int i = int(nums.size());
+    int mid = i/2;
+    if(nums[mid] == nums[i-1])return nums[mid];
+    else if(nums[mid]==nums[0])return nums[0];
+    else return nums[mid];
+}
 /*
  group anagrams, use sorted string as keys
  [ate,eat,tea]

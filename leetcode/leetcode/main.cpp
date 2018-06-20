@@ -14,7 +14,11 @@
 #include <cmath>
 #include"Algorithm.hpp"
 #include"Backtracking.hpp"
-#include"Stack.hpp"
+#include"DP.hpp"
+#include"Tree.hpp"
+#include "Unusual_Idea.hpp"
+#include"list_hash_stack.hpp"
+#include "Search_Sort.hpp"
 using namespace std;
 
 
