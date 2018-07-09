@@ -13,5 +13,11 @@
 #include <vector>
 #include <cmath>
 #include <iostream>
+#include <unordered_map>
+using namespace std;
+
+bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites);
+bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visited,int start);//207. Course Schedule, mid topological sort(DFS), need to be way faster 
+
 
 #endif /* Search_Sort_hpp */
