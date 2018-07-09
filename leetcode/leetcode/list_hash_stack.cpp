@@ -99,3 +99,26 @@ ListNode* reverseList_helper(ListNode* head,ListNode** glob){
     //cout<<mynext->val <<"->"<<mynext->next->val<<endl;
     return head;
 }
+
+
+/*
+ PQ
+ */
+
+/*
+ 215. Kth Largest Element in an Array
+ [3,2,1,5,6,4] and k = 2 output : 5
+ [3,2,3,1,2,4,5,5,6] and k = 4 output: 4
+ use a priority queue, traverse the vector, the larger element is inserted at the top,
+ then pop the first k-1 elements, the top is the largest one
+ */
+int findKthLargest(vector<int>& nums, int k) {
+    priority_queue<int,vector<int>,pq_compare> p;
+    for(int i = 0; i < nums.size(); i++){
+        p.push(nums[i]);
+    }
+    for(int i = int(nums.size()); i > k; i--){
+        p.pop();
+    }
+    return p.top();
+}

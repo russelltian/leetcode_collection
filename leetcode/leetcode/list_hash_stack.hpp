@@ -14,6 +14,7 @@
 #include <stack>
 #include <cmath>
 #include <iostream>
+#include <queue>
 #include "Tree.hpp"
 #include "Algorithm.hpp"
 using namespace std;
@@ -28,4 +29,15 @@ vector<int> inorderTraversal(TreeNode* root); //94, binary tree inorder traversa
 ListNode *getIntersectionNode(ListNode *headA, ListNode *headB); //160, intersections of lined lists, easy
 ListNode* reverseList(ListNode* head);
 ListNode* reverseList_helper(ListNode* head,ListNode** glob);//206, reverse linked list,easy,recursion
+
+/*
+ prioirty queue
+ */
+struct pq_compare{
+    bool operator()(const int& lhs,const int& rhs){
+        return lhs>rhs;
+    }
+};
+int findKthLargest(vector<int>& nums, int k); //215 Kth largest elements in an array
+
 #endif /* list_hash_stack_hpp */
