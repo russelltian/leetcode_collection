@@ -26,6 +26,7 @@ int maxDepth(TreeNode* root);
 void maxDepth_search(TreeNode* root,int temp,int&ans); //109 max depth of binary tree, easy
 void flatten(TreeNode* root);
 void flatten_helper(TreeNode* root,vector<TreeNode*> &ans);//114, flatten BT to linkedlist
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);//235. Lowest Common Ancestor of a BST, easy, interesting idea
 
 /*
  must know

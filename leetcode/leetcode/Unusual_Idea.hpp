@@ -20,6 +20,9 @@ int singleNumber(vector<int>& nums);//136,single number, easy, bitwise manipulat
 
 ListNode *detectCycle(ListNode *head); //142,linked list cycle II, mid, interesting math
 
+vector<int> productExceptSelf(vector<int>& nums);//238. Product of Array Except Self, mid, fast solution, no division(avoid divide by zero)
+
+
 
 // Design
 class TrieNode{

@@ -75,25 +75,44 @@ void flatten_helper(TreeNode* root,vector<TreeNode*> &ans){
     flatten_helper( root->right,ans);
 }
 
+
 /*
- general helper function
+ 235. Lowest Common Ancestor of a Binary Search Tree
+ Given binary search tree:  root = [6,2,8,0,4,7,9,null,null,3,5]
+ 
+    _______6______
+    /              \
+ ___2__          ___8__
+ /      \        /      \
+ 0      _4       7       9
+        /  \
+      3     5
+ Example 1:
+ Input: root = [6,2,8,0,4,7,9,null,null,3,5], p = 2, q = 8
+ Output: 6
+ Explanation: The LCA of nodes 2 and 8 is 6.
  */
-//helper function that inorder traverse and insert node value to a vector
-void inorder_insert_to_vec(TreeNode* root, vector<int>&a){
-    if(!root)return;
-    inorder_insert_to_vec(root->left,a);
-    a.push_back(root->val);
-    inorder_insert_to_vec(root->right,a);
+TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+    if(root ==p)return p;
+    if(root == q)return q;
+    /*
+     difference cases:
+     both p,q < root, searching left
+     both p,q > root, searching right
+     if one < and the other > , we good
+     fast 
+     */
+    if(p->val < root->val && q->val < root->val){
+        root = lowestCommonAncestor(root->left,p,q);
+    }
+    if(p->val > root->val && q->val > root->val){
+        root = lowestCommonAncestor(root->right,p,q);
+    }
+    return root;
 }
-//helper function that postorder traverse and get node value from vector
-void postorder_insert_to_vec(TreeNode* root, vector<int>&a){
-    if(!root)return;
-    postorder_insert_to_vec(root->right,a);
-    root->val = a[0];
-    a.erase(a.begin());
-    cout<<a[0]<<endl;
-    postorder_insert_to_vec(root->left,a);
-}
+
+
+
 
 /*
  MUST KNOW
@@ -124,3 +143,32 @@ TreeNode* invertTree(TreeNode* root) {
     root->right = temp;
     return root;
 }
+
+
+
+
+
+
+/*
+ general helper function
+ */
+
+
+//helper function that inorder traverse and insert node value to a vector
+void inorder_insert_to_vec(TreeNode* root, vector<int>&a){
+    if(!root)return;
+    inorder_insert_to_vec(root->left,a);
+    a.push_back(root->val);
+    inorder_insert_to_vec(root->right,a);
+}
+//helper function that postorder traverse and get node value from vector
+void postorder_insert_to_vec(TreeNode* root, vector<int>&a){
+    if(!root)return;
+    postorder_insert_to_vec(root->right,a);
+    root->val = a[0];
+    a.erase(a.begin());
+    cout<<a[0]<<endl;
+    postorder_insert_to_vec(root->left,a);
+}
+
+
