@@ -99,7 +99,32 @@ ListNode* reverseList_helper(ListNode* head,ListNode** glob){
     //cout<<mynext->val <<"->"<<mynext->next->val<<endl;
     return head;
 }
-
+/*
+ 234. Palindrome Linked List
+ Input: 1->2
+ Output: false
+ 
+ Input: 1->2->2->1
+ Output: true
+ 
+ idea: use recursion, first move tail to the last element, then cmp head and tail,
+ then return head->next, 99.3%
+ */
+bool isPalindrome(ListNode* head) {
+    if(!head)return true;
+    ListNode* tail = head;
+    bool global_bool = true;
+    head = isPalindrome_list_helper(head,tail,global_bool);
+    return global_bool;
+}
+ListNode* isPalindrome_list_helper(ListNode* head,ListNode* tail,bool& mybool){
+    ListNode* cur = tail;
+    if(tail->next)
+        head = isPalindrome_list_helper(head,tail->next,mybool); // get the last one
+    //finally we are at the last node
+    if(head->val != cur->val) mybool = false;
+    return head->next;
+}
 
 /*
  PQ

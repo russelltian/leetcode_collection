@@ -29,6 +29,8 @@ vector<int> inorderTraversal(TreeNode* root); //94, binary tree inorder traversa
 ListNode *getIntersectionNode(ListNode *headA, ListNode *headB); //160, intersections of lined lists, easy
 ListNode* reverseList(ListNode* head);
 ListNode* reverseList_helper(ListNode* head,ListNode** glob);//206, reverse linked list,easy,recursion
+bool isPalindrome(ListNode* head);
+ListNode* isPalindrome_list_helper(ListNode* head,ListNode* tail,bool& mybool);//234. Palindrome Linked List, easy, recursion, fast
 
 /*
  prioirty queue
