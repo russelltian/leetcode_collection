@@ -18,6 +18,7 @@ int numTrees(int n); //96, unique binary search, dp, tree, hard, very interestin
 int maxProfit(vector<int>& prices); //121, Best Time to Buy and Sell Stock, easy,fun
 bool wordBreak(string s, vector<string>& wordDict); // 139, word break, mid, need to be faster
 int maxProduct(vector<int>& nums);//152, max product subarray, mid
+int maximalSquare(vector<vector<char>>& matrix); //221. Maximal Square, mid 
 //easy
 int rob(vector<int>& nums); //198, interesting question lol
 

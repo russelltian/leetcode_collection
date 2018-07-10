@@ -75,3 +75,52 @@ void flatten_helper(TreeNode* root,vector<TreeNode*> &ans){
     flatten_helper( root->right,ans);
 }
 
+/*
+ general helper function
+ */
+//helper function that inorder traverse and insert node value to a vector
+void inorder_insert_to_vec(TreeNode* root, vector<int>&a){
+    if(!root)return;
+    inorder_insert_to_vec(root->left,a);
+    a.push_back(root->val);
+    inorder_insert_to_vec(root->right,a);
+}
+//helper function that postorder traverse and get node value from vector
+void postorder_insert_to_vec(TreeNode* root, vector<int>&a){
+    if(!root)return;
+    postorder_insert_to_vec(root->right,a);
+    root->val = a[0];
+    a.erase(a.begin());
+    cout<<a[0]<<endl;
+    postorder_insert_to_vec(root->left,a);
+}
+
+/*
+ MUST KNOW
+ */
+/*226. Invert Binary Tree
+ Input:
+ 
+     4
+   /   \
+  2     7
+ / \   / \
+ 1   3 6   9
+ Output:
+      4
+    /   \
+   7      2
+  / \    / \
+ 9   6  3   1
+ 
+ */
+TreeNode* invertTree(TreeNode* root) {
+    //recursively swap left child and right child
+    if(!root) return NULL;
+    TreeNode* temp = root->left;
+    root->left = invertTree(root->left);
+    root->right = invertTree(root->right);
+    root->left = root->right;
+    root->right = temp;
+    return root;
+}

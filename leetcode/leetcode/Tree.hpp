@@ -26,4 +26,15 @@ int maxDepth(TreeNode* root);
 void maxDepth_search(TreeNode* root,int temp,int&ans); //109 max depth of binary tree, easy
 void flatten(TreeNode* root);
 void flatten_helper(TreeNode* root,vector<TreeNode*> &ans);//114, flatten BT to linkedlist
+
+/*
+ must know
+ */
+TreeNode* invertTree(TreeNode* root);//226. Invert Binary Tree , easy, must know, homebrew google meme 
+/*
+ general helper function
+ */
+void inorder_insert_to_vec(TreeNode* root, vector<int>&a);
+void postorder_insert_to_vec(TreeNode* root, vector<int>&a);
+
 #endif /* Tree_hpp */

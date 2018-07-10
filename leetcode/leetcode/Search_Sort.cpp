@@ -11,6 +11,7 @@
  topological sort
  */
 //207 course schdule, mid DFS, topological sort
+// it is really slow ......
 bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
     /*
      first, use hash table to store prerequisites, then check if the graph has cycle
