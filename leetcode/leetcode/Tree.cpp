@@ -110,8 +110,48 @@ TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
     }
     return root;
 }
-
-
+/*
+ 236. Lowest Common Ancestor of a Binary Tree
+ (hard to me)
+ Given the following binary tree:  root = [3,5,1,6,2,0,8,null,null,7,4]
+ 
+        _______3______
+        /              \
+      ___5__          ___1__
+     /      \        /      \
+     6      _2       0       8
+            /  \
+            7    4
+ Example 1:
+ 
+ Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1
+ Output: 3
+ Explanation: The LCA of of nodes 5 and 1 is 3.
+ Example 2:
+ 
+ Input: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 4
+ Output: 5
+ Explanation: The LCA of nodes 5 and 4 is 5, since a node can be a descendant of itself
+ according to the LCA definition.
+ */
+TreeNode* lowestCommonAncestor_BST(TreeNode* root, TreeNode* p, TreeNode* q) {
+    /*
+     not BST, only BT, so has to search p and q and return the common node they have
+     */
+    if(p == root)return p;
+    if(q == root) return q;
+    if(!root)return NULL;
+    if(root == p || root == q)return root;
+    TreeNode* left = lowestCommonAncestor_BST(root->left,p,q); //first move to bottom
+    TreeNode* right = lowestCommonAncestor_BST(root->right,p,q);
+    if(!left && !right){
+        //we find nothing
+        return NULL;
+    }
+    if(left && right)return root;//left right contain p q
+    if(left) return left; // only find one
+    return right;//only find one
+}
 
 
 /*

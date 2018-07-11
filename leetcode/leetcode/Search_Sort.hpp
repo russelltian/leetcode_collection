@@ -19,5 +19,8 @@ using namespace std;
 bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites);
 bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visited,int start);//207. Course Schedule, mid topological sort(DFS), badly need to be way faster!!
 
-
+/*
+ divide and conquer
+ */
+bool searchMatrix(vector<vector<int>>& matrix, int target);//240. Search a 2D Matrix II, mid search 
 #endif /* Search_Sort_hpp */

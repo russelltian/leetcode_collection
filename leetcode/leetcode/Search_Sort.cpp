@@ -38,3 +38,46 @@ bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visit
     visited[start]=0;
     return false;
     }
+
+
+/*
+ Divide and Conqeur
+ */
+/*
+ 240. Search a 2D Matrix II
+ Consider the following matrix:
+ [
+ [1,   4,  7, 11, 15],
+ [2,   5,  8, 12, 19],
+ [3,   6,  9, 16, 22],
+ [10, 13, 14, 17, 24],
+ [18, 21, 23, 26, 30]
+ ]
+ Given target = 5, return true.
+ Given target = 20, return false.
+ */
+bool searchMatrix(vector<vector<int>>& matrix, int target) {
+    if(matrix.empty()||matrix[0].empty()) return false;
+    int row = int(matrix.size());
+    int col = int(matrix[0].size());
+    int i = row-1;
+    int j = 0;
+    //start from bottom left
+    // if > target goes up, if < target goes right
+    while(true){
+        if(j>= col || i <0)return false;//out of bound
+        if(matrix[i][j] == target){
+            return true;
+        }
+        
+        if(matrix[i][j] > target){
+            i--;
+            continue;
+        }
+        if(matrix[i][j] < target){
+            j++;
+            continue;
+        }
+    }
+    return false;
+    }
