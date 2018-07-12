@@ -18,8 +18,16 @@ int numTrees(int n); //96, unique binary search, dp, tree, hard, very interestin
 int maxProfit(vector<int>& prices); //121, Best Time to Buy and Sell Stock, easy,fun
 bool wordBreak(string s, vector<string>& wordDict); // 139, word break, mid, need to be faster
 int maxProduct(vector<int>& nums);//152, max product subarray, mid
-int maximalSquare(vector<vector<char>>& matrix); //221. Maximal Square, mid 
+int maximalSquare(vector<vector<char>>& matrix); //221. Maximal Square, mid
+int lengthOfLIS(vector<int>& nums); //300. Longest Increasing Subsequence,mid, O(n^2)need to be O(nlogn)
+
+/*
+ Greedy Algorithm
+ */
+int numSquares(int n);
+void numSquares_helper(int n, vector<int>&num,int&count,int temp,int start,bool&find); //279. Perfect Squares, mid, I didn't use dp, run time is OK (83%), more thinking later
 //easy
 int rob(vector<int>& nums); //198, interesting question lol
+
 
 #endif /* DP_hpp */

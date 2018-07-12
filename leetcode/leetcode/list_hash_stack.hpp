@@ -19,6 +19,11 @@
 #include "Algorithm.hpp"
 using namespace std;
 
+/*
+ array
+ */
+void moveZeroes(vector<int>& nums);//283. Move Zeroes, easy, 97%
+
 //stack
 vector<int> inorderTraversal(TreeNode* root); //94, binary tree inorder traversal, mid, hard to me
 

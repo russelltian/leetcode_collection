@@ -147,6 +147,99 @@ int maximalSquare(vector<vector<char>>& matrix) {
     return ans*ans;
 }
 
+/*
+ 300. Longest Increasing Subsequence,mid,need to be faster
+ Given an unsorted array of integers, find the length of longest increasing subsequence.
+ 
+ Example:
+ 
+ Input: [10,9,2,5,3,7,101,18]
+ Output: 4
+ Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
+*/
+int lengthOfLIS(vector<int>& nums) {
+    /*
+     start from back dp[i] = max(dp[>i])+1 O(n^2)
+     */
+    if(nums.empty())return 0;
+    int longest = 1;
+    int size = int(nums.size());
+    vector<int>dp(size,1);//array to store longest subsequences
+    dp[size-1]=1;
+    for(int i = size-2;i>=0;i--){
+        //for this element find all possible increasing sequence
+        for(int j = i+1; j< size; j++){
+            if(nums[j]> nums[i]){
+                if(dp[j]+1>dp[i]){
+                    dp[i] = dp[j]+1;
+                    if(dp[i]>longest)longest = dp[i];
+                }
+            }
+        }
+    }
+    return longest;
+}
+
+/*
+ Greedy Algorithm
+ */
+/*
+ 279. Perfect Squares
+ Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
+ Example 1:
+ 
+ Input: n = 12
+ Output: 3
+ Explanation: 12 = 4 + 4 + 4.
+ Example 2:
+ 
+ Input: n = 13
+ Output: 2
+ Explanation: 13 = 4 + 9.
+ */
+/*
+ idea: I didn't really use DP, still 83% in timing performance
+ i use a greedy algo with improvement
+ first build perfect square array that might be needed by the number
+ then I find the least number by using greedy algo
+ and keep trying the rest combination, if there is no better solution,break it
+ 
+ key: keep track of index i to avoid repeated iteration in the array
+ */
+int numSquares(int n) {
+    int origin = pow(n,0.5);//largest potential root
+    vector<int> num;
+    //build perfect square number vector
+    for(int i = origin; i >= 1; i--){
+        num.push_back(pow(i,2));
+    }
+    //int size = int(num.size());
+    int count = 9999;
+    bool find =false;
+    numSquares_helper(n,num,count,1,0,find);
+    return count;
+}
+void numSquares_helper(int n, vector<int>&num,int&count,int temp,int start,bool&find){
+    int i = start;
+    while(true){
+        if(i == num.size())break;
+        if(temp >count)break;
+        if(n-num[i] == 0){
+            find = true;
+            if(temp < count)count = temp;
+            break;
+        }
+        if(n-num[i]>0){
+            // n -= num[i];
+            // cout<<n<<' '<<temp<< ' '<< n-num[i]<<endl;
+            temp++;
+            numSquares_helper(n-num[i],num,count,temp,i,find);
+            temp--;
+        }
+        i++;// n is larger than num[i], try a smaller num[i+1]
+    }
+}
+
 
 /*
  easy

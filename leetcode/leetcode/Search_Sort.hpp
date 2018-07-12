@@ -15,6 +15,12 @@
 #include <iostream>
 #include <unordered_map>
 using namespace std;
+/*
+ BST
+ */
+//special questions
+int findDuplicate(vector<int>& nums);//287. Find the Duplicate Number, mid,interesting,hard to me
+
 
 bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites);
 bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visited,int start);//207. Course Schedule, mid topological sort(DFS), badly need to be way faster!!
