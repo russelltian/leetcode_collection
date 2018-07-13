@@ -9,7 +9,7 @@
 #include "Search_Sort.hpp"
 
 /*
- BST
+ Binary Search
  */
 //special questions
 /*

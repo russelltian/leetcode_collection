@@ -29,6 +29,15 @@ void flatten_helper(TreeNode* root,vector<TreeNode*> &ans);//114, flatten BT to 
 TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);//235. Lowest Common Ancestor of a BST, easy, interesting idea
 TreeNode* lowestCommonAncestor_BST(TreeNode* root, TreeNode* p, TreeNode* q);//236.Lowest Common Ancestor of a BT, mid, hard to me, important solution idea
 /*
+ DFS
+ */
+int robIII(TreeNode* root);
+vector<int> robIII_helper(TreeNode* root);//337. House Robber III, mid, interesting, self-idea, fast
+
+
+
+
+/*
  must know
  */
 TreeNode* invertTree(TreeNode* root);//226. Invert Binary Tree , easy, must know, homebrew google meme 

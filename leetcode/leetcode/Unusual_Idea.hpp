@@ -15,8 +15,12 @@
 #include <iostream>
 #include "Algorithm.hpp"
 using namespace std;
-
+/*
+ bit manipulation
+ */
 int singleNumber(vector<int>& nums);//136,single number, easy, bitwise manipulation
+vector<int> countBits(int num);//338. Counting Bits, mid, hard to me, interesting idea
+
 
 ListNode *detectCycle(ListNode *head); //142,linked list cycle II, mid, interesting math
 

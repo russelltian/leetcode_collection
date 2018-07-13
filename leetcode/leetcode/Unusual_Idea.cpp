@@ -7,6 +7,10 @@
 //
 
 #include "Unusual_Idea.hpp"
+
+/*
+ bit manipulation
+ */
 /*
  #136, single number, [4,1,2,1,2] return 4
  idea: bit manipulation
@@ -18,6 +22,39 @@ int singleNumber(vector<int>& nums) {
     }
     return sum;
 }
+
+/*
+ 338. Counting Bits
+ Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1's in their binary representation and return them as an array.
+ 
+ Example:
+ For num = 5 you should return [0,1,1,2,1,2].
+ 
+ - Space complexity should be O(n).
+ - No builtin function
+ */
+vector<int> countBits(int num) {
+    vector<int> ans(num+1,0);
+    /*
+     referenced hint from http://www.cnblogs.com/grandyang/p/5294255.html
+     1. You should make use of what you have produced already.
+     2. Divide the numbers in ranges like [2-3], [4-7], [8-15] and so on. And try to generate new range from previous.
+     3.Or does the odd/even status of the number help you in calculating the number of 1s?
+     
+     within the same group, when even-> ans[i] = ans[i/2] +1 , odd-> ans[i] = ans[i/2]
+     */
+    for(int i = 1; i <= num;i++){
+        if(i%2 !=0){
+            ans[i] = ans[i/2]+1;
+        }else{
+            ans[i] = ans[i/2];
+        }
+    }
+    return ans;
+}
+
+
+
 
 
 /*

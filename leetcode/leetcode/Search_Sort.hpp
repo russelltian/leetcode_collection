@@ -16,7 +16,7 @@
 #include <unordered_map>
 using namespace std;
 /*
- BST
+ Binary Search
  */
 //special questions
 int findDuplicate(vector<int>& nums);//287. Find the Duplicate Number, mid,interesting,hard to me
