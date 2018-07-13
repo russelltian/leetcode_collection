@@ -23,6 +23,11 @@ int lengthOfLIS(vector<int>& nums); //300. Longest Increasing Subsequence,mid, O
 int maxProfit_cd(vector<int>& prices);//309. Best Time to Buy and Sell Stock with Cooldown, mid hard to me, need more thinking
 
 /*
+ classic
+ */
+int coinChange(vector<int>& coins, int amount);//322. Coin Change, mid, fast, classic question
+int robII(vector<int>& nums);//213. House Robber II, upgrade to 198, mid, must know, fast, need more thinking 
+/*
  Greedy Algorithm
  */
 int numSquares(int n);

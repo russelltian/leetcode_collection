@@ -214,6 +214,92 @@ int maxProfit_cd(vector<int>& prices) {
     return profit[prices.size()-1];
 }
 
+
+
+/*
+ Classic
+ */
+/*
+ 322. Coin Change
+ You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
+ 
+ Example 1:
+ 
+ Input: coins = [1, 2, 5], amount = 11
+ Output: 3
+ Explanation: 11 = 5 + 5 + 1
+ Example 2:
+ 
+ Input: coins = [2], amount = 3
+ Output: -1
+ */
+int coinChange(vector<int>& coins, int amount) {
+    /*
+     93.58%
+     */
+    vector<int> best_case(amount+1,-1);//for each amount, store the number of coins needed
+    best_case[0]= 0;
+    int size = int(coins.size());
+    for(int i = 1; i < best_case.size();i++){
+        for(int j = 0; j < size;j++){
+            if (coins[j]==i){
+                //cout <<" "<<i<<endl;
+                best_case[i] = 1;//exact amount
+            }else if(coins[j]<i){
+                if(best_case[i-coins[j]]!= -1){//there is valid combination
+                    int temp = best_case[i-coins[j]]+best_case[coins[j]];
+                    //  cout <<"temp:"<<temp<<endl;
+                    //update #of coins needed for i
+                    if(best_case[i]>temp||best_case[i]==-1){
+                        best_case[i] = temp;
+                    }
+                }
+            }
+        }
+        // cout<<i<<':'<<best_case[i]<<endl;
+    }
+    return best_case[amount];
+}
+
+/*
+ 213. House Robber II
+ (first house and last house forms a cycle)
+ Example 1:
+ Input: [2,3,2]
+ Output: 3
+ Explanation: You cannot rob house 1 (money = 2) and then rob house 3 (money = 2),
+ because they are adjacent houses.
+ 
+ Example 2:
+ Input: [1,2,3,1]
+ Output: 4
+ Explanation: Rob house 1 (money = 1) and then rob house 3 (money = 3).
+ Total amount you can rob = 1 + 3 = 4.
+ */
+int robII(vector<int>& nums) {
+    /*
+     the only method works is trying two times from [0,n-1],[2,n],return the larger one,
+     but is there any method that requires only one traversal since no one gonna rob two times
+     in a row...
+     */
+    if(nums.empty())return 0;
+    int size = int(nums.size());
+    if(size==1)return nums[0];
+    //first try,1- n
+    vector<int> second = nums;
+    nums[2]= max(nums[1],nums[2]);
+    for(int i = 3; i< size;i++){
+        nums[i] = max(nums[i-2]+nums[i],nums[i-1]);
+    }
+    //second try,0- n-1
+    second[1] = max(second[0],second[1]);
+    for(int i = 2; i< size-1;i++){
+        second[i] = max(second[i-2]+second[i],second[i-1]);
+    }
+    return max(nums[size-1],second[size-2]);
+}
+
+
 /*
  Greedy Algorithm
  */
