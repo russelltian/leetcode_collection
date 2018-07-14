@@ -66,6 +66,68 @@ int findDuplicate(vector<int>& nums){
 }
 
 /*
+ DFS
+ */
+/*
+ 394. Decode String
+ Given an encoded string, return it's decoded string.
+ 
+ The encoding rule is: k[encoded_string], where the encoded_string inside the square brackets is being repeated exactly k times. Note that k is guaranteed to be a positive integer.
+ 
+ You may assume that the input string is always valid; No extra white spaces, square brackets are well-formed, etc.
+ 
+ Furthermore, you may assume that the original data does not contain any digits and that digits are only for those repeat numbers, k. For example, there won't be input like 3a or 2[4].
+ */
+string decodeString(string s) {
+    //things,1. find inner layer of string of a bracket (DFS)
+    // when hit [, recursion, when hit ] return
+    // use & to trck index of string , O(n)*(string manipulation)
+    //100%
+    
+    
+    string ans;int i = 0;
+    ans = decodeString_helper(s,i);
+    return ans;
+}
+string decodeString_helper(string s,int&start){
+    string temp="";
+    int times=1;//?*string
+    // string chain="";
+    for(int i= start;i<s.size();i++){
+        if(s[i] == '['){
+            //dfs, search another string
+            i++;
+            string temptemp = decodeString_helper(s,i);
+            for(int j= 0;j<times;j++){
+                temp += temptemp;
+            }
+            //   cout << temp <<endl;
+            times=1;
+        }else if(s[i] == ']'){
+            //finish the string
+            start = i;
+            //  cout<<temp<<endl;
+            return temp;
+        }else if(s[i]>='0'&&s[i]<='9'){
+            //number
+            //   chain = s[i];
+            if(i>0 &&s[i-1]>='0'&&s[i-1]<='9'){
+                //consecutive number
+                times=times*10+s[i]-'0';
+            }
+            else times = s[i] - '0';
+            
+            
+            // cout<< "times:"<<times <<endl;
+        }else{
+            for(int j= 0;j<times;j++){
+                temp += s[i];//build the string
+            }
+        }
+    }
+    return temp;
+}
+/*
  topological sort
  */
 //207 course schdule, mid DFS, topological sort

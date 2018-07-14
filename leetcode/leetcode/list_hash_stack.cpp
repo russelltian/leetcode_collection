@@ -172,3 +172,38 @@ int findKthLargest(vector<int>& nums, int k) {
     }
     return p.top();
 }
+vector<int> topKFrequent(vector<int>& nums, int k) {
+    /*
+     first use hash to count duplicate O(n)
+     then use pq to sort the index, worst case O(nlogn)
+     then push back answer, worst case O(n)
+     94.75%
+     */
+    unordered_map<int,int> hash;
+    for(int i = 0; i < nums.size();i++){
+        if(hash.find(nums[i]) == hash.end()){
+            //no record
+            hash.insert(make_pair(nums[i],1));
+        }else{
+            //find it
+            hash[nums[i]] = hash[nums[i]]+1;
+            //     cout << hash[nums[i]];
+        }
+    }
+    
+    priority_queue<pair<int,int>,vector<pair<int,int>>,cmp>pq;
+    for(auto it : hash){
+        int a= it.first;
+        int b= it.second;
+        //  cout << a<<b<<endl;
+        pq.push(make_pair(a,b));
+    }
+    vector<int>result;
+    for(int i = 0; i<k;i++){
+        result.push_back(pq.top().first);
+        //cout<<pq.top().first<<pq.top().second<<endl;
+        pq.pop();
+    }
+    
+    return result;
+    }

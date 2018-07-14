@@ -40,11 +40,19 @@ ListNode* isPalindrome_list_helper(ListNode* head,ListNode* tail,bool& mybool);/
 /*
  prioirty queue
  */
-struct pq_compare{
+
+int findKthLargest(vector<int>& nums, int k); //215 Kth largest elements in an array
+vector<int> topKFrequent(vector<int>& nums, int k);//347. Top K Frequent Elements, mid, self idea
+
+//comparator
+struct pq_compare{//215, Kth largest elements in an array
     bool operator()(const int& lhs,const int& rhs){
         return lhs>rhs;
     }
 };
-int findKthLargest(vector<int>& nums, int k); //215 Kth largest elements in an array
-
+struct cmp{ //347. Top K Frequent Elements
+    bool operator()(pair<int,int>&lhs,pair<int,int>&rhs){
+        return (lhs.second<rhs.second); //comparator for pair<int,int>
+    }
+};
 #endif /* list_hash_stack_hpp */

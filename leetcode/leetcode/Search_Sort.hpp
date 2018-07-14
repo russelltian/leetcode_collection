@@ -20,7 +20,11 @@ using namespace std;
  */
 //special questions
 int findDuplicate(vector<int>& nums);//287. Find the Duplicate Number, mid,interesting,hard to me
-
+/*
+ DFS
+ */
+string decodeString(string s);
+string decodeString_helper(string s,int&start);//394. Decode String, mid, fast,can be done by stack
 
 bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites);
 bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visited,int start);//207. Course Schedule, mid topological sort(DFS), badly need to be way faster!!
