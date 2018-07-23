@@ -23,6 +23,11 @@ int lengthOfLIS(vector<int>& nums); //300. Longest Increasing Subsequence,mid, O
 int maxProfit_cd(vector<int>& prices);//309. Best Time to Buy and Sell Stock with Cooldown, mid hard to me, need more thinking
 
 /*
+ hard to me
+ */
+bool canPartition(vector<int>& nums);//416. Partition Equal Subset Sum, mid, hard to me, need to be faster (better method)
+
+/*
  classic
  */
 int coinChange(vector<int>& coins, int amount);//322. Coin Change, mid, fast, classic question
@@ -32,8 +37,16 @@ int robII(vector<int>& nums);//213. House Robber II, upgrade to 198, mid, must k
  */
 int numSquares(int n);
 void numSquares_helper(int n, vector<int>&num,int&count,int temp,int start,bool&find); //279. Perfect Squares, mid, I didn't use dp, run time is OK (83%), more thinking later
+vector<pair<int, int>> reconstructQueue(vector<pair<int, int>>& people); //406. Queue Reconstruction by Height, hard to me, more think later, excellent solution 
 //easy
 int rob(vector<int>& nums); //198, interesting question lol
 
+
+//compare a vector of pair<int,int>
+struct cmp_second_pair{
+    bool operator()(const pair<int,int> &left, const pair<int,int> &right){
+        return left.first>right.first || (left.first == right.first && left.second<right.second);
+    }
+};
 
 #endif /* DP_hpp */

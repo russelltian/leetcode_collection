@@ -214,6 +214,49 @@ int maxProfit_cd(vector<int>& prices) {
     return profit[prices.size()-1];
 }
 
+/*
+ 416. Partition Equal Subset Sum
+ Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
+ 
+ Note:
+ Each of the array element will not exceed 100.
+ The array size will not exceed 200.
+ Example 1:
+ 
+ Input: [1, 5, 11, 5]
+ 
+ Output: true
+ 
+ Explanation: The array can be partitioned as [1, 5, 5] and [11].
+ Example 2:
+ 
+ Input: [1, 2, 3, 5]
+ 
+ Output: false
+ 
+ Explanation: The array cannot be partitioned into equal sum subsets.
+ */
+bool canPartition(vector<int>& nums) {
+    //need more thinking
+    //but here the dp is if 1,1,2 then 1,1,2,4 is also true
+    //run time only 60%
+    int sum = 0;
+    for(int i = 0; i < nums.size(); i++){
+        sum+= nums[i];
+    }
+    if(sum%2==1)return false;
+    int tar = sum/2;
+    vector<bool> ans(tar+1,false);
+    ans[0] = true;
+    for(int i = 0; i < nums.size(); i++){
+        if(nums[i]==tar||ans[tar])return true;
+        for(int j = tar; j >= nums[i]; j--){
+            ans[j] = ans[j]||ans[j-nums[i]];
+        }
+    }
+    return ans[tar];
+}
+
 
 
 /*
@@ -358,6 +401,39 @@ void numSquares_helper(int n, vector<int>&num,int&count,int temp,int start,bool&
         }
         i++;// n is larger than num[i], try a smaller num[i+1]
     }
+}
+
+/*
+ 406. Queue Reconstruction by Height
+ Suppose you have a random list of people standing in a queue. Each person is described by a pair of integers (h, k), where h is the height of the person and k is the number of people in front of this person who have a height greater than or equal to h. Write an algorithm to reconstruct the queue.
+ 
+ Note:
+ The number of people is less than 1,100.
+ 
+ 
+ Example
+ 
+ Input:
+ [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]
+ 
+ Output:
+ [[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
+ */
+vector<pair<int, int>> reconstructQueue(vector<pair<int, int>>& people) {
+    /*
+     referenced solution from http://www.cnblogs.com/grandyang/p/5928417.html
+     tallest at the front
+     */
+    vector<pair<int, int>> ans;
+    
+    sort(people.begin(),people.end(),cmp_second_pair());
+    // for(int i = 0; i < people.size(); i++){
+    //     cout << people[i].first<<" "<<people[i].second << endl;
+    // }
+    for(auto i:people){
+        ans.insert(ans.begin()+i.second,i);
+    }
+    return ans;
 }
 
 
