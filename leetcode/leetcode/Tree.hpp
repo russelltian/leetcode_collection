@@ -28,6 +28,11 @@ void flatten(TreeNode* root);
 void flatten_helper(TreeNode* root,vector<TreeNode*> &ans);//114, flatten BT to linkedlist
 TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q);//235. Lowest Common Ancestor of a BST, easy, interesting idea
 TreeNode* lowestCommonAncestor_BST(TreeNode* root, TreeNode* p, TreeNode* q);//236.Lowest Common Ancestor of a BT, mid, hard to me, important solution idea
+
+int pathSum(TreeNode* root, int sum);
+void pathSum_helper(TreeNode* root, int sum,int& total,int tar);
+void pathSum_helperII(TreeNode* root,int sum,int&total);//437. Path Sum III, easy
+
 /*
  DFS
  */
