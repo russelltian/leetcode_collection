@@ -371,7 +371,16 @@ bool hasCycle(ListNode *head) {
 
 
 
+/*
+template
+ int size = int(nums.size());
+ vector<int> ans;
+ for(int i =0; i < size;i++){
+ 
+ }
+return ans;
 
+*/
 
 
 /*

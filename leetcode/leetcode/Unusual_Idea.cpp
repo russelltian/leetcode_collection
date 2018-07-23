@@ -53,6 +53,36 @@ vector<int> countBits(int num) {
     return ans;
 }
 
+/*
+ 461. Hamming Distance
+ The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
+ Given two integers x and y, calculate the Hamming distance.
+ 
+ Note:
+ 0 ≤ x, y < 231.
+ 
+ Example:
+ Input: x = 1, y = 4
+ Output: 2
+ Explanation:
+ 1   (0 0 0 1)
+ 4   (0 1 0 0)
+        ↑   ↑
+ The above arrows point to positions where the corresponding bits are different.
+ */
+int hammingDistance(int x, int y) {
+    // by using xor, 0 xor 0 and 1 xor 1 are all 0, only different bit will become 1,
+    //and we just count the number of 1's
+    int z = x^y;
+    //then and n-1 to eliminate 1's
+    int count = 0;
+    while(z){
+        count++;
+        z &= z-1;
+    }
+    return count;
+}
+
 
 
 
@@ -122,6 +152,47 @@ vector<int> productExceptSelf(vector<int>& nums) {
     for(int i = 1; i < nums.size()-1; i++){
         ans[i]=ans[i]*before[i];
         //cout<<ans[i];
+    }
+    return ans;
+}
+
+/*
+ 448. Find All Numbers Disappeared in an Array
+ Given an array of integers where 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
+ 
+ Find all the elements of [1, n] inclusive that do not appear in this array.
+ 
+ Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
+ 
+ Example:
+ 
+ Input:
+ [4,3,2,7,8,2,3,1]
+ 
+ Output:
+ [5,6]
+ */
+vector<int> findDisappearedNumbers(vector<int>& nums) {
+    int size = int(nums.size());
+    vector<int> ans;
+    /*
+     80%
+     idea:since the value of array is fixed (1 -> size)
+     we could iteratively updating the index, if number appeared ,let the index becomes 0,then move to the next index
+     those none zero index are never appeared
+     */
+    for(int i =0; i < size;i++){
+        if(nums[i]==0)continue;//this number has been erased
+        int temp = nums[i]-1;
+        while(nums[temp]!=0){
+            int j = temp;
+            temp = nums[temp]-1;//number on that index
+            nums[j]=0;//we have erased this index, means it appeared
+        }
+    }
+    for(int i =0; i < size;i++){
+        if(nums[i]!=0)//not appeared
+            ans.push_back(i+1);
     }
     return ans;
 }

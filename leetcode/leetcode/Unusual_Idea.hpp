@@ -20,12 +20,15 @@ using namespace std;
  */
 int singleNumber(vector<int>& nums);//136,single number, easy, bitwise manipulation
 vector<int> countBits(int num);//338. Counting Bits, mid, hard to me, interesting idea
+int hammingDistance(int x, int y);//461. Hamming Distance, easy, interesting
+
 
 
 ListNode *detectCycle(ListNode *head); //142,linked list cycle II, mid, interesting math
 
 vector<int> productExceptSelf(vector<int>& nums);//238. Product of Array Except Self, mid, fast solution, no division(avoid divide by zero)
 
+vector<int> findDisappearedNumbers(vector<int>& nums);//448. Find All Numbers Disappeared in an Array, easy, own idea, array, O(n) runtime, no extra space
 
 
 // Design
