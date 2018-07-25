@@ -44,6 +44,11 @@ ListNode* isPalindrome_list_helper(ListNode* head,ListNode* tail,bool& mybool);/
 int findKthLargest(vector<int>& nums, int k); //215 Kth largest elements in an array
 vector<int> topKFrequent(vector<int>& nums, int k);//347. Top K Frequent Elements, mid, self idea
 
+/*
+ hash idea with array implementation
+ */
+vector<int> findAnagrams(string s, string p);//438. Find All Anagrams in a String, long time spent , easy, 99.17%
+
 //comparator
 struct pq_compare{//215, Kth largest elements in an array
     bool operator()(const int& lhs,const int& rhs){

@@ -200,6 +200,31 @@ void pathSum_helperII(TreeNode* root,int sum,int&total){
     pathSum_helper(root,0,total,sum);
     pathSum_helperII(root->right,sum,total);
 }
+/*
+ 538. Convert BST to Greater Tree
+ Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST.
+ 
+ Example:
+ 
+ Input: The root of a Binary Search Tree like this:
+    5
+  /   \
+ 2     13
+ 
+ Output: The root of a Greater Tree like this:
+    18
+   /   \
+ 20     13
+ */
+
+TreeNode* convertBST(TreeNode* root) {
+    //97.94%
+    int sum=0;
+    convertBST_helper( root,sum);
+    return root;
+}
+
+
 
 /*
  DFS
@@ -315,5 +340,13 @@ void postorder_insert_to_vec(TreeNode* root, vector<int>&a){
     cout<<a[0]<<endl;
     postorder_insert_to_vec(root->left,a);
 }
-
+// 538. Convert BST to Greater Tree, post order sum up 
+void convertBST_helper(TreeNode* root,int& sum){
+    //post order sum
+    if(!root)return;
+    convertBST_helper(root->right,sum);
+    sum+=root->val;
+    root->val = sum;//update value
+    convertBST_helper(root->left,sum);
+}
 

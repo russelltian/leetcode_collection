@@ -207,3 +207,65 @@ vector<int> topKFrequent(vector<int>& nums, int k) {
     
     return result;
     }
+
+
+/*
+ hash idea with array implementation
+ */
+/*
+ 438. Find All Anagrams in a String
+ Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
+ 
+ Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than 20,100.
+ 
+ The order of output does not matter.
+ Input:
+ s: "cbaebabacd" p: "abc"
+ 
+ Output:
+ [0, 6]
+ 
+ Explanation:
+ The substring with start index = 0 is "cba", which is an anagram of "abc".
+ The substring with start index = 6 is "bac", which is an anagram of "abc".
+ Example 2:
+ 
+ Input:
+ s: "abab" p: "ab"
+ 
+ Output:
+ [0, 1, 2]
+ 
+ Explanation:
+ The substring with start index = 0 is "ab", which is an anagram of "ab".
+ The substring with start index = 1 is "ba", which is an anagram of "ab".
+ The substring with start index = 2 is "ab", which is an anagram of "ab".
+ */
+vector<int> findAnagrams(string s, string p) {
+    /*
+     99.17%, the idea is use two array and a slicing window,
+     constantly update the number of each char from the second array,
+     and then compare it with the second array
+     */
+    vector<int>ans;
+    if(s.size()<p.size()) return ans;
+    vector<int>track1(26,0);//compare two strings all value
+    vector<int>track2(26,0);
+    for(int i = 0; i < p.size();i++){
+        track1[p[i]-'a']++;
+    }
+    for(int i = 0; i < p.size();i++ ){
+        track2[s[i]-'a']++;
+    }
+    if(track1==track2)ans.push_back(0);
+    int size = int(p.size())-1;
+    for(int i = 1; i< s.size()-p.size()+1;i++){
+        // cout<<s[i-1]<<" "<<s[size+i]<<endl;
+        track2[s[i-1]-'a']--;
+        track2[s[size+i]-'a']++;
+        if(track1==track2){
+            ans.push_back(i);
+        }
+    }
+    return  ans;
+    }

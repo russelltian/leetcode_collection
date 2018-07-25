@@ -32,7 +32,8 @@ TreeNode* lowestCommonAncestor_BST(TreeNode* root, TreeNode* p, TreeNode* q);//2
 int pathSum(TreeNode* root, int sum);
 void pathSum_helper(TreeNode* root, int sum,int& total,int tar);
 void pathSum_helperII(TreeNode* root,int sum,int&total);//437. Path Sum III, easy
-
+TreeNode* convertBST(TreeNode* root);
+void convertBST_helper(TreeNode* root,int& sum);//538. Convert BST to Greater Tree, easy, postorder traverse
 /*
  DFS
  */
