@@ -49,6 +49,10 @@ vector<int> topKFrequent(vector<int>& nums, int k);//347. Top K Frequent Element
  */
 vector<int> findAnagrams(string s, string p);//438. Find All Anagrams in a String, long time spent , easy, 99.17%
 
+/*
+ must know
+ */
+int subarraySum(vector<int>& nums, int k);//560. Subarray Sum Equals K, mid ,hard to me, hash table, must know 
 //comparator
 struct pq_compare{//215, Kth largest elements in an array
     bool operator()(const int& lhs,const int& rhs){

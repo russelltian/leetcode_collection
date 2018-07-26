@@ -269,3 +269,43 @@ vector<int> findAnagrams(string s, string p) {
     }
     return  ans;
     }
+
+
+/*
+ must know
+ */
+/*
+560. Subarray Sum Equals K
+ Given an array of integers and an integer k, you need to find the total number of continuous subarrays whose sum equals to k.
+ Example 1:
+ Input:nums = [1,1,1], k = 2
+ Output: 2
+ */
+int subarraySum(vector<int>& nums, int k) {
+    /*referenced idea: http://algorithm.books.mafengshe.com/answer/560.html
+     O(n)solution
+     still confused...
+     nums=[1,2,-1,-1,1,5],k=1
+     sum =[1,3,2,1,2,7]
+     every time we get a new key value, we check if (sum-K)has occured,
+     if so , means there is sum-k  new consequtive subarray that sum up to k
+     */
+    int size = int(nums.size());
+    unordered_map<int,int> ht{{0,1}}; //first: sum, second: appearance times
+    int sum = 0;
+    int count =0;
+    for(int i =0; i < size;i++){
+        sum+= nums[i];
+        if(ht.find(sum-k) != ht.end()){
+            count+=ht[sum-k];
+        }
+        if(ht.find(sum)==ht.end()){
+            ht.insert({sum,1});
+        }else{
+            ht[sum]++;
+        }
+        
+    }
+    
+    return count;
+    }

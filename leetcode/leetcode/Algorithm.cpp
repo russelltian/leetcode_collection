@@ -382,6 +382,12 @@ return ans;
 
  vector<int> ans(nums.size(),0);
  
+ hash table:
+ int size = int(nums.size());
+ unordered_map<int,int> ht;
+ for(int i = 0; i < size; i++){
+ ht.insert(make_pair(i,nums[i]));
+ }
  
 */
 
