@@ -215,6 +215,10 @@ int maxProfit_cd(vector<int>& prices) {
 }
 
 /*
+ hard to me
+ */
+
+/*
  416. Partition Equal Subset Sum
  Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
  
@@ -257,6 +261,52 @@ bool canPartition(vector<int>& nums) {
     return ans[tar];
 }
 
+/*
+494. Target Sum
+ You are given a list of non-negative integers, a1, a2, ..., an, and a target, S. Now you have 2 symbols + and -. For each integer, you should choose one from + and - as its new symbol.
+ 
+ Find out how many ways to assign symbols to make sum of integers equal to target S.
+ 
+ Example 1:
+ Input: nums is [1, 1, 1, 1, 1], S is 3.
+ Output: 5
+ Explanation:
+ 
+ -1+1+1+1+1 = 3
+ +1-1+1+1+1 = 3
+ +1+1-1+1+1 = 3
+ +1+1+1-1+1 = 3
+ +1+1+1+1-1 = 3
+ 
+ There are 5 ways to assign symbols to make the sum of nums be target 3.
+*/
+int findTargetSumWays(vector<int>& nums, int S) {
+    /*
+     referenced idea: https://blog.csdn.net/magicbean2/article/details/78720623
+     P is set for all + , N is set for all -
+     sum(P) - sum(N) = target
+     sum(P) + sum(N) + sum(P) - sum(N) = target + sum(P) + sum(N)
+     2 * sum(P) = target + sum(nums)
+     find: sum(P) = (target + sum(nums)) / 2
+     O(target * n) n is size of nums
+     */
+    int sum = accumulate(nums.begin(), nums.end(), 0);
+    if(sum<S||(sum+S)&1){
+        //need to be >= S and %2==0
+        return 0;
+    }
+    return findTargetSumWays_helper(nums, (S+sum)/2);
+}
+int findTargetSumWays_helper(vector<int>& nums, int S){
+    vector<int> ans(S+1,0);
+    ans[0]=1;
+    for(int i = 0; i < nums.size();i++){
+        for(int j = S; j >= nums[i];j--){
+            ans[j] += ans[j-nums[i]];
+        }
+    }
+    return ans[S];
+}
 
 
 /*

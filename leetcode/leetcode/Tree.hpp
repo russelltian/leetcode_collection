@@ -34,6 +34,10 @@ void pathSum_helper(TreeNode* root, int sum,int& total,int tar);
 void pathSum_helperII(TreeNode* root,int sum,int&total);//437. Path Sum III, easy
 TreeNode* convertBST(TreeNode* root);
 void convertBST_helper(TreeNode* root,int& sum);//538. Convert BST to Greater Tree, easy, postorder traverse
+
+int diameterOfBinaryTree(TreeNode* root);
+int diameterOfBinaryTree_helper(TreeNode* root,int &len);//543. Diameter of Binary Tree, easy
+
 /*
  DFS
  */

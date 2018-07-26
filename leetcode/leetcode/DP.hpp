@@ -13,7 +13,10 @@
 #include <vector>
 #include <cmath>
 #include <iostream>
+#include <functional>
+#include <numeric> 
 using namespace std;
+
 int numTrees(int n); //96, unique binary search, dp, tree, hard, very interesting
 int maxProfit(vector<int>& prices); //121, Best Time to Buy and Sell Stock, easy,fun
 bool wordBreak(string s, vector<string>& wordDict); // 139, word break, mid, need to be faster
@@ -26,7 +29,8 @@ int maxProfit_cd(vector<int>& prices);//309. Best Time to Buy and Sell Stock wit
  hard to me
  */
 bool canPartition(vector<int>& nums);//416. Partition Equal Subset Sum, mid, hard to me, need to be faster (better method)
-
+int findTargetSumWays(vector<int>& nums, int S);
+int findTargetSumWays_helper(vector<int>& nums, int S);//494. Target Sum,mid ,hard to me, think later
 /*
  classic
  */
