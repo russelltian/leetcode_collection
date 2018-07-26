@@ -37,7 +37,8 @@ void convertBST_helper(TreeNode* root,int& sum);//538. Convert BST to Greater Tr
 
 int diameterOfBinaryTree(TreeNode* root);
 int diameterOfBinaryTree_helper(TreeNode* root,int &len);//543. Diameter of Binary Tree, easy
-
+bool isSubtree(TreeNode* s, TreeNode* t);
+bool isSubtree_helper(TreeNode* s,  TreeNode* t);//572. Subtree of Another Tree, easy
 /*
  DFS
  */

@@ -381,6 +381,8 @@ template
 return ans;
 
  vector<int> ans(nums.size(),0);
+ 
+ 
 */
 
 
