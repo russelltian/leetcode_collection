@@ -39,6 +39,8 @@ int diameterOfBinaryTree(TreeNode* root);
 int diameterOfBinaryTree_helper(TreeNode* root,int &len);//543. Diameter of Binary Tree, easy
 bool isSubtree(TreeNode* s, TreeNode* t);
 bool isSubtree_helper(TreeNode* s,  TreeNode* t);//572. Subtree of Another Tree, easy
+
+
 /*
  DFS
  */
@@ -52,6 +54,7 @@ vector<int> robIII_helper(TreeNode* root);//337. House Robber III, mid, interest
  must know
  */
 TreeNode* invertTree(TreeNode* root);//226. Invert Binary Tree , easy, must know, homebrew google meme 
+TreeNode* mergeTrees(TreeNode* t1, TreeNode* t2);//617. Merge Two Binary Trees, easy, important
 /*
  general helper function
  */

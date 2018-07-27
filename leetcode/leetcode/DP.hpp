@@ -14,7 +14,8 @@
 #include <cmath>
 #include <iostream>
 #include <functional>
-#include <numeric> 
+#include <numeric>
+#include <queue>
 using namespace std;
 
 int numTrees(int n); //96, unique binary search, dp, tree, hard, very interesting
@@ -41,7 +42,9 @@ int robII(vector<int>& nums);//213. House Robber II, upgrade to 198, mid, must k
  */
 int numSquares(int n);
 void numSquares_helper(int n, vector<int>&num,int&count,int temp,int start,bool&find); //279. Perfect Squares, mid, I didn't use dp, run time is OK (83%), more thinking later
-vector<pair<int, int>> reconstructQueue(vector<pair<int, int>>& people); //406. Queue Reconstruction by Height, hard to me, more think later, excellent solution 
+vector<pair<int, int>> reconstructQueue(vector<pair<int, int>>& people); //406. Queue Reconstruction by Height, hard to me, more think later, excellent solution
+int leastInterval(vector<char>& tasks, int n);//621. Task Scheduler, mid, cool idea, but slow
+
 //easy
 int rob(vector<int>& nums); //198, interesting question lol
 

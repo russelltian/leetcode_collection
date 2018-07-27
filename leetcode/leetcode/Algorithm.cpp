@@ -378,10 +378,15 @@ template
  for(int i =0; i < size;i++){
  
  }
+ for(int i =0; i < nums.size();i++){
+ 
+ }
 return ans;
 
  vector<int> ans(nums.size(),0);
+ cout << <<" "<<<<endl;
  
+
  hash table:
  int size = int(nums.size());
  unordered_map<int,int> ht;
@@ -389,6 +394,10 @@ return ans;
  ht.insert(make_pair(i,nums[i]));
  }
  
+ tree:
+ root->left;
+ root->rigth;
+ return root;
 */
 
 

@@ -488,6 +488,73 @@ vector<pair<int, int>> reconstructQueue(vector<pair<int, int>>& people) {
 
 
 /*
+ 621. Task Scheduler
+ Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks.Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.
+ 
+ However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.
+ 
+ You need to return the least number of intervals the CPU will take to finish all the given tasks.
+ 
+ Example 1:
+ Input: tasks = ["A","A","A","B","B","B"], n = 2
+ Output: 8
+ Explanation: A -> B -> idle -> A -> B -> idle -> A -> B.
+ */
+int leastInterval(vector<char>& tasks, int n) {
+    /*
+     idea: push all the appearance of each tasks to a pq,
+     then consider the idle, start from largest number and do
+     as much as tasks before idle
+     solution is  true but not fast enough
+     */
+    vector<int>temp(26,0);
+    for(int i = 0; i< tasks.size();i++){
+        temp[tasks[i]-'A']++;
+    }
+    // priority_queue<pair<char,int>,vector<pair<char,int>>,cmp_str_int>pq;
+    priority_queue<int,vector<int>>pq;
+    bool alldone = true;//finish all tasks
+    for(int i = 0; i < temp.size();i++){
+        if(temp[i]>0)
+            pq.push(temp[i]);
+        if(temp[i]>1)
+            alldone = false;
+    }
+    //temp.erase(temp.begin(),temp.end());
+    int cd = n;//cool down
+    int inter=0;//total interval
+    
+    while(!pq.empty()){
+        vector<int> temp2;//temperary store the cd
+        for(;cd>=0;cd--){
+            //if pq is not empty, pop up the task
+            if(!pq.empty()){
+                temp2.push_back(pq.top());
+                pq.pop();
+                inter++;
+            }else{//pq.empty()
+                if(alldone){
+                    return inter;
+                }
+                inter++;
+            }
+        }
+        cd = n;//reset cool down
+        alldone=true;//assume every task is over
+        for(int i = 0;i<temp2.size();i++){
+            if(temp2[i]>1){
+                temp2[i]--;
+                pq.push((temp2[i]));
+                //  cout << temp2[i] <<endl;
+            }
+            if(temp2[i]>1)alldone = false;//unfinished task
+        }
+    }
+    return inter;
+}
+
+
+/*
  easy
  */
 //198, house robber, cannot rob two adjacent houses

@@ -33,6 +33,42 @@ void moveZeroes(vector<int>& nums) {
 }
 
 /*
+ 581. Shortest Unsorted Continuous Subarray
+ Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order, too.
+ 
+ You need to find the shortest such subarray and output its length.
+ 
+ Example 1:
+ Input: [2, 6, 4, 8, 10, 9, 15]
+ Output: 5
+ Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.
+ */
+int findUnsortedSubarray(vector<int>& nums) {
+    int l=10001,r=-1;
+    int size = int(nums.size());
+    int maxl=nums[0],minr=nums[size-1];
+    /*
+     O(n),97.77%
+     one situation to consider:  [left][right] inversion
+     two number to track left right inversion
+     */
+    for(int i = 0; i < size; i++){
+        // if(nums[i]>nums[i+1]){
+        //     l = min(l,i);
+        //     r = max(r,i+1);
+        // }
+        maxl = max(nums[i],maxl);
+        minr = min(nums[size-1-i],minr);
+        if(maxl > nums[i]) r = i;//inversion
+        if(minr < nums[size-1-i]) l = size-1-i;
+        
+    }
+    if(l==10001&&r==-1)return 0;
+    return r-l+1;
+}
+
+//stack
+/*
  94, in order traversal using iterative method
  */
 vector<int> inorderTraversal(TreeNode* root) {
@@ -306,6 +342,5 @@ int subarraySum(vector<int>& nums, int k) {
         }
         
     }
-    
     return count;
     }
