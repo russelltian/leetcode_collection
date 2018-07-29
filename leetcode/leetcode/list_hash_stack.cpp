@@ -246,8 +246,57 @@ vector<int> topKFrequent(vector<int>& nums, int k) {
 
 
 /*
+ hash table &&
  hash idea with array implementation
  */
+
+/*
+ 3. Longest Substring Without Repeating Characters
+ Given a string, find the length of the longest substring without repeating characters.
+ 
+ Examples:
+ 
+ Given "abcabcbb", the answer is "abc", which the length is 3.
+ 
+ Given "bbbbb", the answer is "b", with the length of 1.
+ 
+ Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+ */
+int lengthOfLongestSubstring(string s) {
+    /*
+     100% myself idea: use lower bound and upper bound to track the longest substring,
+     use hash table to ensure the substring has no dup characters
+     36%-60% run time
+     */
+    unordered_map<char,int> ht;
+    int start = 0,end = 0;
+    int ans = 0;
+    for(int i =0; i < s.size();i++){
+        if(ht.find(s[i])==ht.end()){
+            ht.insert({s[i],i});//no repeat characterhttps://leetcode.com/points/
+        }else{
+            //find duplicate, update hash table, and update lower bound
+            if(end - start > ans)ans = end-start;//update longest substr
+            if(s[i]==s[i-1]){
+                //to solve adjacent dup corner case
+                ht[s[i]] = i;
+                //start = ht[s[ht[s[i]]+1]];
+                start= i;
+            }
+            else{
+                //only update lower bound if the dup is within our bound
+                if(ht[s[i]]>=start)
+                    start = max(ht[s[ht[s[i]]+1]],start);
+                ht[s[i]] = i;
+            }
+            
+        }
+        end++;
+        
+    }
+    if(end-start>ans)ans = end-start;//update longest substr
+    return ans;
+}
 /*
  438. Find All Anagrams in a String
  Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.

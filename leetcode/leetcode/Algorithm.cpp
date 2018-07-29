@@ -394,6 +394,9 @@ return ans;
  ht.insert(make_pair(i,nums[i]));
  }
  
+ for(auto i : ht){
+ 
+ }
  tree:
  root->left;
  root->rigth;

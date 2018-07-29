@@ -392,7 +392,66 @@ int robII(vector<int>& nums) {
     return max(nums[size-1],second[size-2]);
 }
 
-
+/*
+ 5. Longest Palindromic Substring
+ Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+ 
+ Example 1:
+ 
+ Input: "babad"
+ Output: "bab"
+ Note: "aba" is also a valid answer.
+ Example 2:
+ 
+ Input: "cbbd"
+ Output: "bb"
+ 
+ */
+string longestPalindrome(string s) {
+    /*
+     This is a very classic question,
+     We could use brute force method, but this time we tried DP (although both are O(n^2))
+     2D array vec[i][j] if from i to j is a palindrome
+     1.if s[i]=s[j] when i = j-1
+     2. i = j
+     3 if s[i]=s[j] and f[i+1][j-1] is true
+     */
+    int size = int(s.size());
+    vector<vector<bool>> range(size,vector<bool>(size,false)); //from i to j is there a palindrome
+    int start=0;int end=0;//return substr
+    int len= 1;//max len
+    for(int i = size-1; i >=0;i--){
+        for(int j = i; j < size;j++){
+            if(s[i]!=s[j])continue;
+            if(i==j) {
+                range[i][j] = true;
+                continue;
+            }
+            else if(i==j-1){
+                if(s[i]==s[j]){
+                    range[i][j] = true;
+                    if(j-i+1>len){
+                        len = j-i+1;
+                        start = i; end = j;
+                    }
+                    continue;
+                }
+            }else if(s[i]==s[j]&&i!=(size-1)&&j!=0){//prevent overflow
+                if(range[i+1][j-1]){
+                    range[i][j] = true;
+                    if(j-i+1>len){
+                        len = j-i+1;
+                        start = i; end = j;
+                    }
+                }
+                
+            }
+            
+        }
+    }
+    
+    return s.substr(start,len);
+}
 /*
  Greedy Algorithm
  */
