@@ -24,6 +24,7 @@ using namespace std;
  */
 void moveZeroes(vector<int>& nums);//283. Move Zeroes, easy, 97%
 int findUnsortedSubarray(vector<int>& nums);//581. Shortest Unsorted Continuous Subarray, easy,cool solution
+int maxArea(vector<int>& height);//11. Container With Most Water
 //stack
 vector<int> inorderTraversal(TreeNode* root); //94, binary tree inorder traversal, mid, hard to me
 
