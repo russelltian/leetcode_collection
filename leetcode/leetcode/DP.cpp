@@ -215,6 +215,38 @@ int maxProfit_cd(vector<int>& prices) {
 }
 
 /*
+ 647. Palindromic Substrings
+ Given a string, your task is to count how many palindromic substrings in this string.
+ 
+ The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.
+ 
+ Input: "abc"
+ Output: 3
+ Explanation: Three palindromic strings: "a", "b", "c".
+ Input: "aaa"
+ Output: 6
+ Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+ */
+int countSubstrings(string s) {
+    /*
+     same with #5 we just count the number 51% 8ms
+     */
+    int count = 0;
+    int size = int(s.size());
+    vector<vector<bool>> range(size+1,vector<bool>(size+1,false)); //from i to j is there a palindrome
+    for(int i = size-1; i >=0;i--){
+        for(int j = i; j < size;j++){
+            if(s[i]!=s[j])continue;
+            if(s[i]==s[j]&&(j-i<2||range[i+1][j-1])){
+                range[i][j] = true;
+                count++;
+                continue;
+            }
+        }
+    }
+    return count;
+}
+/*
  hard to me
  */
 
@@ -417,35 +449,21 @@ string longestPalindrome(string s) {
      3 if s[i]=s[j] and f[i+1][j-1] is true
      */
     int size = int(s.size());
-    vector<vector<bool>> range(size,vector<bool>(size,false)); //from i to j is there a palindrome
+    vector<vector<bool>> range(size+1,vector<bool>(size+1,false)); //from i to j is there a palindrome, size+1 to prevent overflow
     int start=0;int end=0;//return substr
     int len= 1;//max len
     for(int i = size-1; i >=0;i--){
         for(int j = i; j < size;j++){
             if(s[i]!=s[j])continue;
-            if(i==j) {
+            if(s[i]==s[j]&&(j-i<2||range[i+1][j-1])){
                 range[i][j] = true;
+                if(j-i+1>len){
+                    len = j-i+1;
+                    start = i; end = j;
+                }
                 continue;
             }
-            else if(i==j-1){
-                if(s[i]==s[j]){
-                    range[i][j] = true;
-                    if(j-i+1>len){
-                        len = j-i+1;
-                        start = i; end = j;
-                    }
-                    continue;
-                }
-            }else if(s[i]==s[j]&&i!=(size-1)&&j!=0){//prevent overflow
-                if(range[i+1][j-1]){
-                    range[i][j] = true;
-                    if(j-i+1>len){
-                        len = j-i+1;
-                        start = i; end = j;
-                    }
-                }
-                
-            }
+            
             
         }
     }

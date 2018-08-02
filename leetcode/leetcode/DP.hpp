@@ -25,7 +25,7 @@ int maxProduct(vector<int>& nums);//152, max product subarray, mid
 int maximalSquare(vector<vector<char>>& matrix); //221. Maximal Square, mid
 int lengthOfLIS(vector<int>& nums); //300. Longest Increasing Subsequence,mid, O(n^2)need to be O(nlogn)
 int maxProfit_cd(vector<int>& prices);//309. Best Time to Buy and Sell Stock with Cooldown, mid hard to me, need more thinking
-
+int countSubstrings(string s);//647. Palindromic Substrings
 /*
  hard to me
  */
