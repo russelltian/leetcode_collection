@@ -24,7 +24,10 @@ using namespace std;
  */
 void moveZeroes(vector<int>& nums);//283. Move Zeroes, easy, 97%
 int findUnsortedSubarray(vector<int>& nums);//581. Shortest Unsorted Continuous Subarray, easy,cool solution
-int maxArea(vector<int>& height);//11. Container With Most Water
+int maxArea(vector<int>& height);//11. Container With Most Water, mid, interview question
+
+vector<vector<int>> threeSum(vector<int>& nums);
+void threeSum_helper(vector<int>& nums, int r, int tar,int one,vector<vector<int>>&ans);//15. 3Sum, mid, ok solution, classic
 //stack
 vector<int> inorderTraversal(TreeNode* root); //94, binary tree inorder traversal, mid, hard to me
 
@@ -47,11 +50,10 @@ vector<int> topKFrequent(vector<int>& nums, int k);//347. Top K Frequent Element
 
 
 /*
- 
  hash table &&
  hash idea with array implementation
  */
-int lengthOfLongestSubstring(string s) ;//3. Longest Substring Without Repeating Characters, mid, ok idea
+int lengthOfLongestSubstring(string s) ;//3. Longest Substring Without Repeating Characters, mid, ok idea, interview question
 vector<int> findAnagrams(string s, string p);//438. Find All Anagrams in a String, long time spent , easy, 99.17%
 
 /*

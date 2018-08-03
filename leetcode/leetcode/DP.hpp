@@ -37,7 +37,7 @@ int findTargetSumWays_helper(vector<int>& nums, int S);//494. Target Sum,mid ,ha
  */
 int coinChange(vector<int>& coins, int amount);//322. Coin Change, mid, fast, classic question
 int robII(vector<int>& nums);//213. House Robber II, upgrade to 198, mid, must know, fast, need more thinking 
-string longestPalindrome(string s);//5. Longest Palindromic Substring,mid,classic,need to be faster
+string longestPalindrome(string s);//5. Longest Palindromic Substring,mid,classic,need to be faster,interview question 
 /*
  Greedy Algorithm
  */

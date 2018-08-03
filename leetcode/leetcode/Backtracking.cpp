@@ -59,3 +59,34 @@ void word_search_helperfunction(vector<vector<char>>& board,string word,int star
     }
     board[row][col]=temp;
 }
+
+/*
+ 17. Letter Combinations of a Phone Number
+ Input: "23"
+ Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+ reference keyboard from last generation of cell phones
+ */
+vector<string> letterCombinations(string digits) {
+    vector<string> allcombination ;
+    if (digits.size() == 0) return allcombination;
+    
+    string singlecomb(digits.size(),'\0');//initial a combination string
+    const string table[] = {" ","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    nextLetComb(table,digits,0,singlecomb,allcombination);
+    
+    //0,1,2,3,4,5,6,7,8,9
+    return allcombination;
+}
+
+void nextLetComb(const string table[],string digits,int digits_index,string &singlecomb, vector<string>& allcombination){
+    // table[] is {0,1,2,3..}
+    if( digits.size() == digits_index){ // break
+        allcombination.push_back(singlecomb);
+        return;
+    }
+    string letters = table[digits[digits_index] - '0'];
+    for(int i = 0; i < letters.size(); i++){
+        singlecomb[digits_index] = letters[i];
+        nextLetComb(table,digits,digits_index+1,singlecomb,allcombination);
+    }
+}

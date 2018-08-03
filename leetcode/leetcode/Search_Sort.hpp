@@ -33,4 +33,10 @@ bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visit
  divide and conquer
  */
 bool searchMatrix(vector<vector<int>>& matrix, int target);//240. Search a 2D Matrix II, mid search 
+
+/*
+ Must
+ */
+double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);//4. Median of Two Sorted Arrays,hard,divide and conquer,BST high difficult,more thinking later 
+
 #endif /* Search_Sort_hpp */

@@ -80,7 +80,7 @@ int findUnsortedSubarray(vector<int>& nums) {
  */
 int maxArea(vector<int>& height) {
     //self solution, 97.54%
-    int left = 0;int right = height.size()-1;
+    int left = 0;int right = int(height.size())-1;
     int ans = 0;
     while(left < right){
         int temp = (right - left)*min(height[left],height[right]);//volume
@@ -92,6 +92,65 @@ int maxArea(vector<int>& height) {
     }
     return ans;
 }
+
+
+/*
+ 15. 3Sum
+ Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
+ 
+ Note:
+ 
+ The solution set must not contain duplicate triplets.
+ 
+ Example:
+ 
+ Given array nums = [-1, 0, 1, 2, -1, -4],
+ 
+ A solution set is:
+ [
+ [-1, 0, 1],
+ [-1, -1, 2]
+ ]
+ */
+vector<vector<int>> threeSum(vector<int>& nums) {
+    /*
+     self idea: 50%0-98.91%, start locating one number, then convert it to a two ptr 2-sum problem
+     key: if nums[r]+nums[r-1] < target, no need to searching
+     */
+    sort(nums.begin(),nums.end());
+    int size = int(nums.size());
+    vector<vector<int>> ans;
+    for(int i = size-1;i>1;i--){
+        if((i<size-1&&nums[i]!=nums[i+1])||i==size-1)
+            
+            threeSum_helper(nums,i-1,-nums[i],i,ans);
+    }
+    return ans;
+}
+void threeSum_helper(vector<int>& nums, int r, int tar,int one,vector<vector<int>>&ans){
+    // cout<<nums[one]<<" "<<r<<endl;
+    int l = 0;
+    while(l<r){
+        if(nums[r]+nums[r-1]<tar)break;//no possbile
+        // cout<<nums[l]+nums[r]<<endl;
+        if(nums[l]+nums[r]>tar){
+            r--;
+            //while(nums[r]==nums[r+1])r--;
+        }
+        else if(nums[l]+nums[r]<tar){
+            l++;
+            //while(nums[l]==nums[r-1])l++;
+        }
+        else {
+            ans.push_back({nums[one],nums[l],nums[r]});
+            l++;r--;
+            while(nums[l]==nums[l-1])l++;
+            while(nums[r]==nums[r+1])r--;
+        }
+    }
+    
+}
+
 //stack
 /*
  94, in order traversal using iterative method
