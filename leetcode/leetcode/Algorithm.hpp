@@ -15,9 +15,7 @@
 using namespace std;
 //search
 int rotate_array(vector<int>&nums,int target);//33,mid-bst
-int search_for_a_range(vector<int>&nums,int target);//34,mid-bst
-int findleftbound(vector<int>&nums,int target);
-int findrightbound(vector<int>&nums,int target);
+
 int search_insert_pos(vector<int>&nums,int target);//35,easy-bst
 //backtracking
 vector<vector<int>> combinationSum(vector<int>& candidates, int target);//39,combination sum, mid-backtracking

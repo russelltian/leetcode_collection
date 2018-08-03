@@ -44,45 +44,7 @@ int rotate_array(vector<int>& nums, int target) {
     return -1;
 }
 
-/*
- #34, search for a range, find left most index and right most index
- */
-vector<int> searchRange(vector<int>& nums, int target) {
-    vector<int> answer;
-    answer.push_back(findleftbound(nums,target));
-    answer.push_back(findrightbound(nums,target));
-    return answer;
-}
-int findleftbound(vector<int>&nums,int target){
-    if(nums.size() ==0)return -1;
-    int l = 0;
-    int r = int(nums.size()-1);
-    
-    while(l <= r){
-        int m = (l+r)/2;
-        if(nums[m] > target)r = m-1;
-        else if(nums[m]< target)l= m+1;
-        else r = m-1;
-    }
-    if(l < nums.size() && nums[l] == target)return l;
-    return -1;
-    
-    
-}
-int findrightbound(vector<int>&nums,int target){
-    if(nums.size() ==0)return -1;
-    int l = 0;
-    int r = int(nums.size()-1);
-    
-    while(l <= r){
-        int m = (l+r)/2;
-        if(nums[m] > target)r = m-1;
-        else if(nums[m]< target)l= m+1;
-        else l = m+1;
-    }
-    if(nums[r] == target && r >= 0)return r;
-    return -1;
-}
+
 
 /*35,bst search insert postion, if find, return index,
  if not, the left index is going to be the insert position
