@@ -20,6 +20,12 @@ using namespace std;
  */
 //special questions
 int findDuplicate(vector<int>& nums);//287. Find the Duplicate Number, mid,interesting,hard to me
+int search(vector<int>& nums, int target);//33. Search in Rotated Sorted Array, mid, more thinking later 
+
+vector<int> searchRange(vector<int>& nums, int target);
+int findleftbound(vector<int>&nums,int target);
+int findrightbound(vector<int>&nums,int target);//34. Find First and Last Position of Element in Sorted Array,mid,bst,interview
+
 /*
  DFS
  */

@@ -66,6 +66,109 @@ int findDuplicate(vector<int>& nums){
 }
 
 /*
+ 33. Search in Rotated Sorted Array
+ Suppose an array sorted in ascending order is rotated at some pivot unknown to you beforehand.
+ 
+ (i.e., [0,1,2,4,5,6,7] might become [4,5,6,7,0,1,2]).
+ 
+ You are given a target value to search. If found in the array return its index, otherwise return -1.
+ 
+ You may assume no duplicate exists in the array.
+ 
+ Your algorithm's runtime complexity must be in the order of O(log n).
+ 
+ Example 1:
+ 
+ Input: nums = [4,5,6,7,0,1,2], target = 0
+ Output: 4
+ Example 2:
+ 
+ Input: nums = [4,5,6,7,0,1,2], target = 3
+ Output: -1
+ */
+int search(vector<int>& nums, int target) {
+    int r = int(nums.size())-1;
+    int l = 0;
+    while(l <= r){
+        int m = (r+l)/2;
+        if(nums[m] == target)return m;
+        if(nums[l]<nums[m]){
+            if (nums[l]==target)return l;
+            if(nums[l] <= target && target < nums[m]){
+                
+                r = m-1;
+            }else{
+                l = m+1;
+            }
+        }else{
+            if(nums[r] == target)return r;
+            if(nums[m]< target && target <= nums[r]){
+                
+                l = m+1;
+            }else {
+                r = m-1;
+            }
+        }
+    }
+    return -1;
+}
+
+/*
+ 34. Find First and Last Position of Element in Sorted Array
+ Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+ 
+ Your algorithm's runtime complexity must be in the order of O(log n).
+ 
+ If the target is not found in the array, return [-1, -1].
+ 
+ Example 1:
+ 
+ Input: nums = [5,7,7,8,8,10], target = 8
+ Output: [3,4]
+ Example 2:
+ 
+ Input: nums = [5,7,7,8,8,10], target = 6
+ Output: [-1,-1]
+ */
+//vector<int> searchRange(vector<int>& nums, int target) {
+//    vector<int> answer;
+//    answer.push_back(findleftbound(nums,target));
+//    answer.push_back(findrightbound(nums,target));
+//    return answer;
+//}
+//int findleftbound(vector<int>&nums,int target){
+//    if(nums.size() ==0)return -1;
+//    int l = 0;
+//    int r = int(nums.size())-1;
+//
+//    while(l <= r){
+//        int m = (l+r)/2;
+//        if(nums[m] > target)r = m-1;
+//        else if(nums[m]< target)l= m+1;
+//        else r = m-1;
+//    }
+//    if(l < nums.size() && nums[l] == target)return l;
+//    return -1;
+//}
+//
+//int findrightbound(vector<int>&nums,int target){
+//    if(nums.size() ==0)return -1;
+//    int l = 0;
+//    int r = int(nums.size())-1;
+//
+//    while(l <= r){
+//        int m = (l+r)/2;
+//        if(nums[m] > target)r = m-1;
+//        else if(nums[m]< target)l= m+1;
+//        else l = m+1;
+//    }
+//    if(nums[r] == target && r >= 0)return r;
+//    return -1;
+//}
+
+
+
+/*
  DFS
  */
 /*
