@@ -30,7 +30,7 @@ vector<vector<int>> threeSum(vector<int>& nums);
 void threeSum_helper(vector<int>& nums, int r, int tar,int one,vector<vector<int>>&ans);//15. 3Sum, mid, ok solution, classic
 //stack
 vector<int> inorderTraversal(TreeNode* root); //94, binary tree inorder traversal, mid, hard to me
-
+bool isValid(string s);//20. Valid Parentheses, easy, interview
 /*
  linked list
  */
@@ -41,6 +41,7 @@ ListNode* reverseList_helper(ListNode* head,ListNode** glob);//206, reverse link
 bool isPalindrome(ListNode* head);
 ListNode* isPalindrome_list_helper(ListNode* head,ListNode* tail,bool& mybool);//234. Palindrome Linked List, easy, recursion, fast
 
+ListNode* removeNthFromEnd(ListNode* head, int n);//19. Remove Nth Node From End of List, mid,interview
 /*
  prioirty queue
  */

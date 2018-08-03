@@ -176,6 +176,54 @@ vector<int> inorderTraversal(TreeNode* root) {
     }
     return answer;
 }
+/*
+  20. Valid Parentheses
+ Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+ 
+ An input string is valid if:
+ 
+ Open brackets must be closed by the same type of brackets.
+ Open brackets must be closed in the correct order.
+ Note that an empty string is also considered valid.
+ Example 1:
+ 
+ Input: "()"
+ Output: true
+ Example 2:
+ 
+ Input: "()[]{}"
+ Output: true
+ Example 3:
+ 
+ Input: "(]"
+ Output: false
+ Example 4:
+ 
+ Input: "([)]"
+ Output: false
+ Example 5:
+ 
+ Input: "{[]}"
+ Output: true
+ */
+bool isValid(string s) {
+    stack<char> sta;
+    for(auto i:s){
+        if(i=='('||i=='{'||i=='['){
+            char j = i;
+            sta.push(j);
+        }else{
+            if(sta.empty())return false;
+            char j = sta.top();
+            if((i == ')'&&j!='(')||(i == ']'&&j!='[')||(i == '}'&&j!='{')) {
+                return false;
+            }
+            sta.pop();
+        }
+    }
+    if(sta.empty())return true;
+    return false;
+}
 
 /*
  Linked list
@@ -270,6 +318,42 @@ ListNode* isPalindrome_list_helper(ListNode* head,ListNode* tail,bool& mybool){
     if(head->val != cur->val) mybool = false;
     return head->next;
 }
+
+/*
+ 19. Remove Nth Node From End of List
+ Given a linked list, remove the n-th node from the end of list and return its head.
+ 
+ Example:
+ 
+ Given linked list: 1->2->3->4->5, and n = 2.
+ 
+ After removing the second node from the end, the linked list becomes 1->2->3->5.
+ */
+ListNode* removeNthFromEnd(ListNode* head, int n) {
+    if (head->next == NULL) {
+        delete head;
+        return NULL;
+    }
+    ListNode* ptr1 = head;
+    ListNode* ptr2 = head;
+    //Idea: ptr2 moves n+1 steps ahead of ptr1
+    for(int i = 0; i < n;i++){
+        ptr2 = ptr2->next;
+        if(ptr2 == NULL){//delete head
+            head = ptr1->next;
+            delete ptr1;
+            return head;
+        }
+    }
+    while(ptr2->next != NULL){
+        ptr1 = ptr1->next;
+        ptr2 = ptr2->next;
+    }
+    
+    ptr1 -> next = ptr1->next->next;
+    return head;
+}
+
 
 /*
  PQ

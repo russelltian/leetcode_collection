@@ -20,4 +20,9 @@ void word_search_helperfunction(vector<vector<char>>& board,string word,int star
 vector<string> letterCombinations(string digits);
 void nextLetComb(const string table[],string digits,int digits_index,string &singlecomb, vector<string>& allcombination);//17. Letter Combinations of a Phone Number, mid , interview,staright forward
 
+/*
+ Must Know
+ */
+vector<string> generateParenthesis(int n);
+void generateParenthesis_helper(int n,int i,int l,int r,string&single,vector<string>&sol);//22. Generate Parentheses, mid, interview
 #endif /* Backtracking_hpp */

@@ -90,3 +90,51 @@ void nextLetComb(const string table[],string digits,int digits_index,string &sin
         nextLetComb(table,digits,digits_index+1,singlecomb,allcombination);
     }
 }
+
+
+/*
+Must Know
+ */
+
+/*
+22. Generate Parentheses
+ Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
+ 
+ For example, given n = 3, a solution set is:
+ 
+ [
+ "((()))",
+ "(()())",
+ "(())()",
+ "()(())",
+ "()()()"
+ ]
+ */
+vector<string> generateParenthesis(int n) {
+    //self solution: 100%
+    //list all combinations
+    vector<string> sol;
+    string single(n*2,'\0');
+    generateParenthesis_helper(2*n,0,0,0,single,sol);
+    return sol;
+}
+void generateParenthesis_helper(int n,int i,int l,int r,string&single,vector<string>&sol){
+    //n total elements, i: current generated elements, l: # of ( r: # of ), single: single string
+    
+    if(i == n){
+        sol.push_back(single);
+        return;
+    }
+    if(r>=l){
+        //cannot generate ')'
+        single[i]='(';
+        generateParenthesis_helper(n,i+1,l+1,r,single,sol);
+    }else{
+        if(l<n/2){
+            single[i]='(';
+            generateParenthesis_helper(n,i+1,l+1,r,single,sol);
+        }
+        single[i]=')';
+        generateParenthesis_helper(n,i+1,l,r+1,single,sol);
+    }
+}
