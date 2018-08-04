@@ -523,7 +523,49 @@ vector<int> findAnagrams(string s, string p) {
     return  ans;
     }
 
-
+/*
+ 36. Valid Sudoku
+ Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+ 
+ Each row must contain the digits 1-9 without repetition.
+ Each column must contain the digits 1-9 without repetition.
+ Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+ */
+bool isValidSudoku(vector<vector<char>>& board) {
+    /*
+     97.8% more memory, but the idea is straight forward
+     */
+    vector<vector<int>>rol(9,vector<int>(9,-1));//i row j num
+    vector<vector<int>>col(9,vector<int>(9,-1));//i col j num
+    vector<vector<int>>blk(9,vector<int>(9,-1));//which block on board
+    for(int i = 0; i < 9; i++){
+        for(int j = 0; j < 9; j++){
+            int location = board[i][j]-'1';//loaction in array
+            if(location<0)continue;
+            // cout << location<<endl;
+            int zuo = j/3;int shang = i/3;//左右，上下
+            int block = shang*3+zuo;
+            if(rol[i][location]!=-1){
+                return false;
+            }
+            else {
+                rol[i][location] = i;
+            }
+            if(col[j][location]!=-1){
+                return false;
+            }
+            else col[j][location] = j;
+            if(blk[block][location]!=-1){
+                
+                return false;
+            }
+            else{
+                blk[block][location] = block;
+            }
+        }
+    }
+    return true;
+}
 /*
  must know
  */
