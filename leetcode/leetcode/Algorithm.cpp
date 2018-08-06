@@ -91,33 +91,6 @@ void findcomb(vector<int>&candidates,int target,vector<int>&single, vector<vecto
         }
     }
 }
-/*
- permutations,similar to the question above, but need a boolean vector to record the used elements 
- */
-vector<vector<int>> permute(vector<int>& nums) {
-    vector<vector<int>> answer;
-    if(nums.empty()) return answer;
-    vector<int> single;
-    vector<bool> used(nums.size(), false);
-    find_permutations(nums,used,answer,single);
-    return answer;
-}
-void find_permutations(vector<int>& nums,vector<bool>& used,vector<vector<int>>& answer,vector<int>&     single){
-    if(single.size() == nums.size()){
-        answer.push_back(single);
-        return;
-    }
-    for(int i=0;i<nums.size();i++){
-        
-        if(!used[i]){
-            used[i]=true;
-            single.push_back(nums[i]);
-            find_permutations(nums,used,answer,single);
-            single.pop_back();
-            used[i]=false;
-        }
-    }
-}
 
 /*
  #48

@@ -30,7 +30,10 @@ vector<int> productExceptSelf(vector<int>& nums);//238. Product of Array Except 
 
 vector<int> findDisappearedNumbers(vector<int>& nums);//448. Find All Numbers Disappeared in an Array, easy, own idea, array, O(n) runtime, no extra space
 
-
+/*
+ hard
+ */
+int firstMissingPositive(vector<int>& nums);//41. First Missing Positive, array, swap element, interview
 
 // Design
 class TrieNode{

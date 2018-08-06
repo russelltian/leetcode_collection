@@ -25,4 +25,7 @@ void nextLetComb(const string table[],string digits,int digits_index,string &sin
  */
 vector<string> generateParenthesis(int n);
 void generateParenthesis_helper(int n,int i,int l,int r,string&single,vector<string>&sol);//22. Generate Parentheses, mid, interview
+
+vector<vector<int>> permute(vector<int>& nums);
+void find_permutations(vector<int>& nums,vector<bool>& used,vector<vector<int>>& answer,vector<int>&single);//46. Permutations, mid, interview, classic question
 #endif /* Backtracking_hpp */

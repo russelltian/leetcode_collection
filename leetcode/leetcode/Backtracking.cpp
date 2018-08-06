@@ -138,3 +138,45 @@ void generateParenthesis_helper(int n,int i,int l,int r,string&single,vector<str
         generateParenthesis_helper(n,i+1,l,r+1,single,sol);
     }
 }
+
+/*
+ 46. Permutations
+ Given a collection of distinct integers, return all possible permutations.
+ 
+ Example:
+ 
+ Input: [1,2,3]
+ Output:
+ [
+ [1,2,3],
+ [1,3,2],
+ [2,1,3],
+ [2,3,1],
+ [3,1,2],
+ [3,2,1]
+ ]
+ */
+vector<vector<int>> permute(vector<int>& nums) {
+    vector<vector<int>> answer;
+    if(nums.empty()) return answer;
+    vector<int> single;
+    vector<bool> used(nums.size(), false);
+    find_permutations(nums,used,answer,single);
+    return answer;
+}
+void find_permutations(vector<int>& nums,vector<bool>& used,vector<vector<int>>& answer,vector<int>&     single){
+    if(single.size() == nums.size()){
+        answer.push_back(single);
+        return;
+    }
+    for(int i=0;i<nums.size();i++){
+        
+        if(!used[i]){
+            used[i]=true;
+            single.push_back(nums[i]);
+            find_permutations(nums,used,answer,single);
+            single.pop_back();
+            used[i]=false;
+        }
+    }
+    }

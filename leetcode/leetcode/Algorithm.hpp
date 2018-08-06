@@ -21,8 +21,6 @@ int search_insert_pos(vector<int>&nums,int target);//35,easy-bst
 vector<vector<int>> combinationSum(vector<int>& candidates, int target);//39,combination sum, mid-backtracking
 void findcomb(vector<int>&candidates,int target,vector<int>&single, vector<vector<int>> &answer,int start);
 
-vector<vector<int>> permute(vector<int>& nums); //46, permutations,mid-backtracking
-void find_permutations(vector<int>& nums,vector<bool>& used,vector<vector<int>>& answer,vector<int>&single);
 
 vector<vector<int>> subsets(vector<int>& nums); //78, subsets, mid-backtracking
 void find_subsets(vector<vector<int>>& solution,vector<int>& nums,vector<int>& single,int start);
