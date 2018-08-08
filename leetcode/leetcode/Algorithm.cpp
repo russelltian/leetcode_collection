@@ -131,23 +131,7 @@ vector<vector<string>> groupAnagrams(vector<string>& strs) {
     return answer;
 }
 
-/*
- #55,jump game
- within previous largest distance, find if there is further distance
- */
-bool canJump(vector<int>& nums) {
-    //actually dynamic programming idea,the max limit is previous max + current max
-    int final = int(nums.size()-1);
-    int limit = 0;
-    for(int i = 0; i < nums.size();i++){
-        if (limit < i)return false;
-        if(i+nums[i] > limit){
-            limit = i + nums[i];
-            if(limit >= final)return true;
-        }
-    }
-    return limit >= final ? true: false;
-}
+
 
 /*
  56, merge interval, sort first, then check if answer.back().end

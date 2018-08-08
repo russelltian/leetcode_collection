@@ -29,8 +29,7 @@ void find_subsets(vector<vector<int>>& solution,vector<int>& nums,vector<int>& s
 int majorityElement(vector<int>& nums);//169,majority element, easy, divide conquer, need to be faster 
 //hash
 vector<vector<string>> groupAnagrams(vector<string>& strs);//49,group anagrams,mid-hashtable
-//dp,greedy
-bool canJump(vector<int>& nums); //55 jump game, mid-dp/greedy
+
 //sort
 struct Interval {
     int start;
