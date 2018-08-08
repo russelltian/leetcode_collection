@@ -42,7 +42,7 @@ struct compare{
         return a.start < b.start;
     }
 };
-vector<Interval> merge(vector<Interval>& intervals); //56,merge intervals,mid-sort,hard to me
+vector<Interval> merge(vector<Interval>& intervals); //56,merge intervals,mid-sort,hard to me,interview question
 void sortColors(vector<int>& nums);//75, sort color, mid-sort, hard to me
 
 //dp

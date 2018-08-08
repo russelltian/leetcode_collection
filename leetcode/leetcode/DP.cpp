@@ -470,6 +470,25 @@ string longestPalindrome(string s) {
     
     return s.substr(start,len);
 }
+
+/*
+ 62. Unique Paths
+ https://leetcode.com/problems/unique-paths/description/
+ */
+int uniquePaths(int m, int n) {
+    vector<vector<int>>board(m,vector<int>(n,0));
+    //classic question, 0ms
+    for(int i =0; i < m;i++){
+        for(int j = 0; j < n;j++){
+            if(i == 0||j==0)board[i][j]= 1;
+            else{
+                board[i][j]=board[i-1][j]+board[i][j-1];
+            }
+        }
+    }
+    return board[m-1][n-1];
+}
+
 /*
  Greedy Algorithm
  */
