@@ -602,4 +602,36 @@ int subarraySum(vector<int>& nums, int k) {
         
     }
     return count;
+}
+
+/*
+ 42. Trapping Rain Water
+ https://leetcode.com/problems/trapping-rain-water/description/
+ */
+int trap(vector<int>& height) {
+    //reference idea from http://www.cnblogs.com/grandyang/p/4402392.html
+    //use two ptr to calculate area of water, 58.39%
+    int size = int(height.size());
+    int l = 0; int r = size-1;//left most and right most
+    int ans = 0;
+    while(l<r){
+        if (height[l]<= height[r]){
+            //scan from left to right
+            int temp = l;
+            while(height[l]>= height[temp]&&temp<=r){
+                ans += height[l] - height[temp];
+                temp++;
+            }
+            l = temp; // re allocate window
+        }else if(height[l]> height[r]){
+            //scan from right to left
+            int temp = r;
+            while(height[r]>= height[temp]&&temp>=0){
+                ans += height[r] - height[temp];
+                temp--;
+            }
+            r = temp; // re allocate window
+        }
     }
+    return ans;
+}

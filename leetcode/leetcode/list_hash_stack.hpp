@@ -28,6 +28,8 @@ int maxArea(vector<int>& height);//11. Container With Most Water, mid, interview
 
 vector<vector<int>> threeSum(vector<int>& nums);
 void threeSum_helper(vector<int>& nums, int r, int tar,int one,vector<vector<int>>&ans);//15. 3Sum, mid, ok solution, classic
+
+
 //stack
 vector<int> inorderTraversal(TreeNode* root); //94, binary tree inorder traversal, mid, hard to me
 bool isValid(string s);//20. Valid Parentheses, easy, interview
@@ -62,6 +64,9 @@ bool isValidSudoku(vector<vector<char>>& board);//36. Valid Sudoku
  must know
  */
 int subarraySum(vector<int>& nums, int k);//560. Subarray Sum Equals K, mid ,hard to me, hash table, must know 
+int trap(vector<int>& height);//42. Trapping Rain Water, hard, interview, array
+
+
 //comparator
 struct pq_compare{//215, Kth largest elements in an array
     bool operator()(const int& lhs,const int& rhs){

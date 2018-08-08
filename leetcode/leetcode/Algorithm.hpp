@@ -26,7 +26,6 @@ vector<vector<int>> subsets(vector<int>& nums); //78, subsets, mid-backtracking
 void find_subsets(vector<vector<int>>& solution,vector<int>& nums,vector<int>& single,int start);
 
 //array
-void rotate(vector<vector<int>>& matrix);//48,rotate image, mid-array algo, a little bit tricky
 int majorityElement(vector<int>& nums);//169,majority element, easy, divide conquer, need to be faster 
 //hash
 vector<vector<string>> groupAnagrams(vector<string>& strs);//49,group anagrams,mid-hashtable

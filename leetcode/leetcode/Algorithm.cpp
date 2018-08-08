@@ -92,29 +92,6 @@ void findcomb(vector<int>&candidates,int target,vector<int>&single, vector<vecto
     }
 }
 
-/*
- #48
- rotate image CW 90 degree, 4 element rotation from outer layer to inner layer, use offset to
- represent offset on the same layer
- */
-void rotate(vector<vector<int>>& matrix) {
-    //from outer layer to inner layer, four elements rotate
-    int n = int(matrix.size()); //n*n matrix
-    int start = 0;
-    int end = n-1;
-    while(start < end){
-        for(int i = start; i < end;i++){
-            int offset = i - start;
-            int temp = matrix[start][i];
-            matrix[start][i] = matrix[end-offset][start];
-            matrix[end-offset][start] = matrix[end][end-offset];
-            matrix[end][end-offset]=matrix[start+offset][end];
-            matrix[start+offset][end]= temp;
-        }
-        start++;
-        end--;
-    }
-}
 
 //169. Majority Element [1,1,2] return 1
 // didn't think about run time, need to be faster, very easy
