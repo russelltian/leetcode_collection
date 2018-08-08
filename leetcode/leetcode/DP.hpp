@@ -48,7 +48,7 @@ int leastInterval(vector<char>& tasks, int n);//621. Task Scheduler, mid, cool i
 
 //easy
 int rob(vector<int>& nums); //198, interesting question lol
-
+int maxSubArray(vector<int>& nums);//53. Maximum Subarray
 
 //compare a vector of pair<int,int>
 struct cmp_second_pair{
