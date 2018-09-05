@@ -40,6 +40,14 @@ bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visit
  */
 bool searchMatrix(vector<vector<int>>& matrix, int target);//240. Search a 2D Matrix II, mid search 
 
+
+/*
+SORT
+*/
+/*
+insert sort
+*/
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n);//88. Merge Sorted Array, easy
 /*
  Must
  */

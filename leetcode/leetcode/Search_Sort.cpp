@@ -305,6 +305,45 @@ bool searchMatrix(vector<vector<int>>& matrix, int target) {
     return false;
     }
 
+/*
+SORT
+*/
+/*
+insert sort
+*/
+/*
+88. Merge Sorted Array
+Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
+Input:
+nums1 = [1,2,3,0,0,0], m = 3
+nums2 = [2,5,6],       n = 3
+
+Output: [1,2,2,3,5,6]
+*/
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+	int c1 = m - 1; int c2 = n - 1;
+	//reverse insert sort ？
+	int location = int(nums1.size()) - 1;
+	while (c1 >= 0 || c2 >= 0) {
+		if (c1 >= 0 && c2 >= 0) {
+			nums1[location] = max(nums1[c1], nums2[c2]);
+			location--;
+			if (nums1[c1] <= nums2[c2])c2--;
+			else c1--;
+		}
+		else if (c1 < 0) {
+			//only c2
+			nums1[location] = nums2[c2];
+			location--; c2--;
+		}
+		else {
+			//only c1
+			nums1[location] = nums1[c1];
+			location--; c1--;
+		}
+	}
+}
+
 
 /*
  Must
