@@ -104,7 +104,7 @@ int majorityElement(vector<int>& nums) {
     else return nums[mid];
 }
 /*
- group anagrams, use sorted string as keys
+ 49,group anagrams, use sorted string as keys
  [ate,eat,tea]
  */
 vector<vector<string>> groupAnagrams(vector<string>& strs) {
@@ -131,6 +131,33 @@ vector<vector<string>> groupAnagrams(vector<string>& strs) {
     return answer;
 }
 
+/*
+ 73. Set Matrix Zeroes
+ Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in-place.
+ https://leetcode.com/problems/set-matrix-zeroes/description/
+ */
+void setZeroes(vector<vector<int>>& matrix) {
+    /*
+     not a big fan of this question, just use O(m+n)space
+     */
+    int m = int(matrix.size());
+    int n = int(matrix[0].size());
+    vector<bool> row(m,false);vector<bool> col(n,false);
+    for(int i = 0; i < m;i++){
+        for(int j = 0; j < n;j++){
+            if(matrix[i][j]==0){
+                row[i]=true;col[j]=true;
+            }
+        }
+    }
+    for(int i = 0; i < m;i++){
+        for(int j = 0; j < n;j++){
+            if(row[i]||col[j]){
+                matrix[i][j]=0;
+            }
+        }
+    }
+}
 
 
 /*
@@ -264,8 +291,51 @@ bool hasCycle(ListNode *head) {
     }
     return false;
 }
-
-
+/*
+ math
+ */
+/*
+ 66. Plus One
+ Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
+ 
+ The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
+ 
+ You may assume the integer does not contain any leading zero, except the number 0 itself.
+ 
+ Example 1:
+ 
+ Input: [1,2,3]
+ Output: [1,2,4]
+ Explanation: The array represents the integer 123.
+ Example 2:
+ 
+ Input: [4,3,2,1]
+ Output: [4,3,2,2]
+ Explanation: The array represents the integer 4321.
+ */
+vector<int> plusOne(vector<int>& digits) {
+    //100%,only corner case is 9->0, if first bit is 0, change it to 1,and push_back(0)
+    //like 9999->10000
+    int size = int(digits.size());
+    if(digits[size-1]<9){
+        digits[size-1]++;return digits;
+    }
+    else{
+        //carry on bit = 1
+        digits[size-1]=0;
+        int i = size-2;
+        while(i>=0){
+            digits[i]=(digits[i]<9)?digits[i]+1:0;
+            if(digits[i]==0)i--;
+            else break;
+        }
+        if(digits[0]==0){
+            digits[0]=1;
+            digits.push_back(0);
+        }
+    }
+    return digits;
+}
 
 /*
 template
@@ -279,6 +349,12 @@ template
  }
 return ans;
 
+ for(int i = 0; i < m;i++){
+    for(int j = 0; j < n;j++){
+ 
+    }
+ }
+ 
  vector<int> ans(nums.size(),0);
  cout << <<" "<<<<endl;
  

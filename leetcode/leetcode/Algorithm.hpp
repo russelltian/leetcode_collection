@@ -29,6 +29,7 @@ void find_subsets(vector<vector<int>>& solution,vector<int>& nums,vector<int>& s
 int majorityElement(vector<int>& nums);//169,majority element, easy, divide conquer, need to be faster 
 //hash
 vector<vector<string>> groupAnagrams(vector<string>& strs);//49,group anagrams,mid-hashtable
+void setZeroes(vector<vector<int>>& matrix);//73. Set Matrix Zeroes, mid, not a fan of it, interview
 
 //sort
 struct Interval {
@@ -57,7 +58,8 @@ struct ListNode {
      };
 bool hasCycle(ListNode *head);//141 Linked List Cycle, easy
 
-
+//math 
+vector<int> plusOne(vector<int>& digits);//66. Plus One,easy,google interview
 
 /*int countPrimes(unsigned long n);
 unsigned long fermat_test(unsigned long a,unsigned long b);
