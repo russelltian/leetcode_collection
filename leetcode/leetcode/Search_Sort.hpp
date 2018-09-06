@@ -48,7 +48,8 @@ SORT
 insert sort
 */
 void merge(vector<int>& nums1, int m, vector<int>& nums2, int n);//88. Merge Sorted Array, easy
-/*
+//
+																 /*
  Must
  */
 double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);//4. Median of Two Sorted Arrays,hard,divide and conquer,BST high difficult,more thinking later 
