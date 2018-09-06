@@ -8,6 +8,91 @@
 
 #include "DP.hpp"
 /*
+91. Decode Ways
+A message containing letters from A-Z is being encoded to numbers using the following mapping:
+
+'A' -> 1
+'B' -> 2
+...
+'Z' -> 26
+Given a non-empty string containing only digits, determine the total number of ways to decode it.
+
+Example 1:
+
+Input: "12"
+Output: 2
+Explanation: It could be decoded as "AB" (1 2) or "L" (12).
+Example 2:
+
+Input: "226"
+Output: 3
+Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
+*/
+int numDecodings(string s) {
+	/*
+	100% run time
+
+	since max number 26 is 2 digits, only need to track i and i-1
+	cases
+	this digit         last digit
+	0                  1-2              carried by last digit ans[i] = ans[i-2]
+						else            can't be carried ans[i] = 0
+
+	7-9                1                independent num + carried ans[i] = ans[i-2]+ans[i-1]
+						else            can't be carried but independent number ans[i]=ans[i-1]
+
+	1-6                1-2              ans[i]=ans[i-1]+ans[i-2]
+						else            ans[i]=ans[i-1]
+
+	*/
+	int size = int(s.size());
+	vector<int>sol(size, 0);
+	if (s[0] == '0') return 0;
+	sol[0]++;
+	for (int i = 1; i < size; i++) {
+		int last_digit = s[i - 1] - '0';
+		int digit = s[i] - '0';
+		if (i == 1) {
+			if (digit == 0) {
+				if (last_digit == 1 || last_digit == 2) sol[i] = 1;
+				else sol[i] = 0;
+			}
+			else if (digit >= 7 && digit <= 9) {
+				if (last_digit == 1)sol[i] = 2;
+				else sol[i] = 1;
+			}
+			else {
+				//1-6
+				if (last_digit == 1 || last_digit == 2) {
+					sol[i] = 2;
+				}
+				else sol[i] = 1;
+			}
+		}
+		else {
+			if (digit == 0) {
+				if (last_digit == 1 || last_digit == 2) sol[i] += sol[i - 2];
+				else sol[i] = 0;
+				continue;
+			}
+			//now decode to two digits or single digits
+			if (digit >= 7 && digit <= 9) {
+				if (last_digit == 1)sol[i] = sol[i - 1] + sol[i - 2];
+				else sol[i] = sol[i - 1];
+			}
+			else {
+				//1-6
+				if (last_digit == 1 || last_digit == 2) {
+					sol[i] = sol[i - 1] + sol[i - 2];
+				}
+				else sol[i] = sol[i - 1];
+			}
+		}
+
+	}
+	return sol[size - 1];
+}
+/*
  #96, unique binary search tree, cool idea
  */
 int numTrees(int n) {
