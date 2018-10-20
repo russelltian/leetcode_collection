@@ -34,6 +34,16 @@ string decodeString_helper(string s,int&start);//394. Decode String, mid, fast,c
 
 bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites);
 bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visited,int start);//207. Course Schedule, mid topological sort(DFS), badly need to be way faster!!
+/*
+ BFS
+ */
+struct TreeLinkNode {
+    int val;
+    TreeLinkNode *left, *right, *next;
+    TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}
+};
+void connect(TreeLinkNode *root);
+void connect_helper(vector<TreeLinkNode*> list);//116.Populating Next Right Pointers in Each Node, mid, search
 
 /*
  divide and conquer
@@ -53,5 +63,7 @@ void merge(vector<int>& nums1, int m, vector<int>& nums2, int n);//88. Merge Sor
  Must
  */
 double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);//4. Median of Two Sorted Arrays,hard,divide and conquer,BST high difficult,more thinking later 
+
+
 
 #endif /* Search_Sort_hpp */

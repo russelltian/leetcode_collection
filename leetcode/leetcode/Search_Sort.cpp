@@ -264,6 +264,50 @@ bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visit
 
 
 /*
+ BFS
+ */
+/*
+ 116.Populating Next Right Pointers in Each Node
+Example:
+
+Given the following perfect binary tree,
+
+     1
+   /  \
+  2    3
+ / \  / \
+4  5  6  7
+After calling your function, the tree should look like:
+
+    1 -> NULL
+   /  \
+  2 -> 3 -> NULL
+ / \  / \
+4->5->6->7 -> NULL
+ */
+void connect(TreeLinkNode *root) {
+    if(!root)return;
+    vector<TreeLinkNode*>temp;
+    temp.push_back(root);
+    connect_helper(temp);
+}
+
+void connect_helper(vector<TreeLinkNode*> list){
+    if(list.size()==0)return;
+    vector<TreeLinkNode*> newlist;
+    for(auto i: list){
+        if(i->left == NULL)break;
+        newlist.push_back(i->left);
+        newlist.push_back(i->right);
+    }
+    connect_helper(newlist);
+    for(int i = 0;i< list.size();i++){
+        if(i == int(list.size())-1)list[i]->next = NULL;
+        else list[i]->next = list[i+1];
+    }
+}
+
+/*
  Divide and Conqeur
  */
 /*

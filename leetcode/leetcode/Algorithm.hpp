@@ -58,6 +58,10 @@ struct ListNode {
      };
 bool hasCycle(ListNode *head);//141 Linked List Cycle, easy
 
+
+
+
+
 //math 
 vector<int> plusOne(vector<int>& digits);//66. Plus One,easy,google interview
 
