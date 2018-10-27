@@ -110,6 +110,7 @@ int numTrees(int n) {
     }
 /*
  #121,Best Time to Buy and Sell Stock
+ only allowed to buy one
  max[n] = max(max[n-1]-price[n-1]+price[n],-price[n-1]+price[n] )
  */
 int maxProfit(vector<int>& prices) {
@@ -169,8 +170,8 @@ int maxProduct(vector<int>& nums) {
     int t_min=nums[0];
     for(int i = 1; i < nums.size(); i++){
         //because of +/- signs, needs to record both max and min product
-        //max = max(nums[i],nums[i]*nums[i-1])
-        //min = min(nums[i],nums[i]*nums[i-1])
+        //max = max(nums[i],nums[i]*t_max)
+        //min = min(nums[i],nums[i]*t_min)
         // then, cross muptiply to find the new max,min
         int temp = t_max;
         t_max = max(nums[i]*t_min,max(nums[i],t_max*nums[i]));
@@ -179,7 +180,7 @@ int maxProduct(vector<int>& nums) {
         }
         t_min = min(min(nums[i],t_min*nums[i]),temp*nums[i]);
         // cout << t_max << ' '<<t_min<<endl;
-        
+
     }
     return product;
     }
@@ -187,12 +188,12 @@ int maxProduct(vector<int>& nums) {
 /*
  221. Maximal Square
  Input:
- 
+
  1 0 1 0 0
  1 0 1 1 1
  1 1 1 1 1
  1 0 0 1 0
- 
+
  Output: 4
  */
 int maximalSquare(vector<vector<char>>& matrix) {
@@ -216,13 +217,13 @@ int maximalSquare(vector<vector<char>>& matrix) {
         dp[0][i] = (matrix[0][i] - '0');
         if(dp[0][i]==1) ans = 1;
     }
-    
+
     for(int i = 1; i < row;i++){
         for(int j = 1; j < col; j++){
             if(matrix[i][j]=='0')dp[i][j]=0;
             else{
                 dp[i][j] = min(dp[i-1][j],min(dp[i-1][j-1],dp[i][j-1]))+1;
-                
+
                 if(dp[i][j]>ans) ans=dp[i][j];
             }
             // cout<<dp[i][j]<<endl;
@@ -235,9 +236,9 @@ int maximalSquare(vector<vector<char>>& matrix) {
 /*
  300. Longest Increasing Subsequence,mid,need to be faster
  Given an unsorted array of integers, find the length of longest increasing subsequence.
- 
+
  Example:
- 
+
  Input: [10,9,2,5,3,7,101,18]
  Output: 4
  Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.
@@ -268,13 +269,13 @@ int lengthOfLIS(vector<int>& nums) {
 /*
 309. Best Time to Buy and Sell Stock with Cooldown
  Say you have an array for which the ith element is the price of a given stock on day i.
- 
+
  Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times) with the following restrictions:
- 
+
  You may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
  After you sell your stock, you cannot buy stock on next day. (ie, cooldown 1 day)
  Example:
- 
+
  Input: [1,2,3,0,2]
  Output: 3
  Explanation: transactions = [buy, sell, cooldown, buy, sell]
@@ -284,13 +285,13 @@ int maxProfit_cd(vector<int>& prices) {
      upgrade version to #121
      */
     if(prices.empty()||prices.size()==1)return 0;
-    
+
     vector<int> profit(prices.size(),0);//max profit if sell it today
     vector<int> buy(prices.size(),0);//max profit if buy it today
     buy[0]=-prices[0];buy[1]=max(buy[0],-prices[1]); //
     profit[0]=0;profit[1]=max(0,buy[0]+prices[1]);
-    
-    
+
+
     for(int i = 2; i< prices.size();i++){
         buy[i] = max(profit[i-2]-prices[i],buy[i-1]);//buy or hold
         profit[i] = max(profit[i-1],buy[i-1]+prices[i]);//hold or sell
@@ -302,9 +303,9 @@ int maxProfit_cd(vector<int>& prices) {
 /*
  647. Palindromic Substrings
  Given a string, your task is to count how many palindromic substrings in this string.
- 
+
  The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.
- 
+
  Input: "abc"
  Output: 3
  Explanation: Three palindromic strings: "a", "b", "c".
@@ -338,23 +339,23 @@ int countSubstrings(string s) {
 /*
  416. Partition Equal Subset Sum
  Given a non-empty array containing only positive integers, find if the array can be partitioned into two subsets such that the sum of elements in both subsets is equal.
- 
+
  Note:
  Each of the array element will not exceed 100.
  The array size will not exceed 200.
  Example 1:
- 
+
  Input: [1, 5, 11, 5]
- 
+
  Output: true
- 
+
  Explanation: The array can be partitioned as [1, 5, 5] and [11].
  Example 2:
- 
+
  Input: [1, 2, 3, 5]
- 
+
  Output: false
- 
+
  Explanation: The array cannot be partitioned into equal sum subsets.
  */
 bool canPartition(vector<int>& nums) {
@@ -381,20 +382,20 @@ bool canPartition(vector<int>& nums) {
 /*
 494. Target Sum
  You are given a list of non-negative integers, a1, a2, ..., an, and a target, S. Now you have 2 symbols + and -. For each integer, you should choose one from + and - as its new symbol.
- 
+
  Find out how many ways to assign symbols to make sum of integers equal to target S.
- 
+
  Example 1:
  Input: nums is [1, 1, 1, 1, 1], S is 3.
  Output: 5
  Explanation:
- 
+
  -1+1+1+1+1 = 3
  +1-1+1+1+1 = 3
  +1+1-1+1+1 = 3
  +1+1+1-1+1 = 3
  +1+1+1+1-1 = 3
- 
+
  There are 5 ways to assign symbols to make the sum of nums be target 3.
 */
 int findTargetSumWays(vector<int>& nums, int S) {
@@ -432,14 +433,14 @@ int findTargetSumWays_helper(vector<int>& nums, int S){
 /*
  322. Coin Change
  You are given coins of different denominations and a total amount of money amount. Write a function to compute the fewest number of coins that you need to make up that amount. If that amount of money cannot be made up by any combination of the coins, return -1.
- 
+
  Example 1:
- 
+
  Input: coins = [1, 2, 5], amount = 11
  Output: 3
  Explanation: 11 = 5 + 5 + 1
  Example 2:
- 
+
  Input: coins = [2], amount = 3
  Output: -1
  */
@@ -479,7 +480,7 @@ int coinChange(vector<int>& coins, int amount) {
  Output: 3
  Explanation: You cannot rob house 1 (money = 2) and then rob house 3 (money = 2),
  because they are adjacent houses.
- 
+
  Example 2:
  Input: [1,2,3,1]
  Output: 4
@@ -512,17 +513,17 @@ int robII(vector<int>& nums) {
 /*
  5. Longest Palindromic Substring
  Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
- 
+
  Example 1:
- 
+
  Input: "babad"
  Output: "bab"
  Note: "aba" is also a valid answer.
  Example 2:
- 
+
  Input: "cbbd"
  Output: "bb"
- 
+
  */
 string longestPalindrome(string s) {
     /*
@@ -548,11 +549,11 @@ string longestPalindrome(string s) {
                 }
                 continue;
             }
-            
-            
+
+
         }
     }
-    
+
     return s.substr(start,len);
 }
 
@@ -581,12 +582,12 @@ int uniquePaths(int m, int n) {
  279. Perfect Squares
  Given a positive integer n, find the least number of perfect square numbers (for example, 1, 4, 9, 16, ...) which sum to n.
  Example 1:
- 
+
  Input: n = 12
  Output: 3
  Explanation: 12 = 4 + 4 + 4.
  Example 2:
- 
+
  Input: n = 13
  Output: 2
  Explanation: 13 = 4 + 9.
@@ -597,7 +598,7 @@ int uniquePaths(int m, int n) {
  first build perfect square array that might be needed by the number
  then I find the least number by using greedy algo
  and keep trying the rest combination, if there is no better solution,break it
- 
+
  key: keep track of index i to avoid repeated iteration in the array
  */
 int numSquares(int n) {
@@ -637,16 +638,16 @@ void numSquares_helper(int n, vector<int>&num,int&count,int temp,int start,bool&
 /*
  406. Queue Reconstruction by Height
  Suppose you have a random list of people standing in a queue. Each person is described by a pair of integers (h, k), where h is the height of the person and k is the number of people in front of this person who have a height greater than or equal to h. Write an algorithm to reconstruct the queue.
- 
+
  Note:
  The number of people is less than 1,100.
- 
- 
+
+
  Example
- 
+
  Input:
  [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]
- 
+
  Output:
  [[5,0], [7,0], [5,2], [6,1], [4,4], [7,1]]
  */
@@ -656,7 +657,7 @@ vector<pair<int, int>> reconstructQueue(vector<pair<int, int>>& people) {
      tallest at the front
      */
     vector<pair<int, int>> ans;
-    
+
     sort(people.begin(),people.end(),cmp_second_pair());
     // for(int i = 0; i < people.size(); i++){
     //     cout << people[i].first<<" "<<people[i].second << endl;
@@ -671,11 +672,11 @@ vector<pair<int, int>> reconstructQueue(vector<pair<int, int>>& people) {
 /*
  621. Task Scheduler
  Given a char array representing tasks CPU need to do. It contains capital letters A to Z where different letters represent different tasks.Tasks could be done without original order. Each task could be done in one interval. For each interval, CPU could finish one task or just be idle.
- 
+
  However, there is a non-negative cooling interval n that means between two same tasks, there must be at least n intervals that CPU are doing different tasks or just be idle.
- 
+
  You need to return the least number of intervals the CPU will take to finish all the given tasks.
- 
+
  Example 1:
  Input: tasks = ["A","A","A","B","B","B"], n = 2
  Output: 8
@@ -704,7 +705,7 @@ int leastInterval(vector<char>& tasks, int n) {
     //temp.erase(temp.begin(),temp.end());
     int cd = n;//cool down
     int inter=0;//total interval
-    
+
     while(!pq.empty()){
         vector<int> temp2;//temperary store the cd
         for(;cd>=0;cd--){
