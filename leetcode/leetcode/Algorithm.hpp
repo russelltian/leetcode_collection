@@ -14,22 +14,25 @@
 #include <unordered_map>
 using namespace std;
 //search
-int rotate_array(vector<int>&nums,int target);//33,mid-bst
+int rotate_array(vector<int>&nums,int target);//33,mid-bst, 2
 
-int search_insert_pos(vector<int>&nums,int target);//35,easy-bst
+int search_insert_pos(vector<int>&nums,int target);//35,easy-bst,2
 //backtracking
 vector<vector<int>> combinationSum(vector<int>& candidates, int target);//39,combination sum, mid-backtracking
 void findcomb(vector<int>&candidates,int target,vector<int>&single, vector<vector<int>> &answer,int start);
-
+//2
 
 vector<vector<int>> subsets(vector<int>& nums); //78, subsets, mid-backtracking
 void find_subsets(vector<vector<int>>& solution,vector<int>& nums,vector<int>& single,int start);
+//2
 
 //array
-int majorityElement(vector<int>& nums);//169,majority element, easy, divide conquer, need to be faster 
+int majorityElement(vector<int>& nums);//169,majority element, easy, divide conquer, need to be faster
+//2
+
 //hash
-vector<vector<string>> groupAnagrams(vector<string>& strs);//49,group anagrams,mid-hashtable
-void setZeroes(vector<vector<int>>& matrix);//73. Set Matrix Zeroes, mid, not a fan of it, interview
+vector<vector<string>> groupAnagrams(vector<string>& strs);//49,group anagrams,mid-hashtable,2
+void setZeroes(vector<vector<int>>& matrix);//73. Set Matrix Zeroes, mid, not a fan of it, interview,2
 
 //sort
 struct Interval {
@@ -44,11 +47,13 @@ struct compare{
     }
 };
 vector<Interval> merge(vector<Interval>& intervals); //56,merge intervals,mid-sort,hard to me,interview question
-void sortColors(vector<int>& nums);//75, sort color, mid-sort, hard to me
+//important one, need to know cmp, 2
+
+void sortColors(vector<int>& nums);//75, sort color, mid-sort, hard to me, 2
 
 //dp
-int minPathSum(vector<vector<int>>& grid);//64,mimimum path sum, mid-dp
-int climbStairs(int n); //70, climbing stairs, easy-dp
+int minPathSum(vector<vector<int>>& grid);//64,mimimum path sum, mid-dp,2
+int climbStairs(int n); //70, climbing stairs, easy-dp,2
 
 //Linked list
 struct ListNode {
@@ -58,7 +63,11 @@ struct ListNode {
      };
 bool hasCycle(ListNode *head);//141 Linked List Cycle, easy
 
-//math 
+
+
+
+
+//math
 vector<int> plusOne(vector<int>& digits);//66. Plus One,easy,google interview
 
 /*int countPrimes(unsigned long n);

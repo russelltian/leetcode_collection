@@ -17,12 +17,12 @@
 #include <numeric>
 #include <queue>
 using namespace std;
-int numDecodings(string s);//91. Decode Ways, mid, interview
-int numTrees(int n); //96, unique binary search, dp, tree, hard, very interesting
-int maxProfit(vector<int>& prices); //121, Best Time to Buy and Sell Stock, easy,fun
-bool wordBreak(string s, vector<string>& wordDict); // 139, word break, mid, need to be faster
-int maxProduct(vector<int>& nums);//152, max product subarray, mid
-int maximalSquare(vector<vector<char>>& matrix); //221. Maximal Square, mid
+int numDecodings(string s);//91. Decode Ways, mid, interview //2
+int numTrees(int n); //96, unique binary search, dp, tree, mid, hard to me, very interesting,2
+int maxProfit(vector<int>& prices); //121, Best Time to Buy and Sell Stock, easy,fun, 2
+bool wordBreak(string s, vector<string>& wordDict); // 139, word break, mid, need to be faster,2
+int maxProduct(vector<int>& nums);//152, max product subarray, mid,2
+int maximalSquare(vector<vector<char>>& matrix); //221. Maximal Square, mid,2
 int lengthOfLIS(vector<int>& nums); //300. Longest Increasing Subsequence,mid, O(n^2)need to be O(nlogn)
 int maxProfit_cd(vector<int>& prices);//309. Best Time to Buy and Sell Stock with Cooldown, mid hard to me, need more thinking
 int countSubstrings(string s);//647. Palindromic Substrings
@@ -36,8 +36,8 @@ int findTargetSumWays_helper(vector<int>& nums, int S);//494. Target Sum,mid ,ha
  classic
  */
 int coinChange(vector<int>& coins, int amount);//322. Coin Change, mid, fast, classic question
-int robII(vector<int>& nums);//213. House Robber II, upgrade to 198, mid, must know, fast, need more thinking 
-string longestPalindrome(string s);//5. Longest Palindromic Substring,mid,classic,need to be faster,interview question 
+int robII(vector<int>& nums);//213. House Robber II, upgrade to 198, mid, must know, fast, need more thinking
+string longestPalindrome(string s);//5. Longest Palindromic Substring,mid,classic,need to be faster,interview question
 int uniquePaths(int m, int n);//62. Unique Paths, mid
 /*
  Greedy Algorithm

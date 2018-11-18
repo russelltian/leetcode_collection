@@ -26,7 +26,6 @@ int rotate_array(vector<int>& nums, int target) {
         if(nums[l]<nums[m]){
             if (nums[l]==target)return l;
             if(nums[l] <= target && target < nums[m]){
-                
                 r = m-1;
             }else{
                 l = m+1;
@@ -34,7 +33,6 @@ int rotate_array(vector<int>& nums, int target) {
         }else{
             if(nums[r] == target)return r;
             if(nums[m]< target && target <= nums[r]){
-                
                 l = m+1;
             }else {
                 r = m-1;
@@ -120,7 +118,7 @@ vector<vector<string>> groupAnagrams(vector<string>& strs) {
         umap[key].push_back(i);
     }
     unordered_map<string, vector<int>>::iterator iter;
-    
+
     for(iter=umap.begin();iter!= umap.end();iter++){
         vector<string> single;
         for(int i = 0; i < iter->second.size(); i++){
@@ -255,6 +253,20 @@ void sortColors(vector<int>& nums) {
  78, subsets, backtracking
 a helper function with a start index to go through all possible subsets,
  don't forget to pop_back the last element after recursion
+ Example:
+
+Input: nums = [1,2,3]
+Output:
+[
+  [3],
+  [1],
+  [2],
+  [1,2,3],
+  [1,3],
+  [2,3],
+  [1,2],
+  []
+]
  */
 vector<vector<int>> subsets(vector<int>& nums) {
     vector<int> single;
@@ -297,18 +309,18 @@ bool hasCycle(ListNode *head) {
 /*
  66. Plus One
  Given a non-empty array of digits representing a non-negative integer, plus one to the integer.
- 
+
  The digits are stored such that the most significant digit is at the head of the list, and each element in the array contain a single digit.
- 
+
  You may assume the integer does not contain any leading zero, except the number 0 itself.
- 
+
  Example 1:
- 
+
  Input: [1,2,3]
  Output: [1,2,4]
  Explanation: The array represents the integer 123.
  Example 2:
- 
+
  Input: [4,3,2,1]
  Output: [4,3,2,2]
  Explanation: The array represents the integer 4321.
@@ -342,22 +354,22 @@ template
  int size = int(nums.size());
  vector<int> ans;
  for(int i =0; i < size;i++){
- 
+
  }
  for(int i =0; i < nums.size();i++){
- 
+
  }
 return ans;
 
  for(int i = 0; i < m;i++){
     for(int j = 0; j < n;j++){
- 
+
     }
  }
- 
+
  vector<int> ans(nums.size(),0);
  cout << <<" "<<<<endl;
- 
+
 
  hash table:
  int size = int(nums.size());
@@ -365,9 +377,9 @@ return ans;
  for(int i = 0; i < size; i++){
  ht.insert(make_pair(i,nums[i]));
  }
- 
+
  for(auto i : ht){
- 
+
  }
  tree:
  root->left;

@@ -25,9 +25,9 @@ bool exist(vector<vector<char>>& board, string word) {
             word_search_helperfunction(board,word,0,0,0,row,col,ans,row_size,col_size);
             if(ans)return ans;
         }
-        
+
     }
-    
+
     return ans;
 }
 void word_search_helperfunction(vector<vector<char>>& board,string word,int start,int di,int dj,int row,int col,bool&ans,int row_size,int col_size){
@@ -69,11 +69,11 @@ void word_search_helperfunction(vector<vector<char>>& board,string word,int star
 vector<string> letterCombinations(string digits) {
     vector<string> allcombination ;
     if (digits.size() == 0) return allcombination;
-    
+
     string singlecomb(digits.size(),'\0');//initial a combination string
     const string table[] = {" ","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
     nextLetComb(table,digits,0,singlecomb,allcombination);
-    
+
     //0,1,2,3,4,5,6,7,8,9
     return allcombination;
 }
@@ -99,9 +99,9 @@ Must Know
 /*
 22. Generate Parentheses
  Given n pairs of parentheses, write a function to generate all combinations of well-formed parentheses.
- 
+
  For example, given n = 3, a solution set is:
- 
+
  [
  "((()))",
  "(()())",
@@ -120,7 +120,7 @@ vector<string> generateParenthesis(int n) {
 }
 void generateParenthesis_helper(int n,int i,int l,int r,string&single,vector<string>&sol){
     //n total elements, i: current generated elements, l: # of ( r: # of ), single: single string
-    
+
     if(i == n){
         sol.push_back(single);
         return;
@@ -142,9 +142,9 @@ void generateParenthesis_helper(int n,int i,int l,int r,string&single,vector<str
 /*
  46. Permutations
  Given a collection of distinct integers, return all possible permutations.
- 
+
  Example:
- 
+
  Input: [1,2,3]
  Output:
  [
@@ -164,13 +164,13 @@ vector<vector<int>> permute(vector<int>& nums) {
     find_permutations(nums,used,answer,single);
     return answer;
 }
-void find_permutations(vector<int>& nums,vector<bool>& used,vector<vector<int>>& answer,vector<int>&     single){
+void find_permutations(vector<int>& nums,vector<bool>& used,vector<vector<int>>& answer,vector<int>& single){
     if(single.size() == nums.size()){
         answer.push_back(single);
         return;
     }
     for(int i=0;i<nums.size();i++){
-        
+
         if(!used[i]){
             used[i]=true;
             single.push_back(nums[i]);
@@ -179,4 +179,4 @@ void find_permutations(vector<int>& nums,vector<bool>& used,vector<vector<int>>&
             used[i]=false;
         }
     }
-    }
+}
