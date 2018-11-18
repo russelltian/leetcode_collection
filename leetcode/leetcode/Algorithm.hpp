@@ -14,13 +14,13 @@
 #include <unordered_map>
 using namespace std;
 //search
-int rotate_array(vector<int>&nums,int target);//33,mid-bst, 2
+int rotate_array(vector<int>&nums,int target);//33,mid-bst, 3
 
-int search_insert_pos(vector<int>&nums,int target);//35,easy-bst,2
+int search_insert_pos(vector<int>&nums,int target);//35,easy-bst,3
 //backtracking
 vector<vector<int>> combinationSum(vector<int>& candidates, int target);//39,combination sum, mid-backtracking
 void findcomb(vector<int>&candidates,int target,vector<int>&single, vector<vector<int>> &answer,int start);
-//2
+//3
 
 vector<vector<int>> subsets(vector<int>& nums); //78, subsets, mid-backtracking
 void find_subsets(vector<vector<int>>& solution,vector<int>& nums,vector<int>& single,int start);

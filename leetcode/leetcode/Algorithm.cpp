@@ -48,20 +48,15 @@ int rotate_array(vector<int>& nums, int target) {
  if not, the left index is going to be the insert position
  */
 int search_insert_pos(vector<int>& nums, int target) {
-    //bst
-    int size = int(nums.size());
-    if(size==0)return 0;
-    int l = 0;
-    int r = size -1;
-    while(l <= r){
-        int m = (l+r)/2;
-        if(nums[m] == target)return m;
-        if (nums[m] < target){
-            l = m+1;
-        }else if (nums[m] > target){
-            r = m -1;
-        }
-    }return l;
+    //bst, 98.2%
+	int l = 0; int r = nums.size() - 1;
+	while (l <= r) {
+		int m = (l + r) / 2;
+		if (nums[m] == target)return m;
+		if (nums[m] < target) l = m + 1;
+		else r = m - 1;
+	}
+	return l;
 }
 
 /*39, [2,3,6,7],target = 7 [2,2,3][7]
@@ -72,22 +67,26 @@ vector<vector<int>> combinationSum(vector<int>& candidates, int target) {
     vector<vector<int>> answer;
     vector<int>single_ans;
     if(candidates.size() == 0)return answer;
+	sort(candidates.begin(), candidates.end()); // sort the list to improve timing performance
     findcomb(candidates,target,single_ans,answer,0);
     return answer;
 }
 void findcomb(vector<int>&candidates,int target,vector<int>&single, vector<vector<int>> &answer,int start){
-    if(target == 0){
-        answer.push_back(single); //one good solution
-        return;
-    }
-    for(int i = start;i < candidates.size();i++){
-        if(target >= candidates[i]){
-            //keep substracting
-            single.push_back(candidates[i]);
-            findcomb(candidates,target - candidates[i],single,answer,i);
-            single.pop_back();
-        }
-    }
+	if (target == 0) {
+		answer.push_back(single);
+		return;
+	}
+	for (int i = start; i < candidates.size(); i++) {
+		int temp = candidates[i];
+		if (target >= temp) {
+			single.push_back(temp);
+			findcomb(candidates, target - temp, single, answer, i);
+			single.pop_back();
+		}
+		else {
+			return;
+		}
+	}
 }
 
 
