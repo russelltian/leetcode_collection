@@ -91,14 +91,12 @@ void findcomb(vector<int>&candidates,int target,vector<int>&single, vector<vecto
 
 
 //169. Majority Element [1,1,2] return 1
-// didn't think about run time, need to be faster, very easy
+// didn't think about run time, need to be faster, very easy, O(nlogn)
+// update 18/11/18, after sorting it, the middle one is the majority element
 int majorityElement(vector<int>& nums) {
-    sort(nums.begin(),nums.end());
-    int i = int(nums.size());
-    int mid = i/2;
-    if(nums[mid] == nums[i-1])return nums[mid];
-    else if(nums[mid]==nums[0])return nums[0];
-    else return nums[mid];
+	sort(nums.begin(), nums.end());
+	int m = int(nums.size()) / 2;
+	return nums[m];
 }
 /*
  49,group anagrams, use sorted string as keys
@@ -168,10 +166,10 @@ vector<Interval> merge(vector<Interval>& intervals) {
         if(ans.empty()||ans.back().end < intervals[i].start){
             ans.push_back(intervals[i]);
             //   cout << i <<endl;
-        }else if(ans.back().end >= intervals[i].start){
-            ans.back().end = max(intervals[i].end,ans.back().end);
-            //    cout << i <<endl;
         }
+		else if (ans.back().end < intervals[i].end) {
+			ans.back().end = intervals[i].end;
+		}
     }
     return ans;
 }

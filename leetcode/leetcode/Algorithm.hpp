@@ -24,14 +24,14 @@ void findcomb(vector<int>&candidates,int target,vector<int>&single, vector<vecto
 
 vector<vector<int>> subsets(vector<int>& nums); //78, subsets, mid-backtracking
 void find_subsets(vector<vector<int>>& solution,vector<int>& nums,vector<int>& single,int start);
-//2
+//3
 
 //array
 int majorityElement(vector<int>& nums);//169,majority element, easy, divide conquer, need to be faster
-//2
+//3
 
 //hash
-vector<vector<string>> groupAnagrams(vector<string>& strs);//49,group anagrams,mid-hashtable,2
+vector<vector<string>> groupAnagrams(vector<string>& strs);//49,group anagrams,mid-hashtable,3
 void setZeroes(vector<vector<int>>& matrix);//73. Set Matrix Zeroes, mid, not a fan of it, interview,2
 
 //sort
@@ -47,7 +47,7 @@ struct compare{
     }
 };
 vector<Interval> merge(vector<Interval>& intervals); //56,merge intervals,mid-sort,hard to me,interview question
-//important one, need to know cmp, 2
+//important one, need to know cmp, 3
 
 void sortColors(vector<int>& nums);//75, sort color, mid-sort, hard to me, 2
 
