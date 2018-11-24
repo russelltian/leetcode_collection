@@ -308,6 +308,60 @@ void connect_helper(vector<TreeLinkNode*> list){
 }
 
 /*
+127. Word Ladder
+Medium
+Given two words (beginWord and endWord), and a dictionary's word list, find the length of shortest transformation sequence from beginWord to endWord, such that:
+
+Only one letter can be changed at a time.
+Each transformed word must exist in the word list. Note that beginWord is not a transformed word.
+Input:
+beginWord = "hit",
+endWord = "cog",
+wordList = ["hot","dot","dog","lot","log","cog"]
+
+Output: 5
+
+Explanation: As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+return its length 5.
+*/
+
+int ladderLength(string beginWord, string endWord, vector<string>& wordList) {
+	queue<string>bfs{ {beginWord} };//breadth first search
+	unordered_map<string, bool>used{ {beginWord,true} };
+	for (auto it : wordList) {
+		string i = it;
+		used[i] = false;
+	}
+	int count = 1;
+	while (!bfs.empty()) {
+
+		// breadth first search one layer, at the same time, add another layer to the queue
+		for (int k = bfs.size(); k > 0; k--) {
+			string word = bfs.front();
+			bfs.pop();
+			//each character has 26 alternatives, 26 * ? * O(1) better 
+			// than sizeof_wordlist * ?
+			for (int i = 0; i < word.size(); i++) {
+				string temp(word);
+				for (int b = 0; b < 26; b++) {
+					temp[i] = 'a' + b; //abc,bbc,cbc...abx,aby,abz
+					auto it = used.find(temp); //find the word from the wordlist
+					if (it != used.end()) {
+						if (it->second == true)continue; // has been searched in the previous layers
+						if (endWord == temp)return count + 1; // find it
+						bfs.push(temp); // for the next layer
+						used[temp] = true;
+					}
+				}
+			}
+		}
+		count++;
+		// cout<<count<<endl;
+	}
+	return 0;
+}
+
+/*
  Divide and Conqeur
  */
 /*

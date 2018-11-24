@@ -220,30 +220,23 @@ int climbStairs(int n) {
  while loop terminate when cur > right
  */
 void sortColors(vector<int>& nums) {
-    // left for red-white boundary
-    //right for white-blue boundary
+    // l for red-white boundary
+    //r for white-blue boundary
     //cur for current
-    int left = 0;
-    int right = int(nums.size()-1);
-    int cur = 0;
-    while(cur <= right){
-        if(nums[cur] == 0){
-            int temp = nums[left];
-            nums[left] = nums[cur];
-            nums[cur]=temp;
-            left++;
-            cur++;
-        }
-        else if(nums[cur] == 1){
-            cur++;
-        }
-        else if(nums[cur] == 2){
-            int temp = nums[right];
-            nums[right] = 2;
-            nums[cur]=temp;
-            right--;
-        }
-    }
+	int l = 0; int r = nums.size() - 1; int cur = l;
+	while (cur <= r) {
+		if (nums[cur] == 1) {
+			cur++;
+		}
+		else if (nums[cur] == 0) {//put it left
+			swap(nums[l], nums[cur]);
+			l++; cur = l;
+		}
+		else {//put it right
+			swap(nums[cur], nums[r]);
+			r--;
+		}
+	}
 }
 
 /*

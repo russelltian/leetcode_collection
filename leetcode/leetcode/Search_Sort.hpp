@@ -44,6 +44,7 @@ struct TreeLinkNode {
 };
 void connect(TreeLinkNode *root);
 void connect_helper(vector<TreeLinkNode*> list);//116.Populating Next Right Pointers in Each Node, mid, search
+int ladderLength(string beginWord, string endWord, vector<string>& wordList);//127. Word Ladder, hard to me, long time spent , BFS & hashing 
 
 /*
  divide and conquer
