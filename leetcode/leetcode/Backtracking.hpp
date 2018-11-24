@@ -15,21 +15,26 @@
 using namespace std;
 
 bool exist(vector<vector<char>>& board, string word);
-void word_search_helperfunction(vector<vector<char>>& board,string word,int start,int di,int dj,int row,int col,bool&ans,int row_size,int col_size);//79,word search, mid, spent a lot of time
-//2
+void word_search_helperfunction(vector<vector<char>>& board,string word,int start,int di,int dj,int row,int col,bool&ans,int row_size,int col_size);
+//79,word search, mid, spent a lot of time
+//3
+
 
 vector<string> letterCombinations(string digits);
-void nextLetComb(const string table[],string digits,int digits_index,string &singlecomb, vector<string>& allcombination);//17. Letter Combinations of a Phone Number, mid , interview,staright forward
-//2
+void nextLetComb(const string table[],string digits,int digits_index,string &singlecomb, vector<string>& allcombination);
+//17. Letter Combinations of a Phone Number, mid , interview,staright forward
+//3
 /*
  Must Know
  */
 vector<string> generateParenthesis(int n);
-void generateParenthesis_helper(int n,int i,int l,int r,string&single,vector<string>&sol);//22. Generate Parentheses, mid, interview
-//2
+void generateParenthesis_helper(int n,int i,int l,int r,string&single,vector<string>&sol);
+//22. Generate Parentheses, mid, interview
+//3
 
 vector<vector<int>> permute(vector<int>& nums);
-void find_permutations(vector<int>& nums,vector<bool>& used,vector<vector<int>>& answer,vector<int>&single);//46. Permutations, mid, interview, classic question
+void find_permutations(vector<int>& nums,vector<bool>& used,vector<vector<int>>& answer,vector<int>&single);
+//46. Permutations, mid, interview, classic question
 //2
 
 #endif /* Backtracking_hpp */
