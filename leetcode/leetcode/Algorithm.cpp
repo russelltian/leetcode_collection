@@ -175,7 +175,7 @@ vector<Interval> merge(vector<Interval>& intervals) {
 }
 
 /*
- #64,mimimum path sum, not the condition of left column and top row
+ #64,minimum path sum, not the condition of left column and top row
  then select min(left,top)
  */
 int minPathSum(vector<vector<int>>& grid) {
@@ -220,7 +220,7 @@ int climbStairs(int n) {
  while loop terminate when cur > right
  */
 void sortColors(vector<int>& nums) {
-    // l for red-white boundary
+    //l for red-white boundary
     //r for white-blue boundary
     //cur for current
 	int l = 0; int r = nums.size() - 1; int cur = l;
@@ -280,18 +280,14 @@ void find_subsets(vector<vector<int>>& solution,vector<int>& nums,vector<int>& s
  if there is a cycle, they will hit anyways
  */
 bool hasCycle(ListNode *head) {
-    if(!head)return false;
-    ListNode *iter1 = head;
-    ListNode *iter2 = head;
-    while(iter2->next != NULL){
-        iter2 = iter2->next->next;
-        iter1 = iter1->next;
-        if(iter2 == NULL)return false;
-        if(iter2 == iter1){
-            return true;
-        }
-    }
-    return false;
+	if (!head)return false;
+
+	ListNode *l1 = head; ListNode *l2 = l1;
+	while (l2->next != NULL) {
+		l1 = l1->next; l2 = l2->next->next;
+		if (l2 == NULL)return false;
+		if (l1 == l2)return true;
+	}return false;
 }
 /*
  math

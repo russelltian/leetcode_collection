@@ -49,11 +49,11 @@ struct compare{
 vector<Interval> merge(vector<Interval>& intervals); //56,merge intervals,mid-sort,hard to me,interview question
 //important one, need to know cmp, 3
 
-void sortColors(vector<int>& nums);//75, sort color, mid-sort, hard to me, 2
+void sortColors(vector<int>& nums);//75, sort color, mid-sort, 3
 
 //dp
-int minPathSum(vector<vector<int>>& grid);//64,mimimum path sum, mid-dp,2
-int climbStairs(int n); //70, climbing stairs, easy-dp,2
+int minPathSum(vector<vector<int>>& grid);//64,minimum path sum, mid-dp,3
+int climbStairs(int n); //70, climbing stairs, easy-dp,3
 
 //Linked list
 struct ListNode {
@@ -61,14 +61,14 @@ struct ListNode {
          ListNode *next;
          ListNode(int x) : val(x), next(NULL) {}
      };
-bool hasCycle(ListNode *head);//141 Linked List Cycle, easy
+bool hasCycle(ListNode *head);//141 Linked List Cycle, easy,2
 
 
 
 
 
 //math
-vector<int> plusOne(vector<int>& digits);//66. Plus One,easy,google interview
+vector<int> plusOne(vector<int>& digits);//66. Plus One,easy,google interview,2
 
 /*int countPrimes(unsigned long n);
 unsigned long fermat_test(unsigned long a,unsigned long b);
