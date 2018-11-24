@@ -262,7 +262,76 @@ bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visit
     return false;
     }
 
+/*
+Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
 
+A region is captured by flipping all 'O's into 'X's in that surrounded region.
+
+Example:
+
+X X X X
+X O O X
+X X O X
+X O X X
+After running your function, the board should be:
+
+X X X X
+X X X X
+X X X X
+X O X X
+*/
+void solve(vector<vector<char>>& board) {
+	if (board.size() == 0 || board[0].size() == 0)return;
+	vector<vector<int>>lookup(board.size(), vector<int>(board[0].size(), -1));//status of Os
+	//-1 not discovered, 0 survive, 1 visited havn't been decided
+	vector<pair<int, int>> record;//keep track of O and make update and log to Os 
+	for (int i = 0; i < board.size(); i++) {
+		for (int j = 0; j < board[0].size(); j++) {
+			if (board[i][j] == 'O' && lookup[i][j] == -1)
+				surrounded_regions_helper(board, record, lookup, i, j);
+			//if all surrounded, flip O to X
+			for (int i = record.size() - 1; i >= 0; i--) {
+				lookup[record[i].first][record[i].second] = -1;
+				board[record[i].first][record[i].second] = 'X';
+				record.pop_back();
+			}
+		}
+	}
+}
+
+void surrounded_regions_helper(vector<vector<char>>& board, vector<pair<int, int>>& record, vector<vector<int>>& lookup, int i, int j) {
+
+	if (i < 0 || i == board.size() || j < 0 || j == board[0].size()) {
+		//survive, update all the Os
+		for (int i = record.size() - 1; i >= 0; i--) {
+			lookup[record[i].first][record[i].second] = 0;
+			record.pop_back();
+		}
+		return;
+	}
+	if (board[i][j] == 'X')return;//surrounded
+	//if find another O, discovered: return; survived: survived as well; 
+	//first meet: mark it then keep searching
+	if (board[i][j] == 'O') {
+		if (lookup[i][j] == 1)return;
+		else if (lookup[i][j] == 0) {
+			//survive, update all the Os
+			for (int i = record.size() - 1; i >= 0; i--) {
+				lookup[record[i].first][record[i].second] = 0;
+				record.pop_back();
+				return;
+			}
+		}
+		else {
+			record.push_back(make_pair(i, j));
+			lookup[i][j] = 1;
+			surrounded_regions_helper(board, record, lookup, i - 1, j);
+			surrounded_regions_helper(board, record, lookup, i, j - 1);
+			surrounded_regions_helper(board, record, lookup, i + 1, j);
+			surrounded_regions_helper(board, record, lookup, i, j + 1);
+		}
+	}
+}
 /*
  BFS
  */

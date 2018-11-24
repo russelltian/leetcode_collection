@@ -34,7 +34,11 @@ string decodeString_helper(string s,int&start);//394. Decode String, mid, fast,c
 
 bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites);
 bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visited,int start);//207. Course Schedule, mid topological sort(DFS), badly need to be way faster!!
-/*
+
+void solve(vector<vector<char>>& board);
+void surrounded_regions_helper(vector<vector<char>>& board, vector<pair<int, int>>& record, vector<vector<int>>& lookup, int i, int j);
+//130. Surrounded Regions, mid, need better solution
+																							  /*
  BFS
  */
 struct TreeLinkNode {
