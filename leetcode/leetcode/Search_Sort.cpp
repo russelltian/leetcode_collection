@@ -332,6 +332,7 @@ void surrounded_regions_helper(vector<vector<char>>& board, vector<pair<int, int
 		}
 	}
 }
+
 /*
  BFS
  */

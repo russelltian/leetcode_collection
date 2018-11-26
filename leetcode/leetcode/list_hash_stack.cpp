@@ -623,6 +623,35 @@ bool isValidSudoku(vector<vector<char>>& board) {
     }
     return true;
 }
+
+RandomListNode *copyRandomList(RandomListNode *head) {
+	if (!head)return NULL;
+	RandomListNode *cur = head;
+	cur = cur->next;
+	RandomListNode *newhead = new RandomListNode(head->label);
+	// the key is initial node, the second one is
+	unordered_map<RandomListNode*, RandomListNode*> hashtable;
+	RandomListNode *newcur = newhead;
+	if (head->random != NULL) {
+		hashtable[head] = newcur;
+	}
+	while (cur) {
+		RandomListNode* temp1 = new RandomListNode(cur->label);
+		hashtable[cur] = temp1;
+		cur = cur->next;
+		newcur->next = temp1;
+		newcur = newcur->next;
+	}
+
+	auto iter = hashtable.begin();
+	while (iter != hashtable.end()) {
+		if (iter->first->random)iter->second->random = hashtable[iter->first->random];
+		iter++;
+	}
+	return newhead;
+}
+
+
 /*
  must know
  */

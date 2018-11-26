@@ -60,6 +60,14 @@ int lengthOfLongestSubstring(string s) ;//3. Longest Substring Without Repeating
 vector<int> findAnagrams(string s, string p);//438. Find All Anagrams in a String, long time spent , easy, 99.17%
 bool isValidSudoku(vector<vector<char>>& board);//36. Valid Sudoku
 
+struct RandomListNode {
+	int label;
+	RandomListNode *next, *random;
+	RandomListNode(int x) : label(x), next(NULL), random(NULL) {}
+	
+};
+RandomListNode *copyRandomList(RandomListNode *head);//138. Copy List with Random Pointer, Mid
+
 /*
  must know
  */
