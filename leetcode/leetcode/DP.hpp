@@ -17,7 +17,7 @@
 #include <numeric>
 #include <queue>
 using namespace std;
-int numDecodings(string s);//91. Decode Ways, mid, interview //2
+int numDecodings(string s);//91. Decode Ways, mid, interview 2
 int numTrees(int n); //96, unique binary search, dp, tree, mid, hard to me, very interesting,2
 int maxProfit(vector<int>& prices); //121, Best Time to Buy and Sell Stock, easy,fun, 2
 bool wordBreak(string s, vector<string>& wordDict); // 139, word break, mid, need to be faster,2
