@@ -335,6 +335,22 @@ vector<int> plusOne(vector<int>& digits) {
     return digits;
 }
 
+int titleToNumber(string s) {
+	/*
+	O(n)
+	idea: A = 1*26^0 AA = 1*26^1 + 1*26^0 BBA = 2*26^2 + 2*26^1 + 1*26^0
+	*/
+	int size = s.size() - 1;
+	int counter = 0;
+	int ans = 0;
+	for (int i = size; i >= 0; i--) {
+		ans += (s[i] - 'A' + 1) * pow(26, counter);
+		counter++;
+	}
+	return ans;
+}
+
+
 /*
 template
  int size = int(nums.size());

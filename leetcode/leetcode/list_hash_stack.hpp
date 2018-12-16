@@ -33,6 +33,7 @@ vector<int> spiralOrder(vector<vector<int>>& matrix);//54. Spiral Matrix
 //stack
 vector<int> inorderTraversal(TreeNode* root); //94, binary tree inorder traversal, mid, hard to me
 bool isValid(string s);//20. Valid Parentheses, easy, interview
+int evalRPN(vector<string>& tokens);//150. Evaluate Reverse Polish, mid
 /*
  linked list
  */
