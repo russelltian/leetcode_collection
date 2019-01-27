@@ -283,6 +283,45 @@ bool isValid(string s) {
 }
 
 /*
+150. Evaluate Reverse Polish
+Input: ["2", "1", "+", "3", "*"]
+Output: 9
+Explanation: ((2 + 1) * 3) = 9
+
+Input: ["4", "13", "5", "/", "+"]
+Output: 6
+Explanation: (4 + (13 / 5)) = 6
+*/
+int evalRPN(vector<string>& tokens) {
+	//idea: using stack to store numbers and intermediate result
+	//return top, don't forget to pop before push
+	if (tokens.size() == 0)return 0;
+	stack<int> s;
+	for (int i = 0; i < tokens.size(); i++) {
+		if (tokens[i] == "+") {
+			int a = s.top(); s.pop(); int b = s.top(); s.pop();
+			s.push(a + b);
+		}
+		else if (tokens[i] == "-") {
+			int a = s.top(); s.pop(); int b = s.top(); s.pop();
+			s.push(b - a);
+		}
+		else if (tokens[i] == "*") {
+			int a = s.top(); s.pop(); int b = s.top(); s.pop();
+			s.push(a*b);
+		}
+		else if (tokens[i] == "/") {
+			int a = s.top(); s.pop(); int b = s.top(); s.pop();
+			s.push((a == 0 || b == 0) ? 0 : b / a);
+		}
+		else {
+			// arbitary number, push it to the stack
+			s.push(stoi(tokens[i]));
+		}
+	}
+	return s.top();
+}
+/*
  Linked list
  */
 //ptr traverse
@@ -623,6 +662,35 @@ bool isValidSudoku(vector<vector<char>>& board) {
     }
     return true;
 }
+
+RandomListNode *copyRandomList(RandomListNode *head) {
+	if (!head)return NULL;
+	RandomListNode *cur = head;
+	cur = cur->next;
+	RandomListNode *newhead = new RandomListNode(head->label);
+	// the key is initial node, the second one is
+	unordered_map<RandomListNode*, RandomListNode*> hashtable;
+	RandomListNode *newcur = newhead;
+	if (head->random != NULL) {
+		hashtable[head] = newcur;
+	}
+	while (cur) {
+		RandomListNode* temp1 = new RandomListNode(cur->label);
+		hashtable[cur] = temp1;
+		cur = cur->next;
+		newcur->next = temp1;
+		newcur = newcur->next;
+	}
+
+	auto iter = hashtable.begin();
+	while (iter != hashtable.end()) {
+		if (iter->first->random)iter->second->random = hashtable[iter->first->random];
+		iter++;
+	}
+	return newhead;
+}
+
+
 /*
  must know
  */

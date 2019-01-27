@@ -17,7 +17,7 @@
 #include <numeric>
 #include <queue>
 using namespace std;
-int numDecodings(string s);//91. Decode Ways, mid, interview //2
+int numDecodings(string s);//91. Decode Ways, mid, interview 2
 int numTrees(int n); //96, unique binary search, dp, tree, mid, hard to me, very interesting,2
 int maxProfit(vector<int>& prices); //121, Best Time to Buy and Sell Stock, easy,fun, 2
 bool wordBreak(string s, vector<string>& wordDict); // 139, word break, mid, need to be faster,2
@@ -47,8 +47,11 @@ void numSquares_helper(int n, vector<int>&num,int&count,int temp,int start,bool&
 vector<pair<int, int>> reconstructQueue(vector<pair<int, int>>& people); //406. Queue Reconstruction by Height, hard to me, more think later, excellent solution
 int leastInterval(vector<char>& tasks, int n);//621. Task Scheduler, mid, cool idea, but slow
 bool canJump(vector<int>& nums); //55 jump game, mid-dp/greedy
+int maxProfitII(vector<int>& prices) //122. Best Time to Buy and Sell Stock II, easy, greedy
+int canCompleteCircuit(vector<int>& gas, vector<int>& cost); //134. Gas Station, mid
 
-//easy
+									 
+									 //easy
 int rob(vector<int>& nums); //198, interesting question lol
 int maxSubArray(vector<int>& nums);//53. Maximum Subarray
 

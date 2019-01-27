@@ -770,6 +770,78 @@ bool canJump(vector<int>& nums) {
     return limit >= final ? true: false;
 }
 
+
+/*
+122. Best Time to Buy and Sell Stock II
+Input: [7,1,5,3,6,4]
+Output: 7
+Explanation: Buy on day 2 (price = 1) and sell on day 3 (price = 5), profit = 5-1 = 4.
+			 Then buy on day 4 (price = 3) and sell on day 5 (price = 6), profit = 6-3 = 3.
+*/
+int maxProfitII(vector<int>& prices) {
+	/*
+	O(n), greedy algorithm
+	idea:
+	if[i] < [i+1] and free, buy
+	if[i] > [i+1] and on hold, sell,
+	corner case:
+	when on hold and traverse to the last, must sell it
+	*/
+	if (prices.size() == 0)return 0;
+	int profit = 0;
+	bool hold = false;
+	for (int i = 0; i < prices.size() - 1; i++) {
+		if (prices[i] < prices[i + 1] && !hold) {
+			//buy
+			profit -= prices[i];
+			hold = true;
+		}
+		else if (prices[i] > prices[i + 1] && hold) {
+			//sell
+			profit += prices[i];
+			hold = false;
+		}
+		// cout << profit <<endl;
+	}
+	int size = int(prices.size());
+	if (hold && prices[size - 1] >= prices[size - 2])profit += prices[size - 1];
+	return profit;
+}
+
+/*
+134. Gas Station
+There are N gas stations along a circular route, where the amount of gas at station i is gas[i].
+
+You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from station i to its next station (i+1). You begin the journey with an empty tank at one of the gas stations.
+
+Return the starting gas station's index if you can travel around the circuit once in the clockwise direction, otherwise return -1.
+
+Note:
+
+If there exists a solution, it is guaranteed to be unique.
+Both input arrays are non-empty and have the same length.
+Each element in the input arrays is a non-negative integer.
+
+Input:
+gas  = [1,2,3,4,5]
+cost = [3,4,5,1,2]
+
+Output: 3
+*/
+int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
+	//idea: reference to http://www.cnblogs.com/grandyang/p/4266812.html
+	//traverse the array, from i..j if can't circle, then search from j+1
+	int remain = 0; int start = 0; int sum = 0;
+	for (int i = 0; i < gas.size(); i++) {
+		remain += gas[i] - cost[i];
+		sum += gas[i] - cost[i];
+		if (remain < 0) {
+			remain = 0;
+			start = i + 1;
+		}
+	}
+	return (sum >= 0) ? start : -1;
+}
 /*
  easy
  */
