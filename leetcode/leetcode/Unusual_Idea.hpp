@@ -21,8 +21,7 @@ using namespace std;
 int singleNumber(vector<int>& nums);//136,single number, easy, bitwise manipulation
 vector<int> countBits(int num);//338. Counting Bits, mid, hard to me, interesting idea
 int hammingDistance(int x, int y);//461. Hamming Distance, easy, interesting
-
-
+int hammingWeight(uint32_t n);//191. Number of 1 Bits, easy
 
 ListNode *detectCycle(ListNode *head); //142,linked list cycle II, mid, interesting math
 
@@ -51,17 +50,17 @@ public:
             child[i] = NULL;
         }
     }
-    
+
 };
 class Trie {
 public:
     /** Initialize your data structure here. */
-    
+
     Trie() {
         root = new TrieNode();
-        
+
     }
-    
+
     /** Inserts a word into the trie. */
     void insert(string word) {
         //if not inserted, create a new node and mark the last character as isWord
@@ -74,7 +73,7 @@ public:
         }
         temp->isWord = true;
     }
-    
+
     /** Returns if the word is in the trie. */
     bool search(string word) {
         //if find the word and isWord is true, yes
@@ -86,9 +85,9 @@ public:
         }
         if(temp->isWord)return true;
         else return false;
-        
+
     }
-    
+
     /** Returns if there is any word in the trie that starts with the given prefix. */
     bool startsWith(string prefix) {
         //find the prefix
@@ -100,7 +99,7 @@ public:
         }
         return true;
     }
-    
+
 private:
     TrieNode *root;
 };

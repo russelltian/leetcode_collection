@@ -26,10 +26,10 @@ int singleNumber(vector<int>& nums) {
 /*
  338. Counting Bits
  Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1's in their binary representation and return them as an array.
- 
+
  Example:
  For num = 5 you should return [0,1,1,2,1,2].
- 
+
  - Space complexity should be O(n).
  - No builtin function
  */
@@ -40,7 +40,7 @@ vector<int> countBits(int num) {
      1. You should make use of what you have produced already.
      2. Divide the numbers in ranges like [2-3], [4-7], [8-15] and so on. And try to generate new range from previous.
      3.Or does the odd/even status of the number help you in calculating the number of 1s?
-     
+
      within the same group, when even-> ans[i] = ans[i/2] +1 , odd-> ans[i] = ans[i/2]
      */
     for(int i = 1; i <= num;i++){
@@ -57,10 +57,10 @@ vector<int> countBits(int num) {
  461. Hamming Distance
  The Hamming distance between two integers is the number of positions at which the corresponding bits are different.
  Given two integers x and y, calculate the Hamming distance.
- 
+
  Note:
  0 ≤ x, y < 231.
- 
+
  Example:
  Input: x = 1, y = 4
  Output: 2
@@ -84,8 +84,26 @@ int hammingDistance(int x, int y) {
 }
 
 
+/*
+191. Number of 1 Bits
+Write a function that takes an unsigned integer and return the number of '1' bits it has (also known as the Hamming weight).
 
+Input: 00000000000000000000000000001011
+Output: 3
+Explanation: The input binary string 00000000000000000000000000001011 has a total of three '1' bits.
+*/
+int hammingWeight(uint32_t n) {
+  /*
+  divide by two
+  */
+    int ans = 0;
+    while(n > 0){
+        ans += (n%2)?1:0;
+        n *= 0.5;
+    }
 
+    return ans;
+}
 
 /*
  #142,find cycle start
@@ -100,9 +118,9 @@ ListNode *detectCycle(ListNode *head) {
     ListNode * ptr1 = head;
     ListNode * ptr2 = head;
     if(!head)return NULL;
-    
+
     while(ptr2->next != NULL){
-        
+
         ptr2 = ptr2->next->next;
         ptr1 = ptr1->next;
         if(ptr2==NULL)return NULL;
@@ -159,16 +177,16 @@ vector<int> productExceptSelf(vector<int>& nums) {
 /*
  448. Find All Numbers Disappeared in an Array
  Given an array of integers where 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
- 
+
  Find all the elements of [1, n] inclusive that do not appear in this array.
- 
+
  Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
- 
+
  Example:
- 
+
  Input:
  [4,3,2,7,8,2,3,1]
- 
+
  Output:
  [5,6]
  */
@@ -200,22 +218,22 @@ vector<int> findDisappearedNumbers(vector<int>& nums) {
 /*
  48. Rotate Image
  You are given an n x n 2D matrix representing an image.
- 
+
  Rotate the image by 90 degrees (clockwise).
- 
+
  Note:
- 
+
  You have to rotate the image in-place, which means you have to modify the input 2D matrix directly. DO NOT allocate another 2D matrix and do the rotation.
- 
+
  Example 1:
- 
+
  Given input matrix =
  [
  [1,2,3],
  [4,5,6],
  [7,8,9]
  ],
- 
+
  rotate the input matrix in-place such that it becomes:
  [
  [7,4,1],
@@ -223,7 +241,7 @@ vector<int> findDisappearedNumbers(vector<int>& nums) {
  [9,6,3]
  ]
  Example 2:
- 
+
  Given input matrix =
  [
  [ 5, 1, 9,11],
@@ -231,7 +249,7 @@ vector<int> findDisappearedNumbers(vector<int>& nums) {
  [13, 3, 6, 7],
  [15,14,12,16]
  ],
- 
+
  rotate the input matrix in-place such that it becomes:
  [
  [15,13, 2, 5],
@@ -266,21 +284,21 @@ void rotate(vector<vector<int>>& matrix) {
 /*
 41. First Missing Positive
  Given an unsorted integer array, find the smallest missing positive integer.
- 
+
  Example 1:
- 
+
  Input: [1,2,0]
  Output: 3
  Example 2:
- 
+
  Input: [3,4,-1,1]
  Output: 2
  Example 3:
- 
+
  Input: [7,8,9,11,12]
  Output: 1
  Note:
- 
+
  Your algorithm should run in O(n) time and uses constant extra space.
 */
 int firstMissingPositive(vector<int>& nums) {
@@ -289,7 +307,7 @@ int firstMissingPositive(vector<int>& nums) {
      put i to i-1 slot, and check which one violate the rule
      traversel two times,so O(n)
      */
-    
+
     if(nums.size()==0)return 1;
     for(int i = 0;i < nums.size();i++){
         if(nums[i]<=0||nums[i] >nums.size())continue;
@@ -302,11 +320,11 @@ int firstMissingPositive(vector<int>& nums) {
             swap(nums[i],nums[nums[i]-1]);
         }
     }
-    
+
     for(int i = 0;i < nums.size();i++){
         // cout<<nums[i];
         if(nums[i]!=i+1)return i+1;
     }
-    
+
     return int(nums.size())+1;
 }
