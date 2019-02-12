@@ -20,7 +20,7 @@ using namespace std;
  */
 //special questions
 int findDuplicate(vector<int>& nums);//287. Find the Duplicate Number, mid,interesting,hard to me
-int search(vector<int>& nums, int target);//33. Search in Rotated Sorted Array, mid, more thinking later 
+int search(vector<int>& nums, int target);//33. Search in Rotated Sorted Array, mid, more thinking later
 
 vector<int> searchRange(vector<int>& nums, int target);
 int findleftbound(vector<int>&nums,int target);
@@ -48,12 +48,12 @@ struct TreeLinkNode {
 };
 void connect(TreeLinkNode *root);
 void connect_helper(vector<TreeLinkNode*> list);//116.Populating Next Right Pointers in Each Node, mid, search
-int ladderLength(string beginWord, string endWord, vector<string>& wordList);//127. Word Ladder, hard to me, long time spent , BFS & hashing 
+int ladderLength(string beginWord, string endWord, vector<string>& wordList);//127. Word Ladder, hard to me, long time spent , BFS & hashing
 
 /*
  divide and conquer
  */
-bool searchMatrix(vector<vector<int>>& matrix, int target);//240. Search a 2D Matrix II, mid search 
+bool searchMatrix(vector<vector<int>>& matrix, int target);//240. Search a 2D Matrix II, mid search
 
 
 /*
@@ -64,10 +64,20 @@ insert sort
 */
 void merge(vector<int>& nums1, int m, vector<int>& nums2, int n);//88. Merge Sorted Array, easy
 //
-																 /*
+
+/*
+sort list
+*/
+string largestNumber(vector<int>& nums)
+bool static largestNumber_compare(string a, string b)
+
+    														 /*
  Must
  */
-double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);//4. Median of Two Sorted Arrays,hard,divide and conquer,BST high difficult,more thinking later 
+double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2);//4. Median of Two Sorted Arrays,hard,divide and conquer,BST high difficult,more thinking later
+
+
+//179. Largest Number, mid, hard to me
 
 
 
