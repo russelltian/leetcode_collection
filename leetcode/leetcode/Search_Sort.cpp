@@ -490,7 +490,37 @@ Sort list
 Input: [3,30,34,5,9]
 Output: "9534330"
 */
+bool static largestNumber_compare(string a, string b){
+       return (a+b > b+a);
+   }
+string largestNumber(vector<int>& nums) {
+       /*
+       idea: https://www.cnblogs.com/TonyYPZhang/p/5087074.html
 
+       a + b ? b + a
+       note "+" here is string concatenation, directly compare the string
+       96% runtime 1% memory
+
+       */
+       string ans;
+       vector<string> num_to_str;
+       for(auto i: nums){
+           int temp = i;
+           num_to_str.push_back(to_string(temp));
+       }
+       sort(num_to_str.begin(),num_to_str.end(),largestNumber_compare);
+       //assemble the ans;
+       for(auto j: num_to_str){
+          ans+= j;
+       }
+       //clean up the connected 0
+       int i = 0;
+       while (i < ans.size()-1 && ans[i] == '0') {
+            i++;
+        }
+        ans = ans.substr(i);
+       return ans;
+   }
 
 /*
  topological sort
