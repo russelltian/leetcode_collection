@@ -230,37 +230,6 @@ string decodeString_helper(string s,int&start){
     }
     return temp;
 }
-/*
- topological sort
- */
-//207 course schdule, mid DFS, topological sort
-// it is really slow ......
-bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
-    /*
-     first, use hash table to store prerequisites, then check if the graph has cycle
-     if there is a cycle, no topological sort
-     */
-    unordered_map<int,vector<int>> dep(numCourses);
-    for(int i = 0; i < prerequisites.size(); i++){
-        dep[prerequisites[i].first].push_back(prerequisites[i].second);
-    }
-    vector<int> visited(numCourses,0);
-    for(int i=0; i<numCourses;i++){
-        if(canFinish_check_cycle(dep,visited,i))return false;
-    }
-    return true;
-}
-
-bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visited,int start){
-    if(visited[start] == 1)return true; //has been visited
-    visited[start] = 1;
-    for(int i = 0; i < dep[start].size();i++){
-        if(canFinish_check_cycle(dep,visited,dep[start][i]))return true;//visited
-    }
-    //no visited
-    visited[start]=0;
-    return false;
-    }
 
 /*
 Given a 2D board containing 'X' and 'O' (the letter O), capture all regions surrounded by 'X'.
@@ -521,37 +490,40 @@ Sort list
 Input: [3,30,34,5,9]
 Output: "9534330"
 */
-bool static largestNumber_compare(string a, string b){
-        return (a+b > b+a);
-    }
-    string largestNumber(vector<int>& nums) {
-        /*
-        idea: https://www.cnblogs.com/TonyYPZhang/p/5087074.html
 
-        a + b ? b + a
-        note "+" here is string concatenation, directly compare the string
-        96% runtime 1% memory
 
-        */
-        string ans;
-        vector<string> num_to_str;
-        for(auto i: nums){
-            int temp = i;
-            num_to_str.push_back(to_string(temp));
-        }
-        sort(num_to_str.begin(),num_to_str.end(),largestNumber_compare);
-        //assemble the ans;
-        for(auto j: num_to_str){
-           ans+= j;
-        }
-        //clean up the connected 0
-        int i = 0;
-        while (i < ans.size()-1 && ans[i] == '0') {
-             i++;
-         }
-         ans = ans.substr(i);
-        return ans;
+/*
+ topological sort
+ */
+//207 course schdule, mid DFS, topological sort
+// it is really slow ......
+bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
+    /*
+     first, use hash table to store prerequisites, then check if the graph has cycle
+     if there is a cycle, no topological sort
+     */
+    unordered_map<int,vector<int>> dep(numCourses);
+    for(int i = 0; i < prerequisites.size(); i++){
+        dep[prerequisites[i].first].push_back(prerequisites[i].second);
     }
+    vector<int> visited(numCourses,0);
+    for(int i=0; i<numCourses;i++){
+        if(canFinish_check_cycle(dep,visited,i))return false;
+    }
+    return true;
+}
+
+//each status of the vertex, preq list, the vertex is visiting
+   bool canFinish_dfs(vector<int>&visited, vector<vector<int>>& prq,int i){
+       if(visited[i] == 1)return false;//visiting, forms a circle
+       if(visited[i] == 2)return true;//visited, ok
+       visited[i] = 1;//mark it as visiting
+       for(const int j: prq[i]){
+           if(!canFinish_dfs(visited,prq,j))return false;
+       }
+       visited[i] = 2;//mark it as visited
+       return true;
+}
 
 /*
  Must

@@ -32,8 +32,6 @@ int findrightbound(vector<int>&nums,int target);//34. Find First and Last Positi
 string decodeString(string s);
 string decodeString_helper(string s,int&start);//394. Decode String, mid, fast,can be done by stack
 
-bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites);
-bool canFinish_check_cycle(unordered_map<int,vector<int>> &dep,vector<int>&visited,int start);//207. Course Schedule, mid topological sort(DFS), badly need to be way faster!!
 
 void solve(vector<vector<char>>& board);
 void surrounded_regions_helper(vector<vector<char>>& board, vector<pair<int, int>>& record, vector<vector<int>>& lookup, int i, int j);
@@ -70,6 +68,13 @@ sort list
 */
 string largestNumber(vector<int>& nums)
 bool static largestNumber_compare(string a, string b)
+/*
+topological sort
+*/
+bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites);
+bool canFinish_dfs(vector<int>&visited, vector<vector<int>>& prq,int i)
+//207. Course Schedule, mid topological sort(DFS), now very fast
+
 
     														 /*
  Must

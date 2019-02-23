@@ -136,6 +136,41 @@ ListNode *detectCycle(ListNode *head) {
     }
     return ptr1;
 }
+
+/*
+202. Happy Number,
+Input: 19
+Output: true
+Explanation:
+12 + 92 = 82
+82 + 22 = 68
+62 + 82 = 100
+12 + 02 + 02 = 1
+*/
+bool isHappy(int n) {
+        //can't form a circle
+        // if a number occurs twice, return false;
+        //70% run time, 8.4mb memory
+        unordered_map<int,int>circle;
+        bool ans = true;
+        while(ans){
+            int temp = 0;
+            while(n > 0){
+                temp += pow(n%10,2);
+                n /=10;
+            }
+            if(temp == 1)return true;
+            unordered_map<int,int>::iterator it;
+            it = circle.find(temp);
+            if(it != circle.end()){
+                ans = false;
+            }else{
+                circle[temp]=1;
+                n = temp;
+                //cout << n <<endl;
+            }
+
+
 /*
 238. Product of Array Except Self
 Given an array nums of n integers where n > 1,  return an array output such that output[i] is equal to the product of all the elements of nums except nums[i].

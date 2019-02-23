@@ -24,6 +24,7 @@ int hammingDistance(int x, int y);//461. Hamming Distance, easy, interesting
 int hammingWeight(uint32_t n);//191. Number of 1 Bits, easy
 
 ListNode *detectCycle(ListNode *head); //142,linked list cycle II, mid, interesting math
+bool isHappy(int n) ; //202, happy number, easy, check cycle too
 
 vector<int> productExceptSelf(vector<int>& nums);//238. Product of Array Except Self, mid, fast solution, no division(avoid divide by zero)
 
