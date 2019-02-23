@@ -556,6 +556,55 @@ bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
 }
 
 /*
+210. Course Schedule II
+Input: 4, [[1,0],[2,0],[3,1],[3,2]]
+Output: [0,1,2,3] or [0,2,1,3]
+*/
+vector<int> findOrder(int numCourses, vector<pair<int, int>>& prerequisites)
+    {
+    //same as course schedule one, instead we need to give it an order
+        //to do so preq change from 0 <- 1 to 1 -> 0, now can do dfs
+        // in required course order
+        vector<int>ans(numCourses);
+        int index = numCourses - 1;
+        vector<vector<int>>preq(numCourses);
+        vector<int>visited(numCourses,0);//0 non, 1 visiting, 2 visited
+        for(const auto&p:prerequisites){
+            preq[p.second].push_back(p.first);
+        }
+        for(int i = 0;i< numCourses;i++){
+            if(visited[i]==0){
+                vector<int> vertexs;
+                //the list of courses that are in order
+                bool ok = findOrder_dfs(i,preq,visited,vertexs);
+                if(!ok)return vector<int>();//can't do
+                for(auto &z:vertexs){
+                    ans[index] = z;
+                    index--;
+                 //    cout<<z;
+                }
+              //  cout<<endl;
+            }
+        }
+        return ans;
+    }
+
+// course index, preq, visited, put courses in
+bool findOrder_dfs(int num,vector<vector<int>>&preq,vector<int>&visited,vector<int>&courses)
+    {
+      //  cout << visited[num]<<num<<endl;
+        if(visited[num]==1)return false;//visiting
+        if(visited[num]==2)return true;//visited
+        visited[num]=1;
+        for(const auto p: preq[num]){
+            if(!findOrder_dfs(p,preq,visited,courses))return false;
+        }
+        courses.push_back(num);
+        visited[num]=2;
+        return true;
+    }
+
+/*
  Must
  */
 /*

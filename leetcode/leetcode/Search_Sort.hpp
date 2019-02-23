@@ -72,8 +72,11 @@ bool static largestNumber_compare(string a, string b)
 topological sort
 */
 bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites);
-bool canFinish_dfs(vector<int>&visited, vector<vector<int>>& prq,int i)
+bool canFinish_dfs(vector<int>&visited, vector<vector<int>>& prq,int i);
 //207. Course Schedule, mid topological sort(DFS), now very fast
+vector<int> findOrder(int numCourses, vector<pair<int, int>>& prerequisites);
+bool findOrder_dfs(int num,vector<vector<int>>&preq,vector<int>&visited,vector<int>&courses);
+//210. Course Schedule II
 
 
     														 /*
