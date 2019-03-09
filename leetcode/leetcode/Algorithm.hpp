@@ -70,6 +70,7 @@ bool hasCycle(ListNode *head);//141 Linked List Cycle, easy,2
 //math
 vector<int> plusOne(vector<int>& digits);//66. Plus One,easy,google interview,2
 int titleToNumber(string s);//171. Excel Sheet Column Number
+void moveZeroes(vector<int>& nums);//283. Move Zeroes, easy, 100%
 
 /*int countPrimes(unsigned long n);
 unsigned long fermat_test(unsigned long a,unsigned long b);

@@ -11,33 +11,13 @@
 /*
  array
  */
-/*
- 283. Move Zeroes
- Given an array nums, write a function to move all 0's to the end of it while maintaining the relative order of the non-zero elements.
- Example:
- Input: [0,1,0,3,12]
- Output: [1,3,12,0,0]
- */
-void moveZeroes(vector<int>& nums) {
-    //keep track of the last original index until first and last hit
-    int last = int(nums.size())-1;
-    for(int i = 0;i < nums.size();i++){
-        if(nums[i]== 0){
-            nums.erase(nums.begin()+i);
-            nums.push_back(0);
-            i--;
-            last--;
-        }
-        if(last == i)break;
-    }
-}
 
 /*
  581. Shortest Unsorted Continuous Subarray
  Given an integer array, you need to find one continuous subarray that if you only sort this subarray in ascending order, then the whole array will be sorted in ascending order, too.
- 
+
  You need to find the shortest such subarray and output its length.
- 
+
  Example 1:
  Input: [2, 6, 4, 8, 10, 9, 15]
  Output: 5
@@ -61,7 +41,7 @@ int findUnsortedSubarray(vector<int>& nums) {
         minr = min(nums[size-1-i],minr);
         if(maxl > nums[i]) r = i;//inversion
         if(minr < nums[size-1-i]) l = size-1-i;
-        
+
     }
     if(l==10001&&r==-1)return 0;
     return r-l+1;
@@ -70,11 +50,11 @@ int findUnsortedSubarray(vector<int>& nums) {
 /*
  11. Container With Most Water
  Given n non-negative integers a1, a2, ..., an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.
- 
+
  Note: You may not slant the container and n is at least 2.
- 
+
  Example:
- 
+
  Input: [1,8,6,2,5,4,8,3,7]
  Output: 49
  */
@@ -97,15 +77,15 @@ int maxArea(vector<int>& height) {
 /*
  15. 3Sum
  Given an array nums of n integers, are there elements a, b, c in nums such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
- 
+
  Note:
- 
+
  The solution set must not contain duplicate triplets.
- 
+
  Example:
- 
+
  Given array nums = [-1, 0, 1, 2, -1, -4],
- 
+
  A solution set is:
  [
  [-1, 0, 1],
@@ -122,7 +102,7 @@ vector<vector<int>> threeSum(vector<int>& nums) {
     vector<vector<int>> ans;
     for(int i = size-1;i>1;i--){
         if((i<size-1&&nums[i]!=nums[i+1])||i==size-1)
-            
+
             threeSum_helper(nums,i-1,-nums[i],i,ans);
     }
     return ans;
@@ -148,15 +128,15 @@ void threeSum_helper(vector<int>& nums, int r, int tar,int one,vector<vector<int
             while(nums[r]==nums[r+1])r--;
         }
     }
-    
+
 }
 
 /*
  54. Spiral Matrix
  Given a matrix of m x n elements (m rows, n columns), return all elements of the matrix in spiral order.
- 
+
  Example 1:
- 
+
  Input:
  [
  [ 1, 2, 3 ],
@@ -165,7 +145,7 @@ void threeSum_helper(vector<int>& nums, int r, int tar,int one,vector<vector<int
  ]
  Output: [1,2,3,6,9,8,7,4,5]
  Example 2:
- 
+
  Input:
  [
  [1, 2, 3, 4],
@@ -236,30 +216,30 @@ vector<int> inorderTraversal(TreeNode* root) {
 /*
   20. Valid Parentheses
  Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
- 
+
  An input string is valid if:
- 
+
  Open brackets must be closed by the same type of brackets.
  Open brackets must be closed in the correct order.
  Note that an empty string is also considered valid.
  Example 1:
- 
+
  Input: "()"
  Output: true
  Example 2:
- 
+
  Input: "()[]{}"
  Output: true
  Example 3:
- 
+
  Input: "(]"
  Output: false
  Example 4:
- 
+
  Input: "([)]"
  Output: false
  Example 5:
- 
+
  Input: "{[]}"
  Output: true
  */
@@ -349,7 +329,7 @@ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
     if(lastA!=lastB)return NULL;//not found
     int i = 0;
     int diff = abs(len_A - len_B);
-    
+
     while (i < diff){
         i++;
         if(len_A > len_B){
@@ -392,10 +372,10 @@ ListNode* reverseList_helper(ListNode* head,ListNode** glob){
  234. Palindrome Linked List
  Input: 1->2
  Output: false
- 
+
  Input: 1->2->2->1
  Output: true
- 
+
  idea: use recursion, first move tail to the last element, then cmp head and tail,
  then return head->next, 99.3%
  */
@@ -418,11 +398,11 @@ ListNode* isPalindrome_list_helper(ListNode* head,ListNode* tail,bool& mybool){
 /*
  19. Remove Nth Node From End of List
  Given a linked list, remove the n-th node from the end of list and return its head.
- 
+
  Example:
- 
+
  Given linked list: 1->2->3->4->5, and n = 2.
- 
+
  After removing the second node from the end, the linked list becomes 1->2->3->5.
  */
 ListNode* removeNthFromEnd(ListNode* head, int n) {
@@ -445,7 +425,7 @@ ListNode* removeNthFromEnd(ListNode* head, int n) {
         ptr1 = ptr1->next;
         ptr2 = ptr2->next;
     }
-    
+
     ptr1 -> next = ptr1->next->next;
     return head;
 }
@@ -490,7 +470,7 @@ vector<int> topKFrequent(vector<int>& nums, int k) {
             //     cout << hash[nums[i]];
         }
     }
-    
+
     priority_queue<pair<int,int>,vector<pair<int,int>>,cmp>pq;
     for(auto it : hash){
         int a= it.first;
@@ -504,7 +484,7 @@ vector<int> topKFrequent(vector<int>& nums, int k) {
         //cout<<pq.top().first<<pq.top().second<<endl;
         pq.pop();
     }
-    
+
     return result;
     }
 
@@ -517,13 +497,13 @@ vector<int> topKFrequent(vector<int>& nums, int k) {
 /*
  3. Longest Substring Without Repeating Characters
  Given a string, find the length of the longest substring without repeating characters.
- 
+
  Examples:
- 
+
  Given "abcabcbb", the answer is "abc", which the length is 3.
- 
+
  Given "bbbbb", the answer is "b", with the length of 1.
- 
+
  Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
  */
 int lengthOfLongestSubstring(string s) {
@@ -553,10 +533,10 @@ int lengthOfLongestSubstring(string s) {
                     start = max(ht[s[ht[s[i]]+1]],start);
                 ht[s[i]] = i;
             }
-            
+
         }
         end++;
-        
+
     }
     if(end-start>ans)ans = end-start;//update longest substr
     return ans;
@@ -564,27 +544,27 @@ int lengthOfLongestSubstring(string s) {
 /*
  438. Find All Anagrams in a String
  Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
- 
+
  Strings consists of lowercase English letters only and the length of both strings s and p will not be larger than 20,100.
- 
+
  The order of output does not matter.
  Input:
  s: "cbaebabacd" p: "abc"
- 
+
  Output:
  [0, 6]
- 
+
  Explanation:
  The substring with start index = 0 is "cba", which is an anagram of "abc".
  The substring with start index = 6 is "bac", which is an anagram of "abc".
  Example 2:
- 
+
  Input:
  s: "abab" p: "ab"
- 
+
  Output:
  [0, 1, 2]
- 
+
  Explanation:
  The substring with start index = 0 is "ab", which is an anagram of "ab".
  The substring with start index = 1 is "ba", which is an anagram of "ab".
@@ -622,7 +602,7 @@ vector<int> findAnagrams(string s, string p) {
 /*
  36. Valid Sudoku
  Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
- 
+
  Each row must contain the digits 1-9 without repetition.
  Each column must contain the digits 1-9 without repetition.
  Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.
@@ -652,7 +632,7 @@ bool isValidSudoku(vector<vector<char>>& board) {
             }
             else col[j][location] = j;
             if(blk[block][location]!=-1){
-                
+
                 return false;
             }
             else{
@@ -724,7 +704,7 @@ int subarraySum(vector<int>& nums, int k) {
         }else{
             ht[sum]++;
         }
-        
+
     }
     return count;
 }

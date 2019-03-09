@@ -22,7 +22,6 @@ using namespace std;
 /*
  array
  */
-void moveZeroes(vector<int>& nums);//283. Move Zeroes, easy, 97%
 int findUnsortedSubarray(vector<int>& nums);//581. Shortest Unsorted Continuous Subarray, easy,cool solution
 int maxArea(vector<int>& height);//11. Container With Most Water, mid, interview question
 
@@ -65,14 +64,14 @@ struct RandomListNode {
 	int label;
 	RandomListNode *next, *random;
 	RandomListNode(int x) : label(x), next(NULL), random(NULL) {}
-	
+
 };
 RandomListNode *copyRandomList(RandomListNode *head);//138. Copy List with Random Pointer, Mid
 
 /*
  must know
  */
-int subarraySum(vector<int>& nums, int k);//560. Subarray Sum Equals K, mid ,hard to me, hash table, must know 
+int subarraySum(vector<int>& nums, int k);//560. Subarray Sum Equals K, mid ,hard to me, hash table, must know
 int trap(vector<int>& height);//42. Trapping Rain Water, hard, interview, array
 
 
