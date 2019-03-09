@@ -29,6 +29,10 @@ vector<vector<int>> threeSum(vector<int>& nums);
 void threeSum_helper(vector<int>& nums, int r, int tar,int one,vector<vector<int>>&ans);//15. 3Sum, mid, ok solution, classic
 vector<int> spiralOrder(vector<vector<int>>& matrix);//54. Spiral Matrix
 
+void gameOfLife(vector<vector<int>>& board);
+int gameOfLife_calculatesum(vector<vector<int>>&board, int i, int j);
+//289. Game of Life, Medium
+
 //stack
 vector<int> inorderTraversal(TreeNode* root); //94, binary tree inorder traversal, mid, hard to me
 bool isValid(string s);//20. Valid Parentheses, easy, interview

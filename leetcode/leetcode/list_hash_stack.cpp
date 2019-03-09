@@ -188,6 +188,82 @@ vector<int> spiralOrder(vector<vector<int>>& matrix) {
     }
     return ans;
 }
+
+/*
+289. Game of Life
+*/
+void gameOfLife(vector<vector<int>>& board) {
+        /*wikipedia first lol, use stitch left,right top,bottom and make it toroidal array
+         use two buffer array to store the next stage,
+         for example:
+         a = row0, then b = row1, then update a, then a for row2
+
+        */
+        // f* test case
+        if(board.size()==1){
+            for(auto  &z : board[0]){
+                z = 0;
+            }
+            return;
+        }
+
+        vector<int> a(board[0].size(),0);
+        vector<int> b(board[0].size(),0);
+        int old = 1; //0, a being written latest ; 1, b being written
+        int row_read = 0;//the number of row has been calculated
+        for(int i = 0; i < board.size();i++){
+            if(row_read >= 1){
+                // update a row
+                for(int z = 0; z < board[0].size();z++){
+                    board[row_read-1][z] = (old==0)? b[z]:a[z];
+                }
+            }
+
+            for(int j = 0; j < board[0].size();j++){
+            if(old==0){
+                b[j] = gameOfLife_calculatesum(board,i,j);
+             //   cout << "stored b "<<endl;
+            }
+                else {
+                    a[j] = gameOfLife_calculatesum(board,i,j);
+                 //  cout << "stored a "<<endl;
+                }
+            }
+            old = !old;
+            row_read = i;
+        }
+        for(int z = 0; z < board[0].size();z++){
+            board[board.size()-2][z] = (old==0)? b[z]:a[z];
+            board[board.size()-1][z] = (old==0)? a[z]:b[z];
+        }
+    }
+
+    int gameOfLife_calculatesum(vector<vector<int>>&board, int i, int j){
+        int result = board[i][j];
+        if(i > 0 )result += board[i-1][j];
+        if(i < board.size()-1) result+=board[i+1][j];
+        if(j > 0) result += board[i][j-1];
+        if(j < board[0].size()-1) result+= board[i][j+1];
+        if(i>0&&j>0)result+= board[i-1][j-1];
+        if(i < board.size()-1&&j<board[0].size()-1)result+=board[i+1][j+1];
+        if(i>0 && j < board[0].size()-1)result+=board[i-1][j+1];
+        if(i < board.size()-1 && j > 0) result+=board[i+1][j-1];
+
+        //calculate the next stage result
+        // 3: 1 +2*1 ok, 0 +3*1 revive; 4:1+3*1 ok, 0+4*1 no
+        // the rest, no
+        //cout << result << " ";
+        if(result == 3)
+            return 1;
+        if(result == 4)
+            return board[i][j];
+        return 0;
+    }
+
+
+
+
+
 //stack
 /*
  94, in order traversal using iterative method
