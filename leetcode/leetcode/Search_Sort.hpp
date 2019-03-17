@@ -25,6 +25,7 @@ int search(vector<int>& nums, int target);//33. Search in Rotated Sorted Array, 
 vector<int> searchRange(vector<int>& nums, int target);
 int findleftbound(vector<int>&nums,int target);
 int findrightbound(vector<int>&nums,int target);//34. Find First and Last Position of Element in Sorted Array,mid,bst,interview
+void wiggleSort(vector<int>& nums) //324, Wiggle Sort II
 
 /*
  DFS

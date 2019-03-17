@@ -166,7 +166,23 @@ int findrightbound(vector<int>&nums,int target){
     return -1;
 }
 
-
+/*
+324. Wiggle Sort II
+*/
+void wiggleSort(vector<int>& nums) {
+     /*
+     NlogN time, N space
+     */
+     vector<int> sorted = nums;
+     sort(sorted.begin(),sorted.end());
+     int m = nums.size()&1?nums.size()/2+1:nums.size()/2;
+     int l = 0;
+     int r = nums.size()-1;
+     //cout << m <<" "<<r ;
+     for(int i = 0; i < nums.size();i++){
+         nums[i] = i&1?sorted[r--]:sorted[--m];
+     }
+ }
 
 /*
  DFS
