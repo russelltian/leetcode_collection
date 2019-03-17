@@ -48,6 +48,8 @@ bool isPalindrome(ListNode* head);
 ListNode* isPalindrome_list_helper(ListNode* head,ListNode* tail,bool& mybool);//234. Palindrome Linked List, easy, recursion, fast
 
 ListNode* removeNthFromEnd(ListNode* head, int n);//19. Remove Nth Node From End of List, mid,interview
+ListNode* oddEvenList(ListNode* head) ;//328. Odd Even Linked List, hard to me
+
 /*
  prioirty queue
  */

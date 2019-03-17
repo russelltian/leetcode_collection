@@ -506,7 +506,30 @@ ListNode* removeNthFromEnd(ListNode* head, int n) {
     return head;
 }
 
+/*
+328. Odd Even Linked List
+*/
+ListNode* oddEvenList(ListNode* head) {
+        if(!head || !head->next) return head;
+        ListNode* cur = head;
+        ListNode* even = cur->next;
+        ListNode* evenhead = even;
+        ListNode*prev;
+        while(cur&&cur->next){
+            cur -> next = even->next;
+            prev = cur;
+            cur = cur->next;
+            if(cur){
+                even->next = cur->next;
+                even = even->next;
+            }
 
+        }
+        if(cur)  cur->next = evenhead;
+        else prev->next = evenhead;
+
+        return head;
+    }
 /*
  PQ
  */
