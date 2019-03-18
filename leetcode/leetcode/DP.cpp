@@ -445,31 +445,22 @@ int findTargetSumWays_helper(vector<int>& nums, int S){
  Output: -1
  */
 int coinChange(vector<int>& coins, int amount) {
-    /*
-     93.58%
-     */
-    vector<int> best_case(amount+1,-1);//for each amount, store the number of coins needed
-    best_case[0]= 0;
-    int size = int(coins.size());
-    for(int i = 1; i < best_case.size();i++){
-        for(int j = 0; j < size;j++){
-            if (coins[j]==i){
-                //cout <<" "<<i<<endl;
-                best_case[i] = 1;//exact amount
-            }else if(coins[j]<i){
-                if(best_case[i-coins[j]]!= -1){//there is valid combination
-                    int temp = best_case[i-coins[j]]+best_case[coins[j]];
-                    //  cout <<"temp:"<<temp<<endl;
-                    //update #of coins needed for i
-                    if(best_case[i]>temp||best_case[i]==-1){
-                        best_case[i] = temp;
-                    }
-                }
-            }
-        }
-        // cout<<i<<':'<<best_case[i]<<endl;
-    }
-    return best_case[amount];
+	vector<int>min_change(amount+1,-1);
+	min_change[0]=0;
+	for(int i = 0; i < coins.size();i++){
+			int coin_amount = coins[i];
+			for(int j = coin_amount;j<= amount;j++){
+					if(coins[i] == j){
+							min_change[j] = 1;
+							continue;
+					}
+					if(min_change[j-coin_amount]!= -1){
+							int temp =min_change[coin_amount]+min_change[j-coin_amount];
+							min_change[j] = (min_change[j] == -1 ||min_change[j]>temp)?temp:min_change[j];
+					}
+			}
+	}
+	return min_change[amount];
 }
 
 /*
