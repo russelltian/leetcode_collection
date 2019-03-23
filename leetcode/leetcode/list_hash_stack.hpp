@@ -79,7 +79,7 @@ RandomListNode *copyRandomList(RandomListNode *head);//138. Copy List with Rando
  */
 int subarraySum(vector<int>& nums, int k);//560. Subarray Sum Equals K, mid ,hard to me, hash table, must know
 int trap(vector<int>& height);//42. Trapping Rain Water, hard, interview, array
-
+vector<int> maxSlidingWindow(vector<int>& nums, int k);//239. Sliding Window Maximum, hard,deque
 
 //comparator
 struct pq_compare{//215, Kth largest elements in an array

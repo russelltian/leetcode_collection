@@ -839,3 +839,24 @@ int trap(vector<int>& height) {
     }
     return ans;
 }
+
+/*
+239. Sliding Window Maximum
+Input: nums = [1,3,-1,-3,5,3,6,7], and k = 3
+Output: [3,3,5,5,6,7]
+Idea: deque left always largest number's index
+when insert a number from end, remove all the number's value
+that are smaller than new number, and store its index in the back,
+so always up to date and always in desc order 
+ */
+vector<int> maxSlidingWindow(vector<int>& nums, int k) {
+    vector<int>ans;
+    deque<int> q;
+    for(int i = 0; i < nums.size();i++){
+        if(!q.empty()&&q.front()==i-k)q.pop_front();
+        while(!q.empty()&& nums[q.back()]<=nums[i])q.pop_back();
+        q.push_back(i);
+        if(i > k-2)ans.push_back(nums[q.front()]);
+    }
+    return ans;
+}
