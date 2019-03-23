@@ -847,7 +847,7 @@ Output: [3,3,5,5,6,7]
 Idea: deque left always largest number's index
 when insert a number from end, remove all the number's value
 that are smaller than new number, and store its index in the back,
-so always up to date and always in desc order 
+so always up to date and always in desc order
  */
 vector<int> maxSlidingWindow(vector<int>& nums, int k) {
     vector<int>ans;
