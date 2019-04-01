@@ -35,7 +35,7 @@ int findUnsortedSubarray(vector<int>& nums) {
     for(int i = 0; i < size; i++){
         // if(nums[i]>nums[i+1]){
         //     l = min(l,i);
-        //     r = max(r,i+1);
+        //     r = max(r,1);
         // }
         maxl = max(nums[i],maxl);
         minr = min(nums[size-1-i],minr);
@@ -291,27 +291,6 @@ vector<int> inorderTraversal(TreeNode* root) {
 }
 /*
   20. Valid Parentheses
- Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-
- An input string is valid if:
-
- Open brackets must be closed by the same type of brackets.
- Open brackets must be closed in the correct order.
- Note that an empty string is also considered valid.
- Example 1:
-
- Input: "()"
- Output: true
- Example 2:
-
- Input: "()[]{}"
- Output: true
- Example 3:
-
- Input: "(]"
- Output: false
- Example 4:
-
  Input: "([)]"
  Output: false
  Example 5:
@@ -319,23 +298,20 @@ vector<int> inorderTraversal(TreeNode* root) {
  Input: "{[]}"
  Output: true
  */
-bool isValid(string s) {
-    stack<char> sta;
-    for(auto i:s){
-        if(i=='('||i=='{'||i=='['){
-            char j = i;
-            sta.push(j);
-        }else{
-            if(sta.empty())return false;
-            char j = sta.top();
-            if((i == ')'&&j!='(')||(i == ']'&&j!='[')||(i == '}'&&j!='{')) {
-                return false;
-            }
-            sta.pop();
-        }
-    }
-    if(sta.empty())return true;
-    return false;
+ bool isValid(string s) {
+   //100% runtime 8.4Mb, 100%memory
+         stack<char> mystack;
+         for(auto &i : s){
+             if(i == '('||i=='['||i=='{')mystack.push(i);
+             else{
+                 if(mystack.empty())return false;
+                 char top = mystack.top();
+                 mystack.pop();
+                 if(i!=')'&&i!=']'&&i!='}')return false;
+                 if(i==')'&&top!='('||i==']'&&top!='['||i=='}'&&top!='{') return false;
+             }
+         }
+         return mystack.empty();
 }
 
 /*
