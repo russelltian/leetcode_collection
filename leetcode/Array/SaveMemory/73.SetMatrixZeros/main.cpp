@@ -26,7 +26,7 @@ void setZeroes(vector<vector<int>>& matrix) {
 	}
 	if (isrow) {
 		for (int i = 0; i < matrix[0].size(); i++) {
-			matrix[0][i] = 0;
+			matrix[0][i] = 0;   
 		}
 	}
 	if (iscol) {
