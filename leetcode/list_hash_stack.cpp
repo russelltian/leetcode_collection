@@ -22,6 +22,7 @@
  Input: [2, 6, 4, 8, 10, 9, 15]
  Output: 5
  Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.
+ Difficulties: 3 , need more practice
  */
 int findUnsortedSubarray(vector<int>& nums) {
    /*
@@ -51,6 +52,10 @@ int findUnsortedSubarray(vector<int>& nums) {
 
  Input: [1,8,6,2,5,4,8,3,7]
  Output: 49
+
+ Update: 3rd time 09Sep2019, silo with no problem
+ Difficulties: 1 Should be OK
+ Idea: calculate current volume, and move the shorter side towards the middle 
  */
 int maxArea(vector<int>& height) {
     //self solution, 97.54%
