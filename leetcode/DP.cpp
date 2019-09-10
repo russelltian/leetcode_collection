@@ -29,7 +29,7 @@ Output: 3
 Explanation: It could be decoded as "BZ" (2 26), "VF" (22 6), or "BBF" (2 2 6).
 */
 int numDecodings(string s) {
-	/*
+	/*  
 	100% run time
 
 	since max number 26 is 2 digits, only need to track i and i-1
@@ -39,7 +39,7 @@ int numDecodings(string s) {
 						else            can't be carried ans[i] = 0
 
 	7-9                1                independent num + carried ans[i] = ans[i-2]+ans[i-1]
-						else            can't be carried but independent number ans[i]=ans[i-1]
+						else            can't be carried bu mnt independent number ans[i]=ans[i-1]
 
 	1-6                1-2              ans[i]=ans[i-1]+ans[i-2]
 						else            ans[i]=ans[i-1]

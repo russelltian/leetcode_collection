@@ -21,7 +21,7 @@ struct TreeNode {
          TreeNode(int x) : val(x), left(NULL), right(NULL) {}
      };
 bool isValidBST(TreeNode* root);
-void ValidBST(TreeNode* root, bool &ans,long &ref);//98 validate BST,mid- in-order traversal
+void ValidBST(TreeNode* root, bool &ans,long &ref);//98 validate BST,mid- in-order traversal, Microsoft,v2
 int maxDepth(TreeNode* root);
 void maxDepth_search(TreeNode* root,int temp,int&ans); //109 max depth of binary tree, easy
 void flatten(TreeNode* root);

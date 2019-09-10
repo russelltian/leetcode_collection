@@ -24,27 +24,21 @@
  Explanation: You need to sort [6, 4, 8, 10, 9] in ascending order to make the whole array sorted in ascending order.
  */
 int findUnsortedSubarray(vector<int>& nums) {
-    int l=10001,r=-1;
-    int size = int(nums.size());
-    int maxl=nums[0],minr=nums[size-1];
-    /*
-     O(n),97.77%
-     one situation to consider:  [left][right] inversion
-     two number to track left right inversion
-     */
-    for(int i = 0; i < size; i++){
-        // if(nums[i]>nums[i+1]){
-        //     l = min(l,i);
-        //     r = max(r,1);
-        // }
-        maxl = max(nums[i],maxl);
-        minr = min(nums[size-1-i],minr);
-        if(maxl > nums[i]) r = i;//inversion
-        if(minr < nums[size-1-i]) l = size-1-i;
-
-    }
-    if(l==10001&&r==-1)return 0;
-    return r-l+1;
+   /*
+   Updated at 09-Sep-2019
+   replace hardcoded l r value to a boolean that records the inversion of ascending order values
+   Use maxL and minR to assert the ascending order, and record the violation index
+   */
+	int l = 0; int r = nums.size() - 1;
+	int maxL = nums[0]; int minR = nums[r];
+	bool haschanged = false;
+	for (int i = 0; i < nums.size(); i++) {
+		maxL = max(maxL, nums[i]);
+		minR = min(minR, nums[nums.size() - 1 - i]);
+		if (nums[i] < maxL) { r = i; haschanged = true; }
+		if (nums[nums.size() - 1 - i] > minR)l = nums.size() - 1 - i;
+	}
+	return haschanged ? r - l + 1 : 0;
 }
 
 /*
