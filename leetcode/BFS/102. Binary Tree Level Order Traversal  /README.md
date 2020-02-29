@@ -37,7 +37,7 @@ For each level, first count the number of nodes. Second, limiting the visit of n
 
 After each level of traversal, push the temporary array to the answer.
 
-```
+```cpp
 vector<vector<int>> levelOrder(TreeNode* root) {
         if(!root)return{};
         queue <TreeNode*> lvl;
