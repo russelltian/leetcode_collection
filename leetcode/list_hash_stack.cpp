@@ -97,7 +97,7 @@ int maxArea(vector<int>& height) {
  */
 vector<int> spiralOrder(vector<vector<int>>& matrix) {
     //first lock boundary then traverse
-    //self idea: 100%
+    //self idea: 3rd time, difficulty 2, careful about the boundary check
     if(matrix.empty())return {};
     if(matrix[0].empty())return {};
     int l = 0; int r = int(matrix[0].size())-1;
